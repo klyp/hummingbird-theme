@@ -1,0 +1,90 @@
+/*=============================================
+=            Footer Section CSS            =
+=============================================*/
+.hb {
+    &-footer {
+        background-color: $atlantis;
+        color: $white;
+        font-size: $fs-xsmall;
+        padding: 25px 0;
+        text-align: center;
+
+        &__social {
+            margin-bottom: 16px;
+            padding: 0;
+
+            &-item {
+                margin-bottom: 0;
+                margin-right: 17px !important;
+
+                &:after {
+                    display: none;
+                }
+
+                &:last-child {
+                    margin-right: 0 !important;
+                }
+
+                @include media-breakpoint-up(md) {
+                    margin-right: 14px !important;
+
+                    &:last-child {
+                        margin-right: 0 !important;
+                    }
+                }
+
+                a {
+                    border: 1px solid $white;
+                    border-radius: 50%;
+                    color: $white;
+                    display: inline-block;
+                    height: 25px;
+                    line-height: 25px;
+                    text-align: center;
+                    width: 25px;
+
+                    &:hover {
+                        background-color: $cerise;
+                        border-color: $cerise;
+                    }
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                margin-bottom: 0;
+                text-align: right;
+            }
+        }
+
+        &__links {
+            margin-bottom: 16px;
+            padding: 0;
+
+            &-item {
+                margin-bottom: 0;
+
+                &:after {
+                    display: none;
+                }
+
+                a {
+                    color: $white;
+
+                    &:hover {
+                        color: $cerise;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                margin-bottom: 0;
+            }
+        }
+
+        &__logo {
+            max-width: 35px;
+        }
+    }
+}
+/*=====  End of Footer Section CSS  ======*/

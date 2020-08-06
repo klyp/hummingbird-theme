@@ -1,0 +1,96 @@
+/*=============================================
+=            Banner Section CSS            =
+=============================================*/
+.hb {
+    &-fs {
+        &-banner {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            &__height {
+                min-height: 100vh;
+            }
+
+            &__large {
+                padding: 0;
+
+                @include media-breakpoint-up(md) {
+                    min-height: 660px;
+                    padding: 139px 0;
+                }
+            }
+
+            &__content {
+                max-width: 532px;
+                padding: 55px 0;
+
+                @include media-breakpoint-up(sm) {
+                    padding: 50px 0;
+                }
+
+                &--center {
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                &--right {
+                    margin-left: auto;
+                    text-align: right;
+                }
+            }
+
+            &__intro {
+                color: $white;
+                font-family: $ff-circularstd-medium;
+                font-size: $fs-small;
+
+                @include media-breakpoint-up(md) {
+                    font-size: $fs-medium;
+                }
+            }
+
+            &__title {
+                color: $atlantis;
+                font-size: $fs-medium;
+
+                &--gray {
+                    color: $abbey;
+                }
+
+                @include media-breakpoint-up(md) {
+                    font-size: $fs-x-large;
+                }
+
+                &--small {
+                    font-size: $fs-medium;
+
+                    @include media-breakpoint-up(md) {
+                        font-size: $fs-large;
+                    }
+                }
+            }
+
+            &__text {
+                color: $white;
+                margin-bottom: 30px;
+            }
+
+            .hb {
+                &-btn {
+                    &-primary {
+                        display: block;
+                        margin-right: 0;
+                         
+                        @include media-breakpoint-up(md) {
+                            display: inline-block;
+                            margin-right: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/*=====  End of Banner Section CSS  ======*/

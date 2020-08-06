@@ -1,0 +1,66 @@
+<?php
+    // General.
+    $componentId    = get_sub_field('component_team_id') ?: 'random_' . rand();
+    $componentClass = get_sub_field('component_team_class');
+
+    //Settings.
+    $heading        = get_sub_field('component_team_heading');
+    $teams          = get_sub_field('component_teams');
+?>
+
+<section id="<?php echo $componentId; ?>" class="hb-card-list <?php echo $componentClass; ?>">
+    <div class="container">
+        <div class="row">
+            <?php if ($heading) : ?>
+            <div class="col-12">
+                <h2 class="hb-card-list__heading">
+                    <?php echo $heading; ?>
+                </h2>
+            </div>
+            <?php endif; ?>
+            <div class="col-12">
+                <?php foreach ($teams as $key => $team) : ?>
+                    <div class="hb-card-list__row">
+                        <div class="row">
+                            <?php if ($team['image']) : ?>
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="hb-card-list__profile">
+                                        <img src="<?php echo $team['image']['url']; ?>" class="img-fluid" alt="Profile Image">
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <div class="col-12 col-md-8 col-lg-9">
+                                <h2 class="hb-card-list__title">
+                                    <?php echo $team['name']; ?>
+                                </h2>
+                                <?php if ($team['position']) : ?>
+                                    <h5 class="hb-card-list__des">
+                                        <?php echo $team['position']; ?>
+                                    </h5>
+                                <?php endif; ?>
+                                <?php if (isset($team['socials']) && ! empty($team['socials'])) : ?>
+                                    <ul class="hb-card__social-list list-inline">
+                                        <?php foreach ($team['socials'] as $skey => $component_team_social) : ?>
+                                            <li class="hb-card__social-list-item list-inline-item">
+                                                <a href="<?php echo $component_team_social['social_link']['url']; ?>" alt="<?php echo $component_team_social['social_link']['title']; ?>" target="<?php echo $component_team_social['social_link']['target']; ?>">
+                                                    <?php echo $component_team_social['social_icon']; ?>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                                <?php if ($team['description']) : ?>
+                                <div class="hb-card-list__content">
+                                    <div class="m-0">
+                                        <?php echo $team['description']; ?>
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>

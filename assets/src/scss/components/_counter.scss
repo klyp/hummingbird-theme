@@ -1,0 +1,67 @@
+/*=============================================
+=            Counter Section CSS            =
+=============================================*/
+.hb {
+    &-counter {
+        padding: 50px 0;
+
+        @include media-breakpoint-up(md) {
+            padding: 50px 0 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+            padding: 100px 0;
+        }
+
+        &__content {
+            margin-bottom: 30px;
+
+            @include media-breakpoint-up(md) {
+                margin-bottom: 60px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                margin-bottom: 0;
+            }
+        }
+
+        &__count {
+            color: $cerise;
+            font-family: $ff-modulus-b;
+            font-size: $fs-x-large;
+            line-height: 52px;
+            margin-bottom: 30px;
+
+            &--gray {
+                color: $abbey;
+            }
+        }
+
+        &__title {
+            font-family: $ff-circularstd-book;
+            position: relative;
+
+            &:after {
+                border-top: 2px solid $abbey;
+                content: "";
+                height: 3px;
+                left: 0;
+                margin: 0 auto;
+                position: absolute;
+                right: 0;
+                top: -15px;
+                width: 40px;
+            }
+        }
+
+        &__icon {
+            margin-bottom: 16px;
+
+            @include media-breakpoint-up(md) {
+                margin-bottom: 30px;
+                min-height: 70px;
+            }
+        }
+    }
+}
+/*=====  End of Counter Section CSS  ======*/

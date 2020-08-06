@@ -1,0 +1,65 @@
+/*=============================================
+=            Breadcumb Banner Section CSS            =
+=============================================*/
+.hb {
+    &-breadcumb {
+        font-family: $ff-circularstd-medium;
+        padding: 50px 0 10px;
+
+        &__title {
+            font-family: $ff-circularstd-medium;
+            font-size: $fs-normal;
+            line-height: 23px;
+            margin-bottom: 16px;
+
+            @include media-breakpoint-up(md) {
+                font-size: $fs-medium;
+                line-height: 30px;
+            }
+        }
+
+        ol {
+            padding: 0;
+        }
+
+        &__item {
+            color: $white;
+            font-size: $fs-xsmall;
+
+            &.active,
+            &:before {
+                color: $white !important;
+            }
+
+            &:first-child {
+                &:before {
+                    display: none !important;
+                }
+            }
+
+            &:before {
+                content: ">>" !important;
+            }
+
+            &:after {
+                display: none;
+            }
+
+            a {
+                color: $white;
+                font-size: $fs-xsmall;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &--color {
+            &-white {
+                color: $white;
+            }
+        }
+    }
+}
+/*=====  End of Breadcumb Banner Section CSS  ======*/

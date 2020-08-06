@@ -1,0 +1,39 @@
+{
+  "name": "humming-bird",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [
+    "gulp"
+  ],
+  "devDependencies": {
+    "gulp-terser": "^1.2.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@popperjs/core": "^2.3.3",
+    "autoprefixer": "^9.6.1",
+    "bootstrap": "^4.4.1",
+    "browser-sync": "^2.26.7",
+    "child_process": "^1.0.2",
+    "cssnano": "^4.1.10",
+    "del": "^5.0.0",
+    "fontawesome": "^5.6.3",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.5.1",
+    "jquery-inview": "^1.1.2",
+    "magnific-popup": "^1.1.0",
+    "owl.carousel": "^2.3.4",
+    "popper.js": "^1.15.0",
+    "select2": "^4.0.13"
+  }
+}
