@@ -3,8 +3,8 @@
 =============================================*/
 .hb {
     &-footer {
-        background-color: $atlantis;
-        color: $white;
+        background-color: $c-atlantis;
+        color: $c-white;
         font-size: $fs-xsmall;
         padding: 25px 0;
         text-align: center;
@@ -34,9 +34,9 @@
                 }
 
                 a {
-                    border: 1px solid $white;
+                    border: 1px solid $c-white;
                     border-radius: 50%;
-                    color: $white;
+                    color: $c-white;
                     display: inline-block;
                     height: 25px;
                     line-height: 25px;
@@ -44,8 +44,8 @@
                     width: 25px;
 
                     &:hover {
-                        background-color: $cerise;
-                        border-color: $cerise;
+                        background-color: $c-cerise;
+                        border-color: $c-cerise;
                     }
                 }
             }
@@ -68,10 +68,10 @@
                 }
 
                 a {
-                    color: $white;
+                    color: $c-white;
 
                     &:hover {
-                        color: $cerise;
+                        color: $c-cerise;
                         text-decoration: none;
                     }
                 }

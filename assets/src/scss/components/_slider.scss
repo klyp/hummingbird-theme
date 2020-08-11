@@ -48,8 +48,8 @@
 
                                 &.active {
                                     span {
-                                        background: $atlantis !important;
-                                        border: 1px solid $atlantis;
+                                        background: $c-atlantis !important;
+                                        border: 1px solid $c-atlantis;
                                     }
                                 }
 
@@ -61,8 +61,8 @@
                             }
 
                             span {
-                                background: $white !important;
-                                border: 1px solid $dusty-gray;
+                                background: $c-white !important;
+                                border: 1px solid $c-dusty-gray;
                                 height: 16px !important;
                                 margin: 0 20px 0 0 !important;
                                 width: 16px !important;
@@ -89,7 +89,7 @@
         }
 
         &__title {
-            color: $atlantis;
+            color: $c-atlantis;
             font-family: $ff-modulus-b;
             font-size: $fs-medium;
             line-height: 28px;
@@ -101,13 +101,13 @@
         }
 
         &__intro {
-            color: $white;
+            color: $c-white;
             font-size: $fs-small;
             font-family: $ff-circularstd-medium;
             margin-bottom: 4px;
 
             &--gray {
-                color: $abbey;
+                color: $c-abbey;
             }
 
             @include media-breakpoint-up(md) {
@@ -117,11 +117,11 @@
         }
 
         &__text {
-            color: $white;
+            color: $c-white;
             margin-bottom: 30px;
 
             &--gray {
-                color: $abbey;
+                color: $c-abbey;
             }
         }
 

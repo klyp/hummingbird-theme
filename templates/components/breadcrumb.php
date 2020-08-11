@@ -21,23 +21,23 @@
 
 <section id="<?php echo $componentId; ?>" class="hb-breadcumb hb-gradient-primary
 hb-breadcumb--color-white <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full">
                 <h2 class="hb-breadcumb__title">
                     <?php echo $breadcrumbTitle; ?>
                 </h2>
             </div>
-            <div class="col-12">
+            <div class="hb-col-full">
                 <nav aria-label="breadcrumb" class="hb-breadcumb__nav">
-                    <ol class="d-flex flex-wrap list-inline justify-content-md-end m-0">
+                    <ol class="hb-breadcumb__nav-list">
                         <?php foreach ($breadcrumbItems as $key => $breadcrumbItem) : ?>
                             <?php if ($breadcrumbItem['link']['url'] == '#') : ?>
-                                <li class="hb-breadcumb__item breadcrumb-item">
+                                <li class="hb-breadcumb__item">
                                     <span><?php echo $breadcrumbItem['link']['title']; ?></span>
                                 </li>
                             <?php else : ?>
-                                <li class="hb-breadcumb__item breadcrumb-item">
+                                <li class="hb-breadcumb__item">
                                     <a href="<?php echo $breadcrumbItem['link']['url']; ?>" target="<?php echo $breadcrumbItem['link']['target']; ?>">
                                     <?php echo $breadcrumbItem['link']['title']; ?></a>
                                 </li>

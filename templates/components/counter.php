@@ -17,11 +17,10 @@ if ($enableIcon) {
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-counter hb-bg-light text-center <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-1"></div>
+    <div class="hb-container">
+        <div class="hb-row">
             <?php foreach ($counters as $key => $counter) : ?>
-                <div class="col-12 col-md-4 col-lg-2">
+                <div class="hb-counter__col">
                     <div class="hb-counter__content <?php echo $contentClass; ?>">
                         <?php if ($enableIcon) : ?>
                             <div class="hb-counter__icon">

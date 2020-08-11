@@ -6,7 +6,7 @@
         padding: 50px 0;
         
         &--bg {
-            background-color: $cerise;
+            background-color: $c-cerise;
             padding: 40px 0;
 
             @include media-breakpoint-up(md) {
@@ -41,15 +41,15 @@
         }
 
         &__col {
-            background-color: $white;
-            border: 1px solid $dusty-gray;
+            background-color: $c-white;
+            border: 1px solid $c-dusty-gray;
             border-radius: 8px;
             flex-grow: 1;
             margin-bottom: 20px;
             overflow: hidden;
 
             &--white {
-                border-color: $white;
+                border-color: $c-white;
             }
 
             @include media-breakpoint-up(md) {
@@ -76,7 +76,7 @@
         }
 
         &__title {
-            color: $atlantis;
+            color: $c-atlantis;
             font-family: $ff-circularstd-bold;
             font-size: $fs-normal;
             line-height: 24px;
@@ -136,9 +136,9 @@
                     }
 
                     a {
-                        border: 1px solid $abbey;
+                        border: 1px solid $c-abbey;
                         border-radius: 50%;
-                        color: $abbey;
+                        color: $c-abbey;
                         display: inline-block;
                         height: 30px;
                         line-height: 30px;
@@ -146,9 +146,9 @@
                         width: 30px;
 
                         &:hover {
-                            background-color: $cerise;
-                            border-color: $cerise;
-                            color: $white;
+                            background-color: $c-cerise;
+                            border-color: $c-cerise;
+                            color: $c-white;
                         }
                     }
                 }
@@ -173,7 +173,7 @@
             padding: 35px 0;
 
             &__heading {
-                color: $atlantis;
+                color: $c-atlantis;
                 font-family: $ff-circularstd-medium;
                 font-size: $fs-normal;
                 margin-bottom: 25px;
@@ -186,7 +186,7 @@
             }
 
             &__row {
-                border-top: 1px solid $dusty-gray;
+                border-top: 1px solid $c-dusty-gray;
                 padding: 35px 0;
                 text-align: center;
 
@@ -231,7 +231,7 @@
             }
 
             &__title {
-                color: $atlantis;
+                color: $c-atlantis;
                 font-family: $ff-circularstd-bold;
                 font-size: $fs-normal;
                 line-height: 24px;

@@ -42,7 +42,7 @@
             }
 
             &__intro {
-                color: $white;
+                color: $c-white;
                 font-family: $ff-circularstd-medium;
                 font-size: $fs-small;
 
@@ -52,11 +52,11 @@
             }
 
             &__title {
-                color: $atlantis;
+                color: $c-atlantis;
                 font-size: $fs-medium;
 
                 &--gray {
-                    color: $abbey;
+                    color: $c-abbey;
                 }
 
                 @include media-breakpoint-up(md) {
@@ -73,7 +73,7 @@
             }
 
             &__text {
-                color: $white;
+                color: $c-white;
                 margin-bottom: 30px;
             }
 

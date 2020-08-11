@@ -1,13 +1,35 @@
 /*=============================================
 =            Gallery CSS            =
 =============================================*/
+.hb-gallery-popup__gallery-row {
+    @extend .row;
+
+    margin-left: -7px;
+    margin-right: -7px;
+
+    @include media-breakpoint-up(md) {
+        margin-left: -9px;
+        margin-right: -9px;
+    }
+
+    &>div {
+        padding-left: 7px;
+        padding-right: 7px;
+
+        @include media-breakpoint-up(md) {
+            padding-left: 9px;
+            padding-right: 9px;
+        }
+    }
+}
+
 .hb {
     &-gallery {
         &-popup {
             padding-top: 16px;
 
             &__title {
-                color: $atlantis;
+                color: $c-atlantis;
                 font-family: $ff-circularstd-medium;
                 font-size: $fs-normal;
                 line-height: 24px;
@@ -47,7 +69,7 @@
                     }
 
                     &:after {
-                        background-color: rgba($black,0.6);
+                        background-color: rgba($c-black,0.6);
                         bottom: 0;
                         content: '';
                         left: 0;
@@ -100,30 +122,14 @@
                 }
 
                 &-row {
-                    margin-left: -7px;
-                    margin-right: -7px;
-
-                    @include media-breakpoint-up(md) {
-                        margin-left: -9px;
-                        margin-right: -9px;
-                    }
-
-                    &>div {
-                        padding-left: 7px;
-                        padding-right: 7px;
-
-                        @include media-breakpoint-up(md) {
-                            padding-left: 9px;
-                            padding-right: 9px;
-                        }
-                    }
+                    
                 }
             }
 
             &__main {
                 .mfp {
                     &-arrow {
-                        background-color: rgba($black,.60);
+                        background-color: rgba($c-black,.60);
                         border-radius: 4px;
                         height: 32px;
                         opacity: 1;
@@ -143,7 +149,7 @@
                         }
 
                         &:after {
-                            border: solid $white;
+                            border: solid $c-white;
                             border-width: 0 3px 3px 0;
                             display: inline-block;
                             height: auto;
@@ -185,7 +191,7 @@
                         padding-right: 0;
 
                         h3 {
-                            color: $atlantis;
+                            color: $c-atlantis;
                             font-family: $ff-circularstd-medium;
                             font-size: $fs-small;
                             line-height: 20px;
@@ -198,7 +204,7 @@
                         }
 
                         p {
-                            color: $abbey;
+                            color: $c-abbey;
                             font-size: $fs-xsmall;
                             line-height: 19px;
                             margin: 0;
@@ -219,7 +225,7 @@
                     }
 
                     &-counter {
-                        color: $gray;
+                        color: $c-gray;
                         font-size: $fs-xsmall;
                         line-height: 26px;
                         position: static;
@@ -239,14 +245,14 @@
                     }
 
                     &-figure {
-                        background-color: $white;
+                        background-color: $c-white;
                         padding: 12px;
                     }
 
                     &-close {
-                        background: rgba($black,.55);
+                        background: rgba($c-black,.55);
                         border-radius: 50%;
-                        color: $white;
+                        color: $c-white;
                         font-size: $fs-normal;
                         height: 20px;
                         line-height: 20px;

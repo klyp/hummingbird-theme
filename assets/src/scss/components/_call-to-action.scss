@@ -8,7 +8,7 @@
                 background-attachment: fixed;
                 background-position: center;
                 background-size: cover;
-                color: $white;
+                color: $c-white;
                 margin: 0 -15px;
                 padding: 60px 0;
 
@@ -34,7 +34,7 @@
             }
 
             &__intro {
-                color: $white;
+                color: $c-white;
                 font-family: $ff-circularstd-medium;
                 font-size: $fs-small;
                 line-height: 20px;
@@ -48,7 +48,7 @@
             }
 
             &__title {
-                color: $atlantis;
+                color: $c-atlantis;
                 font-size: $fs-medium;
                 line-height: 28px;
                 margin-bottom: 10px;

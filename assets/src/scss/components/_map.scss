@@ -25,7 +25,7 @@
 
             &:after {
                 bottom: -10px;
-                border-bottom: 1px solid $dusty-gray;
+                border-bottom: 1px solid $c-dusty-gray;
                 content: "";
                 left: 0;
                 position: absolute;
@@ -33,16 +33,16 @@
             }
 
             &.active {
-                border-bottom-color: $cerise;
+                border-bottom-color: $c-cerise;
 
                 &:after {
-                    border-color: $cerise;
+                    border-color: $c-cerise;
                 }
             }
 
             @include media-breakpoint-up(sm) {
-                border-left: 1px solid $dusty-gray;
-                border-right: 1px solid $dusty-gray;
+                border-left: 1px solid $c-dusty-gray;
+                border-right: 1px solid $c-dusty-gray;
             }
 
             @include media-breakpoint-up(md) {
@@ -50,13 +50,13 @@
             }
 
             @include media-breakpoint-up(lg) {
-                border-left: 1px solid $dusty-gray;
+                border-left: 1px solid $c-dusty-gray;
                 border-right: none;
                 flex: 1;
                 padding: 36px 15px 26px;
 
                 &:last-child {
-                    border-right: 1px solid $dusty-gray;
+                    border-right: 1px solid $c-dusty-gray;
                 }
             }
         }
@@ -72,7 +72,7 @@
         }
 
         &__location {
-            color: $atlantis;
+            color: $c-atlantis;
             font-family: $ff-circularstd-bold;
             font-size: $fs-normal;
             line-height: 26px;
@@ -100,7 +100,7 @@
 
             .select2 {
                 &-selection {
-                    border: 1px solid $silver;
+                    border: 1px solid $c-silver;
                     border-radius: 0;
                     height: auto;
                     padding: 10px;
@@ -110,7 +110,7 @@
                     }
 
                     &__rendered {
-                        color: $abbey !important;
+                        color: $c-abbey !important;
                         font-size: $fs-small;
                         line-height: 24px !important;
                     }
@@ -121,8 +121,8 @@
 
                         b {
                             border: none !important;
-                            border-bottom: 1px solid $abbey !important;
-                            border-right: 1px solid $abbey !important;
+                            border-bottom: 1px solid $c-abbey !important;
+                            border-right: 1px solid $c-abbey !important;
                             display: block !important;
                             height: 10px !important;
                             margin-left: -10px !important;
@@ -159,7 +159,7 @@
             line-height: 26px;
 
             a {
-                color: $atlantis;
+                color: $c-atlantis;
                 margin-left: 5px;
             }
         }

@@ -9,7 +9,7 @@
 
             &--border {
                 &:after {
-                    border-top: 1px solid $dusty-gray;
+                    border-top: 1px solid $c-dusty-gray;
                     content: "";
                     left: 15px;
                     position: absolute;
@@ -29,13 +29,13 @@
             }
 
             &-control {
-                background-color: $alabaster;
-                border: 1px solid $alto;
+                background-color: $c-alabaster;
+                border: 1px solid $c-alto;
                 border-radius: 0;
                 min-height: 40px;
 
                 &:focus {
-                    border-color: $atlantis;
+                    border-color: $c-atlantis;
                     box-shadow: none;
                 }
             }
@@ -89,8 +89,8 @@
                         &:checked {
                             ~ .wpcf7-list-item-label {
                                 &:after {
-                                    background-color: $cerise;
-                                    border-color: $cerise;
+                                    background-color: $c-cerise;
+                                    border-color: $c-cerise;
                                 }
 
                                 &:before {
@@ -102,7 +102,7 @@
                         &:hover {
                             ~ .wpcf7-list-item-label {
                                 &:after {
-                                    border-color: $cerise;
+                                    border-color: $c-cerise;
                                 }
                             }
                         }
@@ -110,7 +110,7 @@
 
                     &-label {
                         &:after {
-                            border: 2px solid $silver;
+                            border: 2px solid $c-silver;
                             border-radius: 4px;
                             height: 25px;
                             left: 0;
@@ -120,7 +120,7 @@
                         }
 
                         &:before {
-                            border: solid $white;
+                            border: solid $c-white;
                             border-width: 0 2px 2px 0;
                             content: "";
                             height: 10px;
@@ -174,7 +174,7 @@
                         &:checked {
                             ~ .wpcf7-list-item-label {
                                 &:after {
-                                    border-color: $cerise;
+                                    border-color: $c-cerise;
                                 }
 
                                 &:before {
@@ -186,7 +186,7 @@
                         &:hover {
                             ~ .wpcf7-list-item-label {
                                 &:after {
-                                    border-color: $cerise;
+                                    border-color: $c-cerise;
                                 }
                             }
                         }
@@ -194,7 +194,7 @@
 
                     &-label {
                         &:after {
-                            border: 2px solid $silver;
+                            border: 2px solid $c-silver;
                             border-radius: 50%;
                             height: 25px;
                             left: 0;
@@ -204,7 +204,7 @@
                         }
 
                         &:before {
-                            background-color: $cerise;
+                            background-color: $c-cerise;
                             border-radius: 50%;
                             content: "";
                             height: 17px;
@@ -237,8 +237,8 @@
                     &-form {
                         &__checkbox {
                             &-checkmark {
-                                background-color: $cerise;
-                                border-color: $cerise;
+                                background-color: $c-cerise;
+                                border-color: $c-cerise;
 
                                 &:before {
                                     opacity: 1;
@@ -248,7 +248,7 @@
 
                         &__radio {
                             &-dot {
-                                border-color: $cerise;
+                                border-color: $c-cerise;
 
                                 &:after {
                                     opacity: 1;
@@ -275,7 +275,7 @@
                         &__radio {
                             &-checkmark,
                             &-dot {
-                                border-color: $cerise;
+                                border-color: $c-cerise;
                             }
                         }
                     }
@@ -284,7 +284,7 @@
 
             &-checkmark,
             &-dot {
-                border: 2px solid $silver;
+                border: 2px solid $c-silver;
                 border-radius: 4px;
                 height: 25px;
                 left: 0;
@@ -293,7 +293,7 @@
                 width: 25px;
 
                 &:before {
-                    border: solid $white;
+                    border: solid $c-white;
                     border-width: 0 2px 2px 0;
                     content: "";
                     height: 10px;
@@ -314,7 +314,7 @@
                 }
 
                 &:after {
-                    background-color: $cerise;
+                    background-color: $c-cerise;
                     border-radius: 50%;
                     content: "";
                     height: 17px;
@@ -371,7 +371,7 @@
         }
 
         &__title {
-            color: $atlantis;
+            color: $c-atlantis;
             font-family: $ff-circularstd-medium;
             font-size: $fs-normal;
             line-height: 24px;

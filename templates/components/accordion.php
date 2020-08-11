@@ -9,9 +9,9 @@
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-accordion <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full">
                 <div id="accordion">
                     <?php
                     foreach ($accordionItems as $key => $accordionItem) :

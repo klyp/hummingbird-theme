@@ -43,7 +43,7 @@
                         position: relative;
 
                         &::before {
-                            border-top: 1px solid $silver;
+                            border-top: 1px solid $c-silver;
                             content: "";
                             left: -15px;
                             position: absolute;
@@ -76,12 +76,12 @@
                     }
 
                     &-link {
-                        color: $abbey;
+                        color: $c-abbey;
                         font-family: $ff-circularstd-medium;
                         padding: 12px 1rem;
 
                         &.hb-btn-primary {
-                            color: $white;
+                            color: $c-white;
                             margin: 6px 0;
                             min-width: auto;
                             padding: 6px 23px;
@@ -94,10 +94,10 @@
 
                             &--outline {
                                 &-gray {
-                                    color: $abbey;
+                                    color: $c-abbey;
 
                                     &:hover {
-                                        color: $white;
+                                        color: $c-white;
                                     }
                                 }
                             }
@@ -107,13 +107,13 @@
 
                 .dropdown {
                     &-menu {
-                        background-color: $alabaster;
+                        background-color: $c-alabaster;
                         border: none;
                         margin: 0 -15px;
                         padding: 10px 15px;
 
                         @include media-breakpoint-up(lg) {
-                            background-color: $abbey;
+                            background-color: $c-abbey;
                             border-radius: 0;
                             margin: 0;
                             min-width: 243px;
@@ -128,13 +128,13 @@
                         padding-bottom: 15px;
 
                         @include media-breakpoint-up(lg) {
-                            color: $silver;
+                            color: $c-silver;
                             font-size: $fs-small;
                             padding: 0 0 15px 30px;
                             position: relative;
 
                             &:after {
-                                background-color: $cerise;
+                                background-color: $c-cerise;
                                 content: "";
                                 height: 16px;
                                 left: 0;
@@ -146,7 +146,7 @@
 
                             &:hover {
                                 background-color: transparent;
-                                color: $white;
+                                color: $c-white;
 
                                 &:after {
                                     opacity: 1;
@@ -165,7 +165,7 @@
                         }
 
                         &-icon {
-                            background: $black;
+                            background: $c-black;
                             height: 2px;
                             position: relative;
                             transition: 0.3s linear all;
@@ -173,7 +173,7 @@
 
                             &:after,
                             &:before {
-                                background-color: $black;
+                                background-color: $c-black;
                                 content: "";
                                 height: 2px;
                                 left: 0;
@@ -193,7 +193,7 @@
 
                         &:not(.collapsed) {
                             .navbar-toggler-icon {
-                                background-color: $white;
+                                background-color: $c-white;
 
                                 &:after,
                                 &:before {
@@ -225,7 +225,7 @@
             }
 
             a {
-                color: $abbey;
+                color: $c-abbey;
             }
         }
 
@@ -285,7 +285,7 @@
 
                 &-link {
                     align-items: center;
-                    color: $abbey !important;
+                    color: $c-abbey !important;
                     display: flex;
                     font-size: $fs-medium;
                     line-height: 30px;
