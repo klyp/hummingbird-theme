@@ -1,168 +1,163 @@
 /*=============================================
 =            Map CSS            =
 =============================================*/
-.hb {
-    &-map {
-        padding: 50px 0;
+.hb-map {
+    padding: 50px 0;
+}
 
-        &__content {
-            margin: 0 -15px;
+.hb-map__content {
+    margin: 0 -15px;
 
             @include media-breakpoint-up(sm) {
                 margin: 0;
+            }
+}
 
-                &--full {
-                    margin: 0 -15px;
-                }
+@include media-breakpoint-up(sm) {
+    .hb-map__content--full {
+        margin: 0 -15px;
+    }
+}
+
+.hb-map__row {
+    @extend .d-lg-flex;
+    @extend .flex-wrap;
+}
+
+.hb-map__col {
+    border-bottom: 10px solid transparent;
+    cursor: pointer;
+    padding: 15px;
+    position: relative;
+
+    &:after {
+        bottom: -10px;
+        border-bottom: 1px solid $c-dusty-gray;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    &.active {
+        border-bottom-color: $c-cerise;
+
+        &:after {
+            border-color: $c-cerise;
+        }
+    }
+
+    @include media-breakpoint-up(sm) {
+        border-left: 1px solid $c-dusty-gray;
+        border-right: 1px solid $c-dusty-gray;
+    }
+
+    @include media-breakpoint-up(md) {
+        padding: 22px 15px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        border-left: 1px solid $c-dusty-gray;
+        border-right: none;
+        flex: 1;
+        padding: 36px 15px 26px;
+
+        &:last-child {
+            border-right: 1px solid $c-dusty-gray;
+        }
+    }
+}
+
+.hb-map__map-height {
+    height: 480px;
+
+    @include media-breakpoint-up(lg) {
+        height: 600px;
+    }
+}
+
+.hb-map__location {
+    color: $c-atlantis;
+    font-family: $ff-circularstd-bold;
+    font-size: $fs-normal;
+    line-height: 26px;
+
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 7px;
+    }
+}
+
+.hb-map__address {
+    font-size: $fs-small;
+
+    p {
+        margin-bottom: 7px;
+    }
+}
+
+.hb-map__dropdown {
+    margin-bottom: 23px;
+    padding: 0 15px;
+
+    @include media-breakpoint-up(sm) {
+        padding: 0;
+    }
+
+    .select2-selection {
+        border: 1px solid $c-silver;
+        border-radius: 0;
+        height: auto;
+        padding: 10px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .select2-selection__rendered {
+        color: $c-abbey !important;
+        font-size: $fs-small;
+        line-height: 24px !important;
+    }
+
+    .select2-selection__arrow {
+        top: 50% !important;
+        transform: translateY(-50%);
+
+        b {
+            border: none !important;
+            border-bottom: 1px solid $c-abbey !important;
+            border-right: 1px solid $c-abbey !important;
+            display: block !important;
+            height: 10px !important;
+            margin-left: -10px !important;
+            margin-top: -3px !important;
+            position: absolute;
+            right: 25px !important;
+            top: 50% !important;
+            transform: rotate(45deg) translateY(-50%) !important;
+            transform-origin: 50% 0;
+            transition: all 0.4s ease-in-out;
+            width: 10px !important;
+        }
+    }
+
+    .select2-container--open {
+        .select2-selection__arrow {
+            b {
+                transform: rotate(-137deg) !important;
+                transform-origin: center !important;
             }
         }
+    }
+}
 
-        &__col {
-            border-bottom: 10px solid transparent;
-            cursor: pointer;
-            padding: 15px;
-            position: relative;
+.hb-map__number {
+    line-height: 26px;
 
-            &:after {
-                bottom: -10px;
-                border-bottom: 1px solid $c-dusty-gray;
-                content: "";
-                left: 0;
-                position: absolute;
-                right: 0;
-            }
-
-            &.active {
-                border-bottom-color: $c-cerise;
-
-                &:after {
-                    border-color: $c-cerise;
-                }
-            }
-
-            @include media-breakpoint-up(sm) {
-                border-left: 1px solid $c-dusty-gray;
-                border-right: 1px solid $c-dusty-gray;
-            }
-
-            @include media-breakpoint-up(md) {
-                padding: 22px 15px;
-            }
-
-            @include media-breakpoint-up(lg) {
-                border-left: 1px solid $c-dusty-gray;
-                border-right: none;
-                flex: 1;
-                padding: 36px 15px 26px;
-
-                &:last-child {
-                    border-right: 1px solid $c-dusty-gray;
-                }
-            }
-        }
-
-        &__map {
-            &-height {
-                height: 480px;
-
-                @include media-breakpoint-up(lg) {
-                    height: 600px;
-                }
-            }
-        }
-
-        &__location {
-            color: $c-atlantis;
-            font-family: $ff-circularstd-bold;
-            font-size: $fs-normal;
-            line-height: 26px;
-
-            @include media-breakpoint-up(lg) {
-                margin-bottom: 7px;
-            }
-        }
-
-        &__address {
-            font-size: $fs-small;
-
-            p {
-                margin-bottom: 7px;
-            }
-        }
-
-        &__dropdown {
-            margin-bottom: 23px;
-            padding: 0 15px;
-
-            @include media-breakpoint-up(sm) {
-                padding: 0;
-            }
-
-            .select2 {
-                &-selection {
-                    border: 1px solid $c-silver;
-                    border-radius: 0;
-                    height: auto;
-                    padding: 10px;
-
-                    &:focus {
-                        outline: none;
-                    }
-
-                    &__rendered {
-                        color: $c-abbey !important;
-                        font-size: $fs-small;
-                        line-height: 24px !important;
-                    }
-
-                    &__arrow {
-                        top: 50% !important;
-                        transform: translateY(-50%);
-
-                        b {
-                            border: none !important;
-                            border-bottom: 1px solid $c-abbey !important;
-                            border-right: 1px solid $c-abbey !important;
-                            display: block !important;
-                            height: 10px !important;
-                            margin-left: -10px !important;
-                            margin-top: -3px !important;
-                            position: absolute;
-                            right: 25px !important;
-                            top: 50% !important;
-                            transform: rotate(45deg) translateY(-50%) !important;
-                            transform-origin: 50% 0;
-                            transition: all 0.4s ease-in-out;
-                            width: 10px !important;
-                        }
-                    }
-                }
-
-                &-container {
-                    &--open {
-                        .select2 {
-                            &-selection {
-                                &__arrow {
-                                    b {
-                                        transform: rotate(-137deg) !important;
-                                        transform-origin: center !important;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &__number {
-            line-height: 26px;
-
-            a {
-                color: $c-atlantis;
-                margin-left: 5px;
-            }
-        }
+    a {
+        color: $c-atlantis;
+        margin-left: 5px;
     }
 }
 /*=====  End of Map CSS  ======*/

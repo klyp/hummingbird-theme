@@ -19,29 +19,31 @@
 /*=============================================
 =            Gallery List Section CSS            =
 =============================================*/
-.hb {
-    &-gallery {
-        &__title {
-            color: $c-black;
-            font-family: $ff-circularstd-medium;
-            font-size: $fs-normal;
-            line-height: 24px;
-            margin-bottom: 20px;
+.hb-gallery__title {
+    color: $c-black;
+    font-family: $ff-circularstd-medium;
+    font-size: $fs-normal;
+    line-height: 24px;
+    margin-bottom: 20px;
 
-            @include media-breakpoint-up(md) {
-                font-size: $fs-medium;
-                line-height: 30px;
-            }
-        }
+    @include media-breakpoint-up(md) {
+        font-size: $fs-medium;
+        line-height: 30px;
+    }
+}
 
-        &__row {
-            margin: 30px -7px;
-        }
+.hb-gallery__row {
+    @extend .row;
+    margin: 30px -7px;
+}
 
-        &__col {
-            margin-bottom: 14px;
-            padding: 0 7px;
-        }
+.hb-gallery__col {
+    @extend .col-12;
+    margin-bottom: 14px;
+    padding: 0 7px;
+
+    @include media-breakpoint-up(md) {
+        @extend .col-md-4;
     }
 }
 /*=====  End of Gallery List Section CSS  ======*/
@@ -176,15 +178,19 @@
 /*=============================================
 =            Image Two Column Section CSS            =
 =============================================*/
-.hb {
-    &-image {
-        &-column {
-            padding: 20px 0 50px;
+.hb-image-column {
+    padding: 20px 0 50px;
 
-            @include media-breakpoint-up(md) {
-                padding: 20px 0 70px;
-            }
-        }
+    @include media-breakpoint-up(md) {
+        padding: 20px 0 70px;
+    }
+}
+
+.hb-image-column__col {
+    @extend .col-12;
+
+    @include media-breakpoint-up(md) {
+        @extend .col-md-6;
     }
 }
 /*=====  End of Image Two Column Section CSS  ======*/

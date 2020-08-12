@@ -22,10 +22,10 @@
     ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-fs-banner hb-fs-banner--left <?php echo $componentClass; ?>">
-    <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex align-items-center">
+    <div class="hb-container">
+            <div class="hb-row">
+                <div class="hb-col-full">
+                    <div class="hb-fs-banner__flex">
                         <div class="hb-fs-banner__content">
                             <h2 class="hb-fs-banner__title hb-fs-banner__title--gray hb-fs-banner__title--small">
                                 <?php echo $header; ?>

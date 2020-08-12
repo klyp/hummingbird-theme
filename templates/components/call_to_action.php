@@ -16,7 +16,7 @@
 switch ($alignment) {
     case 'right':
         $blogClass  = 'flex-row-reverse';
-        $titleClass = 'col-md-6 text-right';
+        $titleClass = 'hb-cta-section__col-right';
         $linkClass  = 'text-center';
         break;
 
@@ -29,7 +29,7 @@ switch ($alignment) {
     case 'left':
     default:
         $blogClass  = '';
-        $titleClass = 'col-md-6';
+        $titleClass = 'hb-cta-section__col-left';
         $linkClass  = 'text-left';
         break;
 }
@@ -50,11 +50,11 @@ switch ($alignment) {
     ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-cta-section <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full">
                 <div class="hb-cta-section__bg hb-container-bk-image">
-                    <div class="row m-0 align-items-center <?php echo $blogClass; ?>">
+                    <div class="hb-cta-section__row <?php echo $blogClass; ?>">
                         <div class="col-12 <?php echo $titleClass; ?>">
                             <?php if ($alignment == 'center') : ?>
                                 <div class="hb-cta-section__center">

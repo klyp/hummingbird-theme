@@ -23,6 +23,10 @@ h2 {
     @extend .container;
 }
 
+.hb-container-fluid {
+    @extend .container-fluid;
+}
+
 .hb-row {
     @extend .row;
 }

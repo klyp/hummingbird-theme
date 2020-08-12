@@ -1,6 +1,10 @@
 /*=============================================
 =            Banner Section CSS            =
 =============================================*/
+.hb-fs-banner__flex {
+    @extend .align-items-center;
+    @extend .d-flex;
+}
 .hb {
     &-fs {
         &-banner {

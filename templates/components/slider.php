@@ -45,14 +45,14 @@ switch ($style) {
             }
             ?>
             <?php if ($style == 'compact') : ?>
-                <div class="<?php echo $slidexClass; ?> d-flex flex-wrap justify-content-center align-items-center hb-slider__slide-item">
+                <div class="<?php echo $slidexClass; ?> hb-slider__slide-item">
             <?php else : ?>
-                <div class="<?php echo $slidexClass; ?> d-flex flex-wrap justify-content-center align-items-center hb-slider__slide-item" style="background-image: url('<?php echo $slider['image']['url']; ?>');">
+                <div class="<?php echo $slidexClass; ?> hb-slider__slide-item" style="background-image: url('<?php echo $slider['image']['url']; ?>');">
             <?php endif; ?>
                     <div class="hb-slider__space">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12">
+                        <div class="hb-container">
+                            <div class="hb-row">
+                                <div class="hb-col-full">
                                     <?php if ($style == 'compact') : ?>
                                         <div class="hb-slider__contianer-img" style="background-image: url('<?php echo $slider['image']['url']; ?>');">
                                             <div class="hb-slider-nav" style="color: <?php echo $slider['arrows_color']; ?>;">

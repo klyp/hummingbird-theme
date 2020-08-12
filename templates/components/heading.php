@@ -9,9 +9,9 @@
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-intro <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full">
                 <div class="hb-short-content text-center">
                     <h2 class="hb-short-content__title">
                         <?php echo $headingTitle; ?>
