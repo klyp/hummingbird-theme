@@ -13,10 +13,10 @@ $settings_blog_style = get_field('settings_blog', 'option')['settings_blog_style
 
 switch ($settings_blog_style) {
     case 'card-w-sidebar':
-        $blogRowClass    = 'col-lg-6';
+        $blogRowClass    = 'hb-blog__col-card-side';
         break;
     case 'card-wo-sidebar':
-        $blogRowClass    = 'col-md-6 col-lg-4';
+        $blogRowClass    = 'hb-blog__col-card-w-side';
         break;
     case 'list-w-sidebar':
         $blogRowClass    = '';

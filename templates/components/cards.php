@@ -42,10 +42,10 @@ switch ($style) {
 <?php if ($layout == '1') : ?>
     <section id="<?php echo $componentId; ?>" class="hb-card <?php echo $componentClass; ?>
     <?php echo $sectionClass; ?>" style="background-color: <?php echo $style_color; ?>">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex flex-wrap">
+        <div class="hb-container">
+            <div class="hb-row">
+                <div class="hb-col-full">
+                    <div class="hb-card__row">
                         <?php foreach ($cards as $key => $card) : ?>
                             <div class="hb-card__col <?php echo $backgroundColorClass; ?>">
                                 <div class="hb-card__content hb-card__content--border text-center">
@@ -87,10 +87,10 @@ switch ($style) {
     </section>
 <?php elseif ($layout == '2') : ?>
     <section class="hb-card">
-        <div class="container">
-            <div class="row justify-content-center">
+        <div class="hb-container">
+            <div class="hb-card__layout-row">
                 <?php foreach ($cards as $key => $card) : ?>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="hb-card__layout-col">
                         <div class="hb-card__content hb-card__content--no-border text-center">
                             <div class="hb-card__image">
                                 <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">

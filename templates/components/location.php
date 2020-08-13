@@ -40,7 +40,7 @@ if ($style == 'full-width') {
                                         <?php echo $address['address']['address']; ?>
                                     </p>
                                 </div>
-                                <div class="hb-map__number d-flex justify-content-center align-items-center flex-wrap">
+                                <div class="hb-map__number">
                                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/src/image/icon/call-gray.svg" alt="">
                                     <a href="tel:<?php echo str_replace(' ', '', $address['phone']); ?>">
                                         <?php echo $address['phone']; ?>

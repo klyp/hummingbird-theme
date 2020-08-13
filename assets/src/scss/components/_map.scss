@@ -8,9 +8,9 @@
 .hb-map__content {
     margin: 0 -15px;
 
-            @include media-breakpoint-up(sm) {
-                margin: 0;
-            }
+    @include media-breakpoint-up(sm) {
+        margin: 0;
+    }
 }
 
 @include media-breakpoint-up(sm) {
@@ -153,6 +153,10 @@
 }
 
 .hb-map__number {
+    @extend .align-items-center;
+    @extend .d-flex;
+    @extend .flex-wrap;
+    @extend .justify-content-center;
     line-height: 26px;
 
     a {

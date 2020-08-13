@@ -1,316 +1,310 @@
 /*=============================================
 =            Header Section CSS            =
 =============================================*/
-.hb {
-    &-header {
-        .container {
-            max-width: 100%;
+.hb-header {
+    .hb-container {
+        max-width: 100%;
 
-            @include media-breakpoint-up(lg) {
-                max-width: 1140px;
-            }
+        @include media-breakpoint-up(lg) {
+            max-width: 1140px;
         }
+    }
+}
 
-        &__nav {
-            padding-bottom: 8px;
-            padding-top: 8px;
+.hb-header__nav {
+    padding-bottom: 8px;
+    padding-top: 8px;
 
-            @include media-breakpoint-up(md) {
-                padding-bottom: 16px;
-                padding-top: 16px;
-            }
+    @include media-breakpoint-up(md) {
+        padding-bottom: 16px;
+        padding-top: 16px;
+    }
 
-            @include media-breakpoint-up(lg) {
-                padding: 12px 0 26px;
-            }
+    @include media-breakpoint-up(lg) {
+        padding: 12px 0 26px;
+    }
 
-            &-logo {
-                max-width: 155px;
+    &.navbar {
+        .nav-item {
+            margin-bottom: 0;
+            position: relative;
 
-                @include media-breakpoint-up(md) {
-                    max-width: 200px;
-                }
-
-                @include media-breakpoint-up(lg) {
-                    max-width: 220px;
-                }
-            }
-
-            &.navbar {
-                .nav {
-                    &-item {
-                        margin-bottom: 0;
-                        position: relative;
-
-                        &::before {
-                            border-top: 1px solid $c-silver;
-                            content: "";
-                            left: -15px;
-                            position: absolute;
-                            right: -15px;
-                            top: 0;
-
-                            @include media-breakpoint-up(lg) {
-                                display: none;
-                            }
-                        }
-
-                        &:after {
-                            display: none;
-                        }
-
-                        &:nth-last-child(1),
-                        &:nth-last-child(2) {
-                            &:before {
-                                display: none;
-                            }
-
-                            .nav-link {
-                                &.hb-btn-primary {
-                                    @include media-breakpoint-up(lg) {
-                                        margin-left: 1rem;
-                                    } 
-                                }
-                            }
-                        }
-                    }
-
-                    &-link {
-                        color: $c-abbey;
-                        font-family: $ff-circularstd-medium;
-                        padding: 12px 1rem;
-
-                        &.hb-btn-primary {
-                            color: $c-white;
-                            margin: 6px 0;
-                            min-width: auto;
-                            padding: 6px 23px;
-                            width: 100%;
-
-                            @include media-breakpoint-up(lg) {
-                                margin: 0;
-                                width: auto;
-                            }
-
-                            &--outline {
-                                &-gray {
-                                    color: $c-abbey;
-
-                                    &:hover {
-                                        color: $c-white;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .dropdown {
-                    &-menu {
-                        background-color: $c-alabaster;
-                        border: none;
-                        margin: 0 -15px;
-                        padding: 10px 15px;
-
-                        @include media-breakpoint-up(lg) {
-                            background-color: $c-abbey;
-                            border-radius: 0;
-                            margin: 0;
-                            min-width: 243px;
-                            padding: 25px 0 0.5rem;
-                            padding-top: 25px;
-                            top: 76px;
-                        }
-                    }
-
-                    &-item {
-                        font-size: $fs-xsmall;
-                        padding-bottom: 15px;
-
-                        @include media-breakpoint-up(lg) {
-                            color: $c-silver;
-                            font-size: $fs-small;
-                            padding: 0 0 15px 30px;
-                            position: relative;
-
-                            &:after {
-                                background-color: $c-cerise;
-                                content: "";
-                                height: 16px;
-                                left: 0;
-                                opacity: 0;
-                                position: absolute;
-                                top: 3px;
-                                width: 6px;
-                            }
-
-                            &:hover {
-                                background-color: transparent;
-                                color: $c-white;
-
-                                &:after {
-                                    opacity: 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .navbar {
-                    &-toggler {
-                        padding-right: 0;
-
-                        &:focus {
-                            outline: none;
-                        }
-
-                        &-icon {
-                            background: $c-black;
-                            height: 2px;
-                            position: relative;
-                            transition: 0.3s linear all;
-                            width: 15px;
-
-                            &:after,
-                            &:before {
-                                background-color: $c-black;
-                                content: "";
-                                height: 2px;
-                                left: 0;
-                                position: absolute;
-                                transition: 0.3s linear all;
-                                width: 15px;
-                            }
-
-                            &:before {
-                                top: -5px;
-                            }
-
-                            &:after {
-                                top: 5px;
-                            }
-                        }
-
-                        &:not(.collapsed) {
-                            .navbar-toggler-icon {
-                                background-color: $c-white;
-
-                                &:after,
-                                &:before {
-                                    width: 18px;
-                                }
-
-                                &:after {
-                                    transform: rotate(-45deg);
-                                    transform-origin: 0px 3px;
-                                }
-
-                                &:before {
-                                    transform: rotate(45deg);
-                                    transform-origin: 2px -2px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        &__cta {
-            padding: 15px 0;
-
-            @include media-breakpoint-up(lg) {
-                margin: 0 1rem 0 0.5rem;
-                padding: 0;
-            }
-
-            a {
-                color: $c-abbey;
-            }
-        }
-
-        &__btn {
-            padding: 12px 1rem;
-
-            @include media-breakpoint-up(md) {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            @include media-breakpoint-up(lg) {
-                padding: 0;
-            }
-
-            a {
-                display: block;
-                font-family: $ff-circularstd-medium;
-                margin-bottom: 15px;
-                min-width: auto;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-
-                @include media-breakpoint-up(md) {
-                    margin-bottom: 0;
-                    width: 49%;
-                }
-
-                @include media-breakpoint-up(lg) {
-                    display: inline-block;
-                    width: auto;
-
-                    &:first-child {
-                        margin-right: 1rem;
-                    }
-                }
-            }
-        }
-
-        &__call {
-            &-mob {
-                display: inline-block;
-                margin-left: auto;
-                margin-right: 10px;
+            &::before {
+                border-top: 1px solid $c-silver;
+                content: "";
+                left: -15px;
+                position: absolute;
+                right: -15px;
+                top: 0;
 
                 @include media-breakpoint-up(lg) {
                     display: none;
                 }
             }
-        }
 
-        &__top {
-            &-nav {
-                padding-top: 8px;
+            &:after {
+                display: none;
+            }
 
-                &-link {
-                    align-items: center;
-                    color: $c-abbey !important;
-                    display: flex;
-                    font-size: $fs-medium;
-                    line-height: 30px;
-                    text-decoration: none !important;
+            &:nth-last-child(1),
+            &:nth-last-child(2) {
+                &:before {
+                    display: none;
+                }
+
+                .nav-link {
+                    &.hb-btn-primary {
+                        @include media-breakpoint-up(lg) {
+                            margin-left: 1rem;
+                        } 
+                    }
                 }
             }
         }
 
-        &__brand {
-            padding: 0;
-        }
+        .nav-link {
+            color: $c-abbey;
+            font-family: $ff-circularstd-medium;
+            padding: 12px 1rem;
 
-        .navbar {
-            &-collapse {
-                margin-top: 8px;
+            &.hb-btn-primary {
+                color: $c-white;
+                margin: 6px 0;
+                min-width: auto;
+                padding: 6px 23px;
+                width: 100%;
 
-                @include media-breakpoint-up(md) {
-                    margin-top: 0;
+                @include media-breakpoint-up(lg) {
+                    margin: 0;
+                    width: auto;
                 }
             }
 
-            &-nav {
-                padding: 0;
+            &.hb-btn-primary--outline-gray {
+                color: $c-abbey;
+
+                &:hover {
+                    color: $c-white;
+                }
             }
         }
+
+        .dropdown-menu {
+            background-color: $c-alabaster;
+            border: none;
+            margin: 0 -15px;
+            padding: 10px 15px;
+
+            @include media-breakpoint-up(lg) {
+                background-color: $c-abbey;
+                border-radius: 0;
+                margin: 0;
+                min-width: 243px;
+                padding: 25px 0 0.5rem;
+                padding-top: 25px;
+                top: 76px;
+            }
+        }
+
+        .dropdown-item {
+            font-size: $fs-xsmall;
+            padding-bottom: 15px;
+
+            @include media-breakpoint-up(lg) {
+                color: $c-silver;
+                font-size: $fs-small;
+                padding: 0 0 15px 30px;
+                position: relative;
+
+                &:after {
+                    background-color: $c-cerise;
+                    content: "";
+                    height: 16px;
+                    left: 0;
+                    opacity: 0;
+                    position: absolute;
+                    top: 3px;
+                    width: 6px;
+                }
+
+                &:hover {
+                    background-color: transparent;
+                    color: $c-white;
+
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .navbar-toggler {
+            padding-right: 0;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:not(.collapsed) {
+                .navbar-toggler-icon {
+                    background-color: $c-white;
+
+                    &:after,
+                    &:before {
+                        width: 18px;
+                    }
+
+                    &:after {
+                        transform: rotate(-45deg);
+                        transform-origin: 0px 3px;
+                    }
+
+                    &:before {
+                        transform: rotate(45deg);
+                        transform-origin: 2px -2px;
+                    }
+                }
+            }
+        }
+
+        .navbar-toggler-icon {
+            background: $c-black;
+            height: 2px;
+            position: relative;
+            transition: 0.3s linear all;
+            width: 15px;
+
+            &:after,
+            &:before {
+                background-color: $c-black;
+                content: "";
+                height: 2px;
+                left: 0;
+                position: absolute;
+                transition: 0.3s linear all;
+                width: 15px;
+            }
+
+            &:before {
+                top: -5px;
+            }
+
+            &:after {
+                top: 5px;
+            }
+        }
+    }
+}
+
+.hb-header__nav-logo {
+    max-width: 155px;
+
+    @include media-breakpoint-up(md) {
+        max-width: 200px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        max-width: 220px;
+    }
+}
+
+.hb-header__cta {
+    padding: 15px 0;
+
+    @include media-breakpoint-up(lg) {
+        margin: 0 1rem 0 0.5rem;
+        padding: 0;
+    }
+
+    a {
+        color: $c-abbey;
+    }
+}
+
+.hb-header__btn {
+    padding: 12px 1rem;
+
+    @include media-breakpoint-up(md) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @include media-breakpoint-up(lg) {
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        font-family: $ff-circularstd-medium;
+        margin-bottom: 15px;
+        min-width: auto;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+            width: 49%;
+        }
+
+        @include media-breakpoint-up(lg) {
+            display: inline-block;
+            width: auto;
+
+            &:first-child {
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+.hb-header__call-mob {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 10px;
+
+    @include media-breakpoint-up(lg) {
+        display: none;
+    }
+}
+
+.hb-header__top-nav {
+    @extend .align-items-center;
+    @extend .d-none;
+    @extend .flex-wrap;
+    @extend .justify-content-end;
+    padding-top: 8px;
+
+    @include media-breakpoint-up(lg) {
+        @extend .d-lg-flex;
+    }
+}
+
+.hb-header__top-nav-link {
+    align-items: center;
+    color: $c-abbey !important;
+    display: flex;
+    font-size: $fs-medium;
+    line-height: 30px;
+    text-decoration: none !important;
+}
+
+.hb-header__brand {
+    padding: 0;
+}
+
+.hb-header {
+    .navbar-collapse {
+        margin-top: 8px;
+
+        @include media-breakpoint-up(md) {
+            margin-top: 0;
+        }
+    }
+
+    .navbar-nav {
+        padding: 0;
     }
 }
 /*=====  End of Header Section CSS  ======*/
