@@ -9,27 +9,27 @@
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-card-list <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
+    <div class="hb-container">
+        <div class="hb-row">
             <?php if ($heading) : ?>
-            <div class="col-12">
+            <div class="hb-col-full">
                 <h2 class="hb-card-list__heading">
                     <?php echo $heading; ?>
                 </h2>
             </div>
             <?php endif; ?>
-            <div class="col-12">
+            <div class="hb-col-full">
                 <?php foreach ($teams as $key => $team) : ?>
                     <div class="hb-card-list__row">
-                        <div class="row">
+                        <div class="hb-row">
                             <?php if ($team['image']) : ?>
-                                <div class="col-12 col-md-4 col-lg-3">
+                                <div class="hb-card-list__col-profile">
                                     <div class="hb-card-list__profile">
                                         <img src="<?php echo $team['image']['url']; ?>" class="img-fluid" alt="Profile Image">
                                     </div>
                                 </div>
                             <?php endif; ?>
-                            <div class="col-12 col-md-8 col-lg-9">
+                            <div class="hb-card-list__col-description">
                                 <h2 class="hb-card-list__title">
                                     <?php echo $team['name']; ?>
                                 </h2>

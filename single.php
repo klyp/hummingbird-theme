@@ -26,9 +26,9 @@ get_header();
                     ?>
                         <section class="hb-general">
                             <div class="hb-general__txt-img">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12">
+                                <div class="hb-container">
+                                    <div class="hb-row">
+                                        <div class="hb-col-full">
                                         <?php
                                         if (is_single()) {
                                             the_title('<h2 class="hb-general__txt-img-title">', '</h2>');

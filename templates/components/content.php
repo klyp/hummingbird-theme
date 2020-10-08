@@ -11,9 +11,9 @@
 
 <section id="<?php echo $componentId; ?>" class="<?php echo $componentClass; ?> hb-general">
     <div class="hb-general__txt-img">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
+        <div class="hb-container">
+            <div class="hb-row">
+                <div class="hb-col-full">
                     <?php if ($header) : ?>
                         <h2 class="hb-general__txt-img-title">
                             <?php echo $header; ?>

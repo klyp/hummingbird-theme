@@ -57,10 +57,10 @@ switch ($alignment) {
     ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-fs-banner <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="<?php echo $heightClass; ?> d-flex align-items-center">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full">
+                <div class="<?php echo $heightClass; ?> hb-fs-banner__height--value">
                     <div class="hb-fs-banner__content <?php echo $alignClass; ?>">
                         <h5 class="hb-fs-banner__intro">
                             <?php echo $subHeader; ?>

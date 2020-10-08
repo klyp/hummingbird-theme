@@ -11,9 +11,9 @@
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-image-column hb-bg-light hb-contact-cta pb-5 <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full">
                 <div class="hb-short-content text-center">
                     <h2 class="hb-short-content__title">
                         <?php echo $title; ?>
@@ -35,10 +35,10 @@
 </section>
 
 <section class="hb-image-column hb-bg-light">
-    <div class="container">
-        <div class="row">
+    <div class="hb-container">
+        <div class="hb-row">
             <?php foreach ($images as $key => $image) : ?>
-                <div class="col-12 col-md-6">
+                <div class="hb-image-column__col">
                     <img src="<?php echo $image['image']['url']; ?>" alt="<?php echo $image['image']['title']; ?>" class="img-fluid">
                 </div>
             <?php endforeach; ?>

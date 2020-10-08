@@ -17,8 +17,8 @@
 </head>
 <body <?php body_class(); ?>>
     <header class="hb-header">
-        <div class="container">
-            <div class="hb-header__top-nav d-none d-lg-flex flex-wrap justify-content-end align-items-center">
+        <div class="hb-container">
+            <div class="hb-header__top-nav">
                 <?php if (! empty(get_field('settings_contact', 'options')['settings_contact_number'])) : ?>
                     <a href="tel:<?= get_field('settings_contact', 'options')['settings_contact_number']; ?>" class="hb-header__top-nav-link">
                         <img src= "<?= get_stylesheet_directory_uri(); ?>/assets/src/image/icon/call-gray.svg" alt="">

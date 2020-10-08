@@ -10,9 +10,9 @@
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-gallery <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-col-full text-center">
                 <h2 class="hb-gallery__title">
                     <?php echo $imageTitle; ?>
                 </h2>
@@ -25,7 +25,7 @@
         </div>
         <div class="row hb-gallery__row">
             <?php foreach ($imageItems as $key => $imageItem) : ?>
-                <div class="col-12 col-md-4 hb-gallery__col">
+                <div class="hb-gallery__col">
                     <img src="<?php echo $imageItem['image']['url']; ?>" alt="<?php echo $imageItem['image']['title']; ?>" class="img-fluid">
                 </div>
             <?php endforeach; ?>

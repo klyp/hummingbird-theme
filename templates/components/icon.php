@@ -16,9 +16,9 @@
     ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-bg-light hb-icon-card <?php echo $componentClass; ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
+    <div class="hb-container">
+        <div class="hb-row">
+            <div class="hb-icon-card__col-header">
                 <h2 class="hb-gallery__title">
                     <?php echo $iconTitle; ?>
                 </h2>
@@ -29,9 +29,9 @@
                 </div>
             </div>
         </div>
-        <div class="row hb-icon-card__row">
+        <div class="hb-icon-card__row">
             <?php foreach ($icons as $key => $icon) : ?>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="hb-icon-card__col">
                     <div class="hb-icon-card__box text-center">
                         <div class="hb-icon-card__icon">
                             <img src="<?php echo $icon['image']['url']; ?>" alt="<?php echo $icon['header']; ?>" class="img-fluid">

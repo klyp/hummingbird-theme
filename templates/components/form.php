@@ -8,9 +8,9 @@
 ?>
 
 <section id="<?php echo $componentId; ?>" class="hb-form <?php echo $componentClass; ?>">
-    <div class="container hb-form__container">
-        <div class="row">
-            <div class="col-12">
+    <div class="hb-form__container">
+        <div class="hb-row">
+            <div class="hb-col-full">
                 <?php echo $shortcode; ?>
             </div>
         </div>

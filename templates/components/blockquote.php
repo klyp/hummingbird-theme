@@ -9,10 +9,10 @@
 
 <section id="<?php echo $componentId; ?>" class="hb-general <?php echo $componentClass; ?>">
     <div class="hb-general__blockquote">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="hb-general__blockquote-container position-relative">
+        <div class="hb-container">
+            <div class="hb-row">
+                <div class="hb-col-full">
+                    <div class="hb-general__blockquote-container">
                         <div class="hb-general__blockquote-text">
                             <?php echo wpautop($blockquote); ?>
                         </div>

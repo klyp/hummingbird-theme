@@ -15,9 +15,9 @@
 ?>
 
     <footer class="hb-footer">
-        <div class="container">
-            <div class="row flex-row-reverse align-items-center">
-                <div class="col-12 col-lg-4">
+        <div class="hb-container">
+            <div class="hb-footer__row">
+                <div class="hb-footer__col">
                     <ul class="hb-footer__social list-inline">
                         <?php if (isset($socialMedia['settings_linkedin']['url'])) : ?>
                             <li class="hb-footer__social-item list-inline-item">
@@ -52,7 +52,7 @@
                         <?php endif; ?>
                     </ul>
                 </div>
-                <div class="col-12 col-lg-4">
+                <div class="hb-footer__col">
                     <ul class="hb-footer__links list-inline">
                         <?php foreach ($footerMenu as $index => $item) : ?>
                             <li class="hb-footer__links-item list-inline-item">
@@ -63,7 +63,7 @@
                         <?php endforeach; ?>
                     </ul>
                 </div>
-                <div class="col-12 col-lg-4">
+                <div class="hb-footer__col">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="#" class="hb-footer__logo d-inline-block">
                             <img src="<?= $footerLogoUrl; ?>" alt="Footer Logo" class="img-fluid">

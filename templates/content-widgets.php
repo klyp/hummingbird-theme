@@ -8,7 +8,7 @@
  */
 
 if (is_active_sidebar('sidebar-1')) : ?>
-    <aside class="widget-area col-12 col-md-4" role="complementary"
+    <aside class="widget-area hb-sidebar__widget-area" role="complementary"
     aria-label="<?php esc_attr_e('Sidebar', 'klyp'); ?>">
         <?php
         if (is_active_sidebar('sidebar-1')) {

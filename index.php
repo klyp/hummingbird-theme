@@ -47,8 +47,8 @@ switch ($settings_blog_style) {
         <?php
         if (have_posts()) : ?>
             <section class="hb-blog">
-                <div class="container">
-                    <div class="row">
+                <div class="hb-container">
+                    <div class="hb-row">
                         <div class="col-12 <?= $rowClass; ?>">
                             <div class="row hb-blog__row">
                             <?php
