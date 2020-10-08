@@ -210,3 +210,10 @@ function klyp_excerpt_length($length = 50)
     return $length;
 }
 add_filter('excerpt_length', 'klyp_excerpt_length', 999);
+
+/**
+ * Page Speed Optimization.
+ */
+if(!is_user_logged_in()){
+    require get_theme_file_path('includes/page-speed.php');
+}
