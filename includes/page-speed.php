@@ -6,8 +6,9 @@ function js_async_attr($tag)
     $scripts_to_exclude = array('jquery.js', 'datepicker.min.js', 'scripts.js');
 
     foreach ($scripts_to_exclude as $exclude_script) {
-        if (true == strpos($tag, $exclude_script))
+        if (true == strpos($tag, $exclude_script)) {
             return $tag;
+        }
     }
 
     /*Defer or async all remaining scripts not excluded above*/

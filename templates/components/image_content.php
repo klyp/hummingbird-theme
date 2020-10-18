@@ -14,7 +14,11 @@
         <div class="hb-row">
             <div class="hb-col-full">
                 <div class="hb-about-text__image">
-                    <img src="<?php echo $image; ?>" alt="" class="img-fluid">
+                    <picture>
+                        <source srcset="<?php echo get_post_meta($image['id'], '_webp_generated_url', true);?>" type="image/webp">
+                        <source srcset="<?php echo $image['url']; ?>" type="image/jpeg">
+                        <img src="<?php echo $image['url']; ?>" alt="" class="img-fluid">
+                    </picture>
                 </div>
                 <?php if (! empty($heading)) : ?>
                     <h2 class="hb-about-text__title text-center">

@@ -50,7 +50,11 @@ switch ($style) {
                             <div class="hb-card__col <?php echo $backgroundColorClass; ?>">
                                 <div class="hb-card__content hb-card__content--border text-center">
                                     <div class="<?php echo $checkIconOrImage; ?>">
-                                        <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
+                                        <picture>
+                                            <source srcset="<?php echo get_post_meta($card['icon']['id'], '_webp_generated_url', true);?>" type="image/webp">
+                                            <source srcset="<?php echo $card['icon']['url']; ?>" type="image/jpeg">
+                                            <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
+                                        </picture>
                                     </div>
                                     <div class="hb-card__content-space">
                                         <h2 class="hb-card__title">
@@ -93,7 +97,11 @@ switch ($style) {
                     <div class="hb-card__layout-col">
                         <div class="hb-card__content hb-card__content--no-border text-center">
                             <div class="hb-card__image">
-                                <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
+                                <picture>
+                                    <source srcset="<?php echo get_post_meta($card['icon']['id'], '_webp_generated_url', true);?>" type="image/webp">
+                                    <source srcset="<?php echo $card['icon']['url']; ?>" type="image/jpeg">
+                                    <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
+                                </picture>
                             </div>
                             <h2 class="hb-card__title">
                                 <?php echo $card['header']; ?>
