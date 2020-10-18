@@ -102,8 +102,6 @@ function klyp_scripts()
     // remove emoji styles.
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('wp_print_styles', 'print_emoji_styles');
-    // theme style.
-    wp_enqueue_style('klyp-style', get_stylesheet_directory_uri() . '/assets/dist/css/main.min.css');
 }
 add_action('wp_enqueue_scripts', 'klyp_scripts');
 
@@ -214,6 +212,20 @@ add_filter('excerpt_length', 'klyp_excerpt_length', 999);
 /**
  * Page Speed Optimization.
  */
-if(!is_user_logged_in()){
+if (! is_user_logged_in()) {
     require get_theme_file_path('includes/page-speed.php');
 }
+
+//var_dump(function_exists('imagewebp'));
+
+
+// function custom_upload_filter( $file ){
+//     $read_from_path = $file['tmp_name'];
+//     $uploads = wp_upload_dir();
+//     $save_to_path = $uploads['path'];
+//     print_r(imagecreatefrompng($read_from_path));
+//     die('fdsfsd');
+//     imagewebp(imagecreatefrompng($read_from_path), $save_to_path + ".webp");
+//     return $file;
+// }
+// add_filter('wp_handle_upload_prefilter', 'custom_upload_filter' );

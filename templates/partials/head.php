@@ -16,7 +16,10 @@
 <link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/fonts/CIRCULARSTD-BOLD.otf') ?>" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/fonts/CIRCULARSTD-BOOK.OTF') ?>" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/fonts/CIRCULARSTD-MEDIUM.OTF') ?>" as="font" type="font/otf" crossorigin>
-<link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/css/main.min.css') ?>" as="style">
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/css/base.min.css') ?>"/>
+<link rel="stylesheet" type="text/css" media="(min-width: 576px)" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/css/desktop.min.css') ?>"/>
+<link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/css/base.min.css') ?>" as="style">
+<link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/css/desktop.min.css') ?>" as="style">
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <?php wp_head(); ?>

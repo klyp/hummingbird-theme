@@ -16,6 +16,8 @@ const sass = require('gulp-sass');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
+const combineMediaQuery = require('postcss-combine-media-query');
+const mediaQueriesSplitter = require('gulp-media-queries-splitter');
 
 // BrowserSync
 function browserSync(done)
@@ -83,11 +85,18 @@ function css()
   ])
   .pipe(plumber())
   .pipe(concat('main.css'))
-  .pipe(sass({ outputStyle: 'expanded' }))
-  .pipe(gulp.dest('./assets/dist/css/'))
-  .pipe(rename({ suffix: '.min' }))
-  .pipe(postcss([autoprefixer(), cssnano()]))
-  .pipe(gulp.dest('./assets/dist/css/'))
+  .pipe(sass({ outputStyle: "expanded" }))
+  .pipe(gulp.dest("./assets/dist/css/"))
+  .pipe(postcss([autoprefixer(), combineMediaQuery()]))
+  .pipe(gulp.dest("./assets/dist/css/"))
+  .pipe(mediaQueriesSplitter([
+    {media: 'none', filename: 'base.css'},
+    {media: {min: '576px'}, filename: 'desktop.css'},
+  ]))
+  .pipe(gulp.dest("./assets/dist/css/"))
+  .pipe(rename({ suffix: ".min" }))
+  .pipe(postcss([cssnano()]))
+  .pipe(gulp.dest("./assets/dist/css/"))
   .pipe(browsersync.stream());
 }
 

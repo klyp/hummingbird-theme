@@ -7,7 +7,10 @@
     "gulp"
   ],
   "devDependencies": {
-    "gulp-terser": "^1.2.0"
+    "gulp-media-queries-splitter": "^1.0.3",
+    "gulp-terser": "^1.2.0",
+    "postcss": "^8.1.1",
+    "postcss-combine-media-query": "^1.0.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",

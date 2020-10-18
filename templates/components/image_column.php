@@ -39,7 +39,11 @@
         <div class="hb-row">
             <?php foreach ($images as $key => $image) : ?>
                 <div class="hb-image-column__col">
-                    <img src="<?php echo $image['image']['url']; ?>" alt="<?php echo $image['image']['title']; ?>" class="img-fluid">
+                    <picture>
+                        <source srcset="<?php echo get_post_meta($image['image']['id'], '_webp_generated_url', true);?>" type="image/webp">
+                        <source srcset="<?php echo $image['image']['url']; ?>" type="image/jpeg">
+                        <img src="<?php echo $image['image']['url']; ?>" alt="<?php echo $image['image']['title']; ?>" class="img-fluid">
+                    </picture>
                 </div>
             <?php endforeach; ?>
         </div>
