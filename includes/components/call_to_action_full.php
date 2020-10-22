@@ -90,7 +90,7 @@ $fields = array(
                     'class' => '',
                     'id' => '',
                 ),
-                'return_format' => 'url',
+                'return_format' => 'array',
                 'preview_size' => 'medium',
                 'library' => 'all',
                 'min_width' => '',

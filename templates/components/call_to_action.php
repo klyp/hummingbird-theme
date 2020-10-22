@@ -36,16 +36,20 @@ switch ($alignment) {
 
     // generate css
     $customCss[$componentId]['desktop'] = array (
-        '.hb-cta-section__bg' => array (
-            'background-image' => 'url('. $image . ')',
+        '.hb-no-webp .hb-cta-section__bg' => array (
+            'background-image' => 'url('. $image['url'] . ')',
             'background-position' => $desktopImagePosition,
+        ),
+
+        '.hb-webp .hb-cta-section__bg' => array (
+            'background-image' => 'url('. get_post_meta($image['id'], '_webp_generated_url', true) . ')',
         ),
     );
 
     $customCss[$componentId]['mobile'] = array (
         '.hb-cta-section__bg' => array (
             'background-position' => $mobileImagePosition,
-        ),
+        )
     );
     ?>
 
