@@ -35,6 +35,7 @@
     "jquery": "^3.5.1",
     "jquery-inview": "^1.1.2",
     "magnific-popup": "^1.1.0",
+    "modernizr": "^3.11.3",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.15.0",
     "select2": "^4.0.13"
