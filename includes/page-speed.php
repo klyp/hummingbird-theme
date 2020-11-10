@@ -1,5 +1,9 @@
 <?php
-/*Function to defer or asynchronously load scripts*/
+/**
+ * Defer or Asynchronously load scripts
+ * @return array
+ */
+
 function js_async_attr($tag)
 {
     # Do not add defer or async attribute to these scripts

@@ -496,20 +496,34 @@ if (function_exists('acf_add_local_field_group')) {
                 'placement' => 'top',
                 'endpoint' => 0,
             ),
-                array(
-                    'key' => 'settings_api_google_map',
-                    'label' => 'Google Map API',
-                    'name' => 'settings_api_google_map',
-                    'type' => 'text',
-                    'instructions' => '&nbsp;',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '50',
-                        'class' => '',
-                        'id' => '',
-                    ),
+            array(
+                'key' => 'settings_api_google_map',
+                'label' => 'Google Map API',
+                'name' => 'settings_api_google_map',
+                'type' => 'text',
+                'instructions' => '&nbsp;',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
                 ),
+            ),
+            array(
+                'key' => 'settings_tiny_png',
+                'label' => 'Tinypng API',
+                'name' => 'settings_tiny_png',
+                'type' => 'text',
+                'instructions' => '&nbsp;',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+            ),
         ),
         'location' => array(
             array(

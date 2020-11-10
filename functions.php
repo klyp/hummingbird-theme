@@ -239,12 +239,13 @@ add_action('init', 'klyp_cron_schedule');
  *
  * @since    1.0.0
  */
-function klyp_configure_tinypng_api()
-{
-    \Tinify\setKey('JzmfVj0h01jLqzNKyyLHsyrSjH2MwNW7');
+if ($api_tiny_png = get_field('settings_tiny_png', 'option')) {
+    function klyp_configure_tinypng_api()
+    {
+        \Tinify\setKey($api_tiny_png);
+    }
+    add_action('plugins_loaded', 'klyp_configure_tinypng_api');
 }
-add_action('plugins_loaded', 'klyp_configure_tinypng_api');
-
 
 /**
  * Add custom cron recurrence time interval.
