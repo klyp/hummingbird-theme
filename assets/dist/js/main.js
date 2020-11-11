@@ -20825,8 +20825,7 @@ $(document).ready(function () {
 Modernizr.on('webp', function (result) {
   if (result) {
     $('body').addClass('hb-webp');
-  }
-  else {
+  } else {
     $('body').addClass('hb-no-webp');
   }
 });

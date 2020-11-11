@@ -315,7 +315,6 @@ function klyp_existing_image_processing_cron_fire_event()
 
     // Process 10 images at once.
     $images = array_chunk($images, 10);
-
     if (! empty($images) && is_array($images)) {
 
         process_single_image_bactch($images[0]);
@@ -362,7 +361,7 @@ function process_single_image_bactch($batch)
 
                 klyp_cc_create_activity_log($image_data['id'], 'Attempt Compressing image', $image_data['image_title'], $result);
             } catch (Exception $e) {
-                wp_die("Error Creating Compressed Image image : " . $e->getMessage());
+                wp_die('Error Creating Compressed Image image : ' . $e->getMessage());
             }
 
             // Creating a webp file.
@@ -401,7 +400,7 @@ function process_single_image_bactch($batch)
                 update_post_meta($image_data['id'], '_is_webp_generated', 'true');
                 update_post_meta($image_data['id'], '_webp_generated_url', $webp_url);
             } catch (Exception $e) {
-                wp_die("Error Creating Webp image : " . $e->getMessage());
+                wp_die('Error Creating Webp image : ' . $e->getMessage());
             }
         }
     }
@@ -483,21 +482,21 @@ function klyp_after_upload_image_processing_event($attachment_ID)
     process_single_image_bactch($images);
 }
 
+if ($api_tiny_png = get_field('settings_tiny_png', 'option')) {
+    function klyp_include_tinypng_lib()
+    {
 
-function klyp_include_tinypng_lib()
-{
-
-    /**
-     * The includes library responsible for defining all actions that occur in the tinypng api
-     */
-    $lib_path = get_theme_file_path('lib/vendor/autoload.php');
-    if (file_exists($lib_path)) {
-        require_once $lib_path;
-        \Tinify\setKey('JzmfVj0h01jLqzNKyyLHsyrSjH2MwNW7');
+        /**
+         * The includes library responsible for defining all actions that occur in the tinypng api
+         */
+        $lib_path = get_theme_file_path('vendor/autoload.php');
+        if (file_exists($lib_path)) {
+            require_once $lib_path;
+            \Tinify\setKey($api_tiny_png);
+        }
     }
+    add_action('init', 'klyp_include_tinypng_lib');
 }
-add_action('init', 'klyp_include_tinypng_lib');
-
 
 /**
  * Prepare a resized image.
