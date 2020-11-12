@@ -7,7 +7,10 @@
     "gulp"
   ],
   "devDependencies": {
-    "gulp-terser": "^1.2.0"
+    "gulp-media-queries-splitter": "^1.0.3",
+    "gulp-terser": "^1.2.0",
+    "postcss": "^8.1.1",
+    "postcss-combine-media-query": "^1.0.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
@@ -32,6 +35,7 @@
     "jquery": "^3.5.1",
     "jquery-inview": "^1.1.2",
     "magnific-popup": "^1.1.0",
+    "modernizr": "^3.11.3",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.15.0",
     "select2": "^4.0.13"

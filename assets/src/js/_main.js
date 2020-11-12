@@ -98,3 +98,11 @@ $(document).ready(function () {
   $('.hb-general__txt-img-content blockquote').wrap('<div class="hb-general__blockquote-container position-relative"></div>');
   $('.hb-general__txt-img-content table').wrap('<div class="hb-general__table-responsive table-responsive-md"></div>');
 });
+
+Modernizr.on('webp', function (result) {
+  if (result) {
+    $('body').addClass('hb-webp');
+  } else {
+    $('body').addClass('hb-no-webp');
+  }
+});
