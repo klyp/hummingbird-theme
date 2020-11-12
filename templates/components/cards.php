@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_cards_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_cards_class');
+    $componentId          = get_sub_field('component_cards_id') ?: 'random_' . rand();
+    $componentClass       = get_sub_field('component_cards_class');
+    $enableComponent      = get_sub_field('component_card_enable');
 
     //Settings.
     $style          = get_sub_field('component_cards_style');
@@ -39,6 +40,7 @@ switch ($style) {
         break;
 }
 ?>
+<?php if ($enableComponent): ?>
 <?php if ($layout == '1') : ?>
     <section id="<?php echo $componentId; ?>" class="hb-card <?php echo $componentClass; ?>
     <?php echo $sectionClass; ?>" style="background-color: <?php echo $style_color; ?>">
@@ -120,4 +122,5 @@ switch ($style) {
             </div>
         </div>
     </section>
+<?php endif; ?>
 <?php endif; ?>

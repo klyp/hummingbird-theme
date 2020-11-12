@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_icon_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_icon_class');
+    $componentId            = get_sub_field('component_icon_id') ?: 'random_' . rand();
+    $componentClass         = get_sub_field('component_icon_class');
+    $enableComponent        = get_sub_field('component_icon_enable');
 
     //Settings.
     $iconTitle      = get_sub_field('component_icon_title');
@@ -15,6 +16,7 @@
     );
     ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-bg-light hb-icon-card <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -46,3 +48,4 @@
     </div>
 </section>
 <?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
+<?php endif; ?>

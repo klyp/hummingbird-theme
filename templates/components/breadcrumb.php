@@ -2,6 +2,7 @@
     // General.
     $componentId          = get_sub_field('component_breadcrumb_id') ?: 'random_' . rand();
     $componentClass       = get_sub_field('component_breadcrumb_class');
+    $enableComponent      = get_sub_field('component_breadcumb_enable');
 
     //Settings.
     $breadcrumbTitle      = get_sub_field('component_breadcrumb_title');
@@ -19,8 +20,8 @@
     );
     ?>
 
-<section id="<?php echo $componentId; ?>" class="hb-breadcumb hb-gradient-primary
-hb-breadcumb--color-white <?php echo $componentClass; ?>">
+<?php if ($enableComponent): ?>
+<section id="<?php echo $componentId; ?>" class="hb-breadcumb hb-gradient-primary hb-breadcumb--color-white <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
             <div class="hb-col-full">
@@ -50,3 +51,4 @@ hb-breadcumb--color-white <?php echo $componentClass; ?>">
     </div>
 </section>
 <?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
+<?php endif; ?>

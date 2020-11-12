@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_gallery_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_gallery_class');
+    $componentId          = get_sub_field('component_gallery_id') ?: 'random_' . rand();
+    $componentClass       = get_sub_field('component_gallery_class');
+    $enableComponent      = get_sub_field('component_gallery_enable');
 
     //Settings.
     $galleryItems  = get_sub_field('component_gallery_items');
@@ -13,6 +14,7 @@ if (count($galleryItems) == 6) {
 }
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-gallery-popup <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -34,3 +36,4 @@ if (count($galleryItems) == 6) {
         </div>
     </div>
 </section>
+<?php endif; ?>

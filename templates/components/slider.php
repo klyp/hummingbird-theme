@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_slider_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_slider_class');
+    $componentId            = get_sub_field('component_slider_id') ?: 'random_' . rand();
+    $componentClass         = get_sub_field('component_slider_class');
+    $enableComponent        = get_sub_field('component_slider_enable');
 
     //Settings.
     $style          = get_sub_field('component_slider_style');
@@ -22,6 +23,7 @@ switch ($style) {
 }
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-slider <?php echo $componentClass; ?>">
     <div class="hb-slider__slide owl-carousel owl-theme">
         <?php foreach ($sliders as $key => $slider) : ?>
@@ -113,3 +115,4 @@ switch ($style) {
         <?php endforeach; ?>
     </div>
 </section>
+<?php endif; ?>

@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_location_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_location_class');
+    $componentId            = get_sub_field('component_location_id') ?: 'random_' . rand();
+    $componentClass         = get_sub_field('component_location_class');
+    $enableComponent        = get_sub_field('component_location_enable');
 
     //Settings.
     $style          = get_sub_field('component_location_style');
@@ -15,7 +16,7 @@ if ($style == 'full-width') {
     $mapContentClass = '';
 }
 ?>
-
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-map <?php echo $componentClass; ?>">
     <div class="<?php echo $containerClass; ?>">
         <div class="hb-row">
@@ -54,3 +55,4 @@ if ($style == 'full-width') {
         </div>
     </div>
 </section>
+<?php endif; ?>

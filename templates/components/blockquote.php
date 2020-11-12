@@ -4,9 +4,11 @@
     $componentClass = get_sub_field('component_blockquote_class');
 
     //Settings.
+    $enableComponent = get_sub_field('component_blockquote_enable');
     $blockquote     = get_sub_field('component_blockquote_quote');
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-general <?php echo $componentClass; ?>">
     <div class="hb-general__blockquote">
         <div class="hb-container">
@@ -22,3 +24,4 @@
         </div>
     </div>
 </section>
+<?php endif; ?>
