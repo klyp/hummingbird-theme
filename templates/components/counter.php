@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId        = get_sub_field('component_counter_id') ?: 'random_' . rand();
-    $componentClass     = get_sub_field('component_counter_class');
+    $componentId          = get_sub_field('component_counter_id') ?: 'random_' . rand();
+    $componentClass       = get_sub_field('component_counter_class');
+    $enableComponent      = get_sub_field('component_counter_enable');
 
     //Settings.
     $enableIcon         = get_sub_field('component_counter_enable_icons');
@@ -16,6 +17,7 @@ if ($enableIcon) {
 }
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-counter hb-bg-light text-center <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -41,3 +43,4 @@ if ($enableIcon) {
         </div>
     </div>
 </section>
+<?php endif; ?>

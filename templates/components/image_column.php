@@ -1,7 +1,8 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_image_column_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_image_column_class');
+    $componentId            = get_sub_field('component_image_column_id') ?: 'random_' . rand();
+    $componentClass         = get_sub_field('component_image_column_class');
+    $enableComponent        = get_sub_field('component_image_column_enable');
 
     //Settings.
     $title          = get_sub_field('component_image_column_title');
@@ -10,6 +11,7 @@
     $images         = get_sub_field('component_image_column_items');
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-image-column hb-bg-light hb-contact-cta pb-5 <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -49,3 +51,4 @@
         </div>
     </div>
 </section>
+<?php endif; ?>

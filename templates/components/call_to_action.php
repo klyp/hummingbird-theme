@@ -2,6 +2,7 @@
     // General.
     $componentId          = get_sub_field('component_call_to_action_id') ?: 'random_' . rand();
     $componentClass       = get_sub_field('component_call_to_action_class');
+    $enableComponent      = get_sub_field('component_cta_enable');
 
     //Settings.
     $alignment            = get_sub_field('component_call_to_action_alignment');
@@ -53,6 +54,7 @@ switch ($alignment) {
     );
     ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-cta-section <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -97,3 +99,4 @@ switch ($alignment) {
     </div>
 </section>
 <?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
+<?php endif; ?>

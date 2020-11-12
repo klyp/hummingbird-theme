@@ -2,6 +2,7 @@
     // General.
     $componentId            = get_sub_field('component_hero_id') ?: 'random_' . rand();
     $componentClass         = get_sub_field('component_hero_class');
+    $enableComponent        = get_sub_field('component_hero_enable');
 
     //Settings.
     $alignment              = get_sub_field('component_hero_alignment');
@@ -56,6 +57,7 @@ switch ($alignment) {
     );
     ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-fs-banner <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -91,3 +93,4 @@ switch ($alignment) {
     </div>
 </section>
 <?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
+<?php endif; ?>

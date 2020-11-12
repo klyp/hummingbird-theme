@@ -2,12 +2,14 @@
     // General.
     $componentId     = get_sub_field('component_accordion_id') ?: 'random_' . rand();
     $componentClass  = get_sub_field('component_accordion_class');
+    $enableComponent = get_sub_field('component_accordion_enable');
 
     //Settings.
     $accordionItems  = get_sub_field('accordion_items');
     $accordionIcon   = get_sub_field('component_accordion_fa_icons');
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-accordion <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -46,3 +48,4 @@
         </div>
     </div>
 </section>
+<?php endif; ?>

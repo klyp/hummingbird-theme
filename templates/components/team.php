@@ -1,13 +1,15 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_team_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_team_class');
+    $componentId            = get_sub_field('component_team_id') ?: 'random_' . rand();
+    $componentClass         = get_sub_field('component_team_class');
+    $enableComponent        = get_sub_field('component_team_enable');
 
     //Settings.
     $heading        = get_sub_field('component_team_heading');
     $teams          = get_sub_field('component_teams');
 ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-card-list <?php echo $componentClass; ?>">
     <div class="hb-container">
         <div class="hb-row">
@@ -68,3 +70,4 @@
         </div>
     </div>
 </section>
+<?php endif; ?>

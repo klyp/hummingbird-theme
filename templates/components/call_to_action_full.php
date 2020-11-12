@@ -2,6 +2,7 @@
     // General.
     $componentId          = get_sub_field('component_call_to_action_full_id') ?: 'random_' . rand();
     $componentClass       = get_sub_field('component_call_to_action_full_class');
+    $enableComponent      = get_sub_field('component_cta_full_enable');
 
     //Settings.
     $image                = get_sub_field('component_call_to_action_full_image');
@@ -21,6 +22,7 @@
     );
     ?>
 
+<?php if ($enableComponent): ?>
 <section id="<?php echo $componentId; ?>" class="hb-fs-banner hb-fs-banner--left <?php echo $componentClass; ?>">
     <div class="hb-container">
             <div class="hb-row">
@@ -43,3 +45,4 @@
         </div>
 </section>
 <?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
+<?php endif; ?>
