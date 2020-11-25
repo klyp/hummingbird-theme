@@ -242,7 +242,7 @@ add_action('init', 'klyp_cron_schedule');
 
 function klyp_configure_tinypng_api() {
     $api_tiny_png = get_field('settings_tiny_png', 'option');
-    if( ! empty( $api_tiny_png ) ) {
+    if(! empty( $api_tiny_png ) ) {
         \Tinify\setKey($api_tiny_png);
     }
 }
@@ -490,7 +490,7 @@ function klyp_include_tinypng_lib() {
     $lib_path = get_theme_file_path('vendor/autoload.php');
     $api_tiny_png = get_field('settings_tiny_png', 'option');
 
-    if( ! empty( $api_tiny_png ) && file_exists( $lib_path ) ) {
+    if(! empty( $api_tiny_png ) && file_exists( $lib_path ) ) {
         require_once $lib_path;
         \Tinify\setKey($api_tiny_png);
     }
