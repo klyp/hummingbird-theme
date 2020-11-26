@@ -239,13 +239,15 @@ add_action('init', 'klyp_cron_schedule');
  *
  * @since    1.0.0
  */
-if ($api_tiny_png = get_field('settings_tiny_png', 'option')) {
-    function klyp_configure_tinypng_api()
-    {
+
+function klyp_configure_tinypng_api() {
+    $api_tiny_png = get_field('settings_tiny_png', 'option');
+    if(! empty( $api_tiny_png ) ) {
         \Tinify\setKey($api_tiny_png);
     }
-    add_action('plugins_loaded', 'klyp_configure_tinypng_api');
 }
+
+add_action('plugins_loaded', 'klyp_configure_tinypng_api');
 
 /**
  * Add custom cron recurrence time interval.
@@ -280,8 +282,7 @@ add_action('edit_attachment', 'klyp_after_upload_image_processing_event');
  *
  * @since    1.0.0
  */
-function klyp_existing_image_processing_cron_fire_event()
-{
+function klyp_existing_image_processing_cron_fire_event(){
     $ids = get_posts(
         array(
             'post_type'      => 'attachment',
@@ -466,7 +467,6 @@ function klyp_cc_create_activity_log($image_id = 00, $step = '', $message = '', 
  */
 function klyp_after_upload_image_processing_event($attachment_ID)
 {
-
     $image = get_post($attachment_ID);
     $image_type = str_replace('image/', '', $image->post_mime_type);
     $image_title = $image->post_title;
@@ -482,21 +482,20 @@ function klyp_after_upload_image_processing_event($attachment_ID)
     process_single_image_bactch($images);
 }
 
-if ($api_tiny_png = get_field('settings_tiny_png', 'option')) {
-    function klyp_include_tinypng_lib()
-    {
+function klyp_include_tinypng_lib() {
 
-        /**
-         * The includes library responsible for defining all actions that occur in the tinypng api
-         */
-        $lib_path = get_theme_file_path('vendor/autoload.php');
-        if (file_exists($lib_path)) {
-            require_once $lib_path;
-            \Tinify\setKey($api_tiny_png);
-        }
+    /**
+     * The includes library responsible for defining all actions that occur in the tinypng api
+     */
+    $lib_path = get_theme_file_path('vendor/autoload.php');
+    $api_tiny_png = get_field('settings_tiny_png', 'option');
+
+    if(! empty( $api_tiny_png ) && file_exists( $lib_path ) ) {
+        require_once $lib_path;
+        \Tinify\setKey($api_tiny_png);
     }
-    add_action('init', 'klyp_include_tinypng_lib');
 }
+add_action('init', 'klyp_include_tinypng_lib');
 
 /**
  * Prepare a resized image.
