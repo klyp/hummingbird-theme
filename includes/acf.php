@@ -140,7 +140,9 @@ function klyp_acf_get_components()
         'images',
         'location',
         'slider',
-        'team'
+        'team',
+        'tile',
+        'timeline'
     );
 
     return $components;
