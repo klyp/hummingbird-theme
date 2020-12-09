@@ -1,4 +1,13 @@
 $(document).ready(function () {
+  //timeline hover on date
+  $('.hb-timeline__item-date h4').hover(
+    function () {
+      $(this).parents('.hb-timeline__item-row').addClass('hb-timeline__item-row--hover');
+    },
+    function () {
+      $(this).parents('.hb-timeline__item-row').removeClass('hb-timeline__item-row--hover');
+    }
+  );
 
   // Banner Slider JS
   $('.hb-slider__slide').owlCarousel({

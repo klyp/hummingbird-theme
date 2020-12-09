@@ -7999,6 +7999,7 @@ pre code {
 .hb-cta-section__row,
 .hb-card__layout-row,
 .hb-gallery-popup__gallery-row,
+.hb-timeline__item-row,
 .hb-gallery__row,
 .hb-icon-card__row,
 .hb-footer__row {
@@ -8021,6 +8022,7 @@ pre code {
 
 .col-1,
 .col-2,
+.hb-timeline__line-column,
 .col-3,
 .col-4,
 .col-5,
@@ -8030,6 +8032,7 @@ pre code {
 .col-8,
 .col-9,
 .col-10,
+.hb-timeline__item-column,
 .col-11,
 .col-12,
 .hb-col-full,
@@ -8160,7 +8163,8 @@ pre code {
   max-width: 8.33333%;
 }
 
-.col-2 {
+.col-2,
+.hb-timeline__line-column {
   flex: 0 0 16.66667%;
   max-width: 16.66667%;
 }
@@ -8201,7 +8205,8 @@ pre code {
   max-width: 75%;
 }
 
-.col-10 {
+.col-10,
+.hb-timeline__item-column {
   flex: 0 0 83.33333%;
   max-width: 83.33333%;
 }
@@ -15768,6 +15773,127 @@ blockquote:after {
 }
 
 /*=====  End of Slider Section CSS  ======*/
+
+.hb-timeline {
+  background-color: #4D4D4F;
+}
+
+.hb-timeline__items-wrapper {
+  padding: 200px 0;
+  position: relative;
+}
+
+.hb-timeline__item-row {
+  flex-direction: row-reverse;
+  margin-bottom: 60px;
+}
+
+.hb-timeline__item-row:nth-child(even) .hb-timeline__item-date {
+  text-align: right;
+}
+
+.hb-timeline__item-row:last-child .hb-timeline__line-column::after {
+  height: 80px;
+}
+
+.hb-timeline__item-row--hover .hb-timeline__item-content {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}
+
+.hb-timeline__line-column::after,
+.hb-timeline__line-column::before {
+  background-color: #ABD040;
+  content: '';
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  width: 16px;
+}
+
+.hb-timeline__line-column::before {
+  top: -100px;
+}
+
+.hb-timeline__item-content {
+  background-color: #fff;
+  padding: 60px 25px;
+  transition: all 0.3s linear;
+}
+
+.hb-timeline__item-content::after {
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid #fff;
+  border-top: 20px solid transparent;
+  content: '';
+  display: block;
+  height: 0;
+  left: -4px;
+  position: absolute;
+  top: 20px;
+  width: 0;
+}
+
+.hb-timeline__item-content h2 {
+  font-family: "Circularstd-Medium";
+  font-size: 18px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.hb-timeline__item-content h2 a {
+  color: #4D4D4F;
+}
+
+.hb-timeline__item-content h2 a:hover,
+.hb-timeline__item-content h2 a:focus {
+  text-decoration: none;
+}
+
+.hb-timeline__item-content h4 {
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.hb-timeline__item-date {
+  padding-top: 22px;
+}
+
+.hb-timeline__item-date h4 {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+}
+
+.hb-timeline__line {
+  background-color: #ABD040;
+  height: 100%;
+  margin: 0 auto;
+  width: 16px;
+}
+
+.hb-timeline__line--icon {
+  background-color: #fff;
+  border-radius: 50%;
+  border: 4px solid #ABD040;
+  display: inline-block;
+  height: 36px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  width: 36px;
+}
+
+.hb-timeline__item__column--right {
+  display: none;
+}
 
 /*=============================================
 =            Header Section CSS            =
