@@ -1,13 +1,13 @@
 <?php
     $fields = array(
-        'component_timeline' => array(
-            'key' => 'component_timeline',
-            'name' => 'timeline',
-            'label' => 'Timeline',
+        'component_tile' => array(
+            'key' => 'component_tile',
+            'name' => 'tile',
+            'label' => 'Tile',
             'display' => 'block',
             'sub_fields' => array(
                 array(
-                    'key' => 'component_timeline_tab_general',
+                    'key' => 'component_tile_tab_general',
                     'label' => 'General',
                     'name' => '',
                     'type' => 'tab',
@@ -23,7 +23,7 @@
                     'endpoint' => 0,
                 ),
                 array(
-                    'key' => 'component_timeline_enable',
+                    'key' => 'component_tile_enable',
                     'label' => 'Enable',
                     'name' => 'counter_enable',
                     'type' => 'true_false',
@@ -42,7 +42,7 @@
                     'ui_off_text' => '',
                 ),
                 array(
-                    'key' => 'component_timeline_id',
+                    'key' => 'component_tile_id',
                     'label' => 'ID',
                     'name' => 'id',
                     'type' => 'text',
@@ -56,7 +56,7 @@
                     ),
                 ),
                 array(
-                    'key' => 'component_timeline_class',
+                    'key' => 'component_tile_class',
                     'label' => 'Classes',
                     'name' => 'class',
                     'type' => 'text',
@@ -70,7 +70,7 @@
                     ),
                 ),
                 array(
-                    'key' => 'component_timeline_tab_settings',
+                    'key' => 'component_tile_tab_settings',
                     'label' => 'Settings',
                     'name' => '',
                     'type' => 'tab',
@@ -86,9 +86,9 @@
                     'endpoint' => 0,
                 ),
                 array(
-                    'key' => 'component_timeline_data',
-                    'label' => 'Timeline Data',
-                    'name' => 'timeline_data',
+                    'key' => 'component_tile_data',
+                    'label' => 'Tile Data',
+                    'name' => 'tile_data',
                     'type' => 'repeater',
                     'instructions' => '&nbsp;',
                     'required' => 0,
@@ -98,12 +98,31 @@
                         'class' => '',
                         'id' => '',
                     ),
-                    'min' => 1,
+                    'min' => 3,
                     'max' => 0,
                     'layout' => 'table',
                     'sub_fields' => array(
                         array(
-                            'key' => 'component_timeline_link',
+                            'key' => 'component_tile_image',
+                            'label' => 'Image',
+                            'name' => 'image',
+                            'type' => 'image',
+                            'instructions' => 'File size must be less or equal to 2MB',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'return_format' => 'url',
+                            'library' => 'all',
+                            'min_size' => '',
+                            'max_size' => '2MB',
+                            'mime_types' => 'jpg,bmp,gif,png',
+                        ),
+                        array(
+                            'key' => 'component_tile_link',
                             'label' => 'Link',
                             'name' => 'link',
                             'type' => 'link',
@@ -115,23 +134,6 @@
                                 'class' => '',
                                 'id' => '',
                             ),
-                        ),
-                        array(
-                            'key' => 'component_timeline_date',
-                            'label' => 'Date',
-                            'name' => 'date',
-                            'type' => 'date_picker',
-                            'instructions' => '',
-                            'required' => 0,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                            'display_format' => 'd/m/Y',
-                            'return_format' => 'd/m/Y',
-                            'first_day' => 1,
                         )
                     )
                 )
