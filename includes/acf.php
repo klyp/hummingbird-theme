@@ -123,6 +123,7 @@ function klyp_acf_get_components()
     // Available default components
     $components = array(
         'accordion',
+        'advance-counter',
         'blockquote',
         'breadcrumb',
         'call_to_action',
