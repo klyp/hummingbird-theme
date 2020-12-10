@@ -21,10 +21,10 @@
                             <div class="hb-timeline__item-row">
                                 <div class="hb-timeline__item-column hb-timeline__item__column--left">
                                     <div class="hb-timeline__item-content">
+                                        <h4><?php echo date('l, d F Y', strtotime($data['date'])); ?></h4>
                                         <h2>
                                             <?php echo $data['description']; ?>
                                         </h2>
-                                        <h4><?php echo $data['date']; ?></h4>
                                     </div>
                                 </div>
                                 <div class="hb-timeline__line-column">
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="hb-timeline__item-column hb-timeline__item__column--right">
                                     <div class="hb-timeline__item-date">
-                                        <h4><?php echo $data['date']; ?></h4>
+                                        <h4><?php echo date('l, d F Y', strtotime($data['date'])); ?></h4>
                                     </div>
                                 </div>
                             </div>
