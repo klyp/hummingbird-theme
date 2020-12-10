@@ -6,9 +6,6 @@
 
     // Settings
     $timelineData         = get_sub_field('component_timeline_data');
-    // echo '<pre>';
-    // print_r($timelineData);
-    // echo '</pre>';die;
 ?>
 
 <?php if ($enableComponent) : ?>
