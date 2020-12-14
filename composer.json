@@ -1,6 +1,6 @@
 {
-  "name": "klyp/hummingbird",
-  "version": "0.0.1",
+  "name": "klyp/hummingbird-theme",
+  "version": "0.0.4",
   "type":"wordpress-theme",
   "require": {
     "composer/installers": "^1.4",
