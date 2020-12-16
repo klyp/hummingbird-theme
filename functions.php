@@ -335,6 +335,10 @@ function process_single_image_bactch($batch)
 
         foreach ($batch  as $key => $image_data) {
 
+            if( empty( $image_data ) ) {
+                continue;
+            }
+
             $file_path = wp_get_original_image_path($image_data['id']);
             $file_url = $image_data['image_url'];
             $image_type = $image_data['image_type'];
@@ -348,8 +352,8 @@ function process_single_image_bactch($batch)
                 'file_url' => $file_url,
                 'webp_file' => $webp_file,
                 'webp_url' => $webp_url,
-                'before_optimisation' => getimagesize($file_path),
-                'before_optimisation_filesize' => filesize($file_path),
+                'before_optimisation' => ! empty( $file_path ) ? getimagesize( $file_path ) : '',
+                'before_optimisation_filesize' => ! empty( $file_path ) ? filesize( $file_path ) : '',
             );
 
             // Creating a compressed image file.
@@ -505,8 +509,7 @@ add_action('init', 'klyp_include_tinypng_lib');
  * @param    string $width           Width
  * @param    string $height          Height     
  */
-function prepare_resized_image($image_url, $width = 100, $height = 100)
-{
+function prepare_resized_image( $image_url, $width = 100, $height = 100 ) {
 
     $attachment_ID = get_attachment_id($image_url);
     $image = get_post($attachment_ID);
