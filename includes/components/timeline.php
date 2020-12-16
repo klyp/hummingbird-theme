@@ -100,22 +100,8 @@
                     ),
                     'min' => 1,
                     'max' => 0,
-                    'layout' => 'table',
+                    'layout' => 'block',
                     'sub_fields' => array(
-                        array(
-                            'key' => 'component_timeline_link',
-                            'label' => 'Link',
-                            'name' => 'link',
-                            'type' => 'link',
-                            'instructions' => '',
-                            'required' => 0,
-                            'conditional_logic' => 0,
-                            'wrapper' => array(
-                                'width' => '',
-                                'class' => '',
-                                'id' => '',
-                            ),
-                        ),
                         array(
                             'key' => 'component_timeline_date',
                             'label' => 'Date',
@@ -132,7 +118,26 @@
                             'display_format' => 'd/m/Y',
                             'return_format' => 'd/m/Y',
                             'first_day' => 1,
-                        )
+                        ),
+                        array(
+                            'key' => 'component_timeline_description',
+                            'label' => 'Description',
+                            'name' => 'description',
+                            'type' => 'wysiwyg',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
                     )
                 )
             )
