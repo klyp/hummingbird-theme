@@ -15285,12 +15285,57 @@ blockquote:after {
 }
 
 /*=====  End of Slider Section CSS  ======*/
+.hb-tile {
+  padding: 25px 0 50px;
+}
+
+.hb-tile__column {
+  margin-top: 25px;
+}
+
+.hb-tile__column-bg {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hb-tile__column-bg::after {
+  background-color: rgba(77, 77, 79, 0.66);
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.hb-tile__column-bg h4 {
+  margin-bottom: 0;
+}
+
+.hb-tile__column-bg a {
+  color: #fff;
+}
+
+.hb-tile__column-bg a:hover {
+  text-decoration: none;
+}
+
 .hb-timeline {
   background-color: #4D4D4F;
 }
 
 .hb-timeline__items-wrapper {
-  padding: 200px 0;
+  padding: 200px 0 100px;
   position: relative;
 }
 
@@ -17812,6 +17857,9 @@ blockquote:after {
     left: -20px;
     right: -20px;
   }
+  .hb-tile {
+    padding: 75px 0 100px;
+  }
   .hb-timeline__item-row {
     flex-direction: row;
     margin-bottom: 80px;
@@ -18724,6 +18772,9 @@ blockquote:after {
   }
   .hb-slider__contianer-img {
     padding: 100px;
+  }
+  .hb-tile__column-bg {
+    height: 350px;
   }
   .hb-header .hb-container {
     max-width: 1140px;

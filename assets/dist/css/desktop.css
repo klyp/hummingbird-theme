@@ -2453,6 +2453,10 @@
     right: -20px;
   }
 
+  .hb-tile {
+    padding: 75px 0 100px;
+  }
+
   .hb-timeline__item-row {
     flex-direction: row;
     margin-bottom: 80px;
@@ -3655,6 +3659,10 @@
 
   .hb-slider__contianer-img {
     padding: 100px;
+  }
+
+  .hb-tile__column-bg {
+    height: 350px;
   }
 
   .hb-header .hb-container {
