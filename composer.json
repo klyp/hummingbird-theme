@@ -1,5 +1,6 @@
 {
   "name": "klyp/hummingbird-theme",
+  "license": "GPL-2.0-only",
   "type":"wordpress-theme",
   "require": {
     "composer/installers": "^1.4",
