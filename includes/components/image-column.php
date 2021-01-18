@@ -147,7 +147,7 @@ $fields = array(
                 'placeholder' => '',
                 'prepend' => '',
                 'append' => '',
-                'maxlength' => 600,
+                'maxlength' => '',
             ),
             array(
                 'key' => 'component_image_column_items',
