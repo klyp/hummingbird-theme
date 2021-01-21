@@ -7,7 +7,7 @@
 function js_async_attr($tag)
 {
     # Do not add defer or async attribute to these scripts
-    $scripts_to_exclude = array('jquery.js', 'datepicker.min.js', 'scripts.js');
+    $scripts_to_exclude = array('jquery.min.js', 'datepicker.min.js', 'scripts.js');
 
     foreach ($scripts_to_exclude as $exclude_script) {
         if (true == strpos($tag, $exclude_script)) {
