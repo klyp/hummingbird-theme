@@ -1,26 +1,6 @@
 <?php
 
 /**
- * Activate ACF Pro
- * @param  string
- * @param  string
- * @return void
- */
-function klyp_plugin_activation_acf($plugin, $network_activation)
-{
-    if (strpos($plugin, 'acf.php') && ! get_option('acf_pro_license', false)) {
-        $save = array(
-            'key' => 'b3JkZXJfaWQ9NDUxMzN8dHlwZT1wZXJzb25hbHxkYXRlPTIwMTQtMTEtMjcgMDQ6MTg6MDk=',
-            'url' => home_url()
-        );
-        $save = maybe_serialize($save);
-        $save = base64_encode($save);
-        update_option('acf_pro_license', $save);
-    }
-}
-add_action('activated_plugin', 'klyp_plugin_activation_acf', 10, 2);
-
-/**
  * Add Google Map API to ACF
  * @param  array
  * @return array
