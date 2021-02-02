@@ -492,6 +492,9 @@ function klyp_include_tinypng_lib() {
      * The includes library responsible for defining all actions that occur in the tinypng api
      */
     $lib_path = get_theme_file_path('vendor/autoload.php');
+    if (! function_exists('get_field')) {
+    	include_once(ABSPATH . 'wp-content/plugins/advanced-custom-fields-pro/acf.php');
+    }
     $api_tiny_png = get_field('settings_tiny_png', 'option');
 
     if(! empty( $api_tiny_png ) && file_exists( $lib_path ) ) {

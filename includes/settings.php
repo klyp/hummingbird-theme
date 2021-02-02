@@ -1,9 +1,29 @@
 <?php
 
-// If user not KLYP, disable access to certain things
-if (wp_get_current_user()->user_login != 'klyp') {
+// Create a new role called Super Admin which should have FULL control
+add_role('super-admin', 'Super Admin', get_role('administrator')->capabilities);
+
+// If user is KLYP and it is not super user yet, set it as Super Admin
+if (wp_get_current_user()->user_login == 'klyp' && ! in_array('super-admin', wp_get_current_user()->roles)) {
+    wp_get_current_user()->set_role('super-admin');
+}
+
+// If a user is not a super admin, disable access to certain things
+if (! in_array('super-admin', wp_get_current_user()->roles)) {
     add_action('admin_init', 'klyp_remove_access_to_updates');
     add_action('admin_init', 'klyp_remove_menus');
+    add_action('editable_roles', 'remove_super_admin_editable');
+}
+
+/**
+ * Remove Super Admin role from roles list
+ * @return void
+ */
+function remove_super_admin_editable($roles) {
+    if (isset($roles['super-admin'])) {
+        unset($roles['super-admin'] );
+    }
+    return $roles;
 }
 
 /**
