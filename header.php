@@ -16,6 +16,7 @@
     <?php require_once locate_template('templates/partials/head.php'); ?>
 </head>
 <body <?php body_class(); ?>>
+    <?php wp_body_open(); ?>
     <header class="hb-header">
         <div class="hb-container">
             <div class="hb-header__top-nav">
