@@ -75,7 +75,22 @@ function klyp_hook_body($classes)
     $classes[] = '">' . get_field('settings_script_body', 'options') . '<noscript></noscript novar="';
     return $classes;
 }
-add_filter('body_class', 'klyp_hook_body', PHP_INT_MAX);
+
+/**
+ * Add site wide body script for version 5.2.0 and up
+ * 
+ * @return string
+ */
+function klyp_hook_body_v5() {
+    echo get_field('settings_script_body', 'options');
+}
+
+// making sure backward compatible
+if (version_compare(get_bloginfo('version'), '5.2', '>=')) {
+    add_filter('wp_body_open', 'klyp_hook_body_v5', PHP_INT_MAX);
+} else {
+    add_filter('body_class', 'klyp_hook_body', PHP_INT_MAX);
+}
 
 /**
  * Add site wide footer script
