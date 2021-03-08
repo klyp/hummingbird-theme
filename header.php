@@ -21,9 +21,9 @@
         <div class="hb-container">
             <div class="hb-header__top-nav">
                 <?php if (! empty(get_field('settings_contact', 'options')['settings_contact_number'])) : ?>
-                    <a href="tel:<?= get_field('settings_contact', 'options')['settings_contact_number']; ?>" class="hb-header__top-nav-link">
-                        <img src= "<?= get_stylesheet_directory_uri(); ?>/assets/src/image/icon/call-gray.svg" alt="">
-                        <?= get_field('settings_contact', 'options')['settings_contact_number']; ?>
+                    <a href="tel:<?php echo get_field('settings_contact', 'options')['settings_contact_number']; ?>" class="hb-header__top-nav-link">
+                        <img src= "<?php echo get_stylesheet_directory_uri(); ?>/assets/src/image/icon/call-gray.svg" alt="">
+                        <?php echo get_field('settings_contact', 'options')['settings_contact_number']; ?>
                     </a>
                 <?php endif; ?>
             </div>

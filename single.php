@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-    <?= klyp_breadcrumb(); ?>
+    <?php echo klyp_breadcrumb(); ?>
 
     <div id="primary" class="content-area">
         <main id="main" class="site-main">
@@ -30,12 +30,12 @@ get_header();
                                     <div class="hb-row">
                                         <div class="hb-col-full">
                                         <?php
-                                        if (is_single()) {
-                                            the_title('<h2 class="hb-general__txt-img-title">', '</h2>');
-                                        }
+                                            if (is_single()) {
+                                                the_title('<h2 class="hb-general__txt-img-title">', '</h2>');
+                                            }
                                         ?>
                                             <div class="hb-general__txt-img-image">
-                                                <img src="<?= get_the_post_thumbnail_url(); ?>" class="img-fluid" alt="">
+                                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="img-fluid" alt="">
                                             </div>
                                             <div class="hb-general__txt-img-content">
                                             <?php

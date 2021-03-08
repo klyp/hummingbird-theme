@@ -41,44 +41,42 @@ switch ($settings_blog_style) {
 
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
-
-        <?= klyp_breadcrumb(); ?>
-
+        <?php echo klyp_breadcrumb(); ?>
         <?php
-        if (have_posts()) : ?>
-            <section class="hb-blog">
-                <div class="hb-container">
-                    <div class="hb-row">
-                        <div class="col-12 <?= $rowClass; ?>">
-                            <div class="row hb-blog__row">
-                            <?php
-                                /* Start the Loop */
-                            while (have_posts()) :
-                                the_post();
-                                /*
-                                * Include the Post-Type-specific template for the content.
-                                * If you want to override this in a child theme, then include a file
-                                * called content-___.php (where ___ is the Post Type name) and that will be used
-                                * instead.
-                                */
-                                get_template_part('templates/content', get_post_type());
-                            endwhile;
-                            ?>
+            if (have_posts()) : ?>
+                <section class="hb-blog">
+                    <div class="hb-container">
+                        <div class="hb-row">
+                            <div class="col-12 <?php echo $rowClass; ?>">
+                                <div class="row hb-blog__row">
+                                <?php
+                                    /* Start the Loop */
+                                    while (have_posts()) :
+                                        the_post();
+                                        /*
+                                        * Include the Post-Type-specific template for the content.
+                                        * If you want to override this in a child theme, then include a file
+                                        * called content-___.php (where ___ is the Post Type name) and that will be used
+                                        * instead.
+                                        */
+                                        get_template_part('templates/content', get_post_type());
+                                    endwhile;
+                                ?>
+                                </div>
+                                <?php echo klyp_posts_navigation(); ?>
                             </div>
-                            <?= klyp_posts_navigation(); ?>
+                            <?php
+                                if ('yes' == $showSidebar) {
+                                    get_template_part('templates/content', 'widgets');
+                                }
+                            ?>
                         </div>
-                        <?php
-                        if ('yes' == $showSidebar) {
-                            get_template_part('templates/content', 'widgets');
-                        }
-                        ?>
                     </div>
-                </div>
-            </section>
-            <?php
-        else :
-            get_template_part('templates/content', 'none');
-        endif;
+                </section>
+                <?php
+            else :
+                get_template_part('templates/content', 'none');
+            endif;
         ?>
     </main><!-- #main -->
 </div><!-- #primary -->

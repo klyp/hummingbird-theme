@@ -16,17 +16,15 @@ get_header();
 
 if (post_password_required()) {
     $title = get_field('title');
-    $content = get_field('content');
-    ?>
-    <section class="component_full_width_content password-protected" id="full_width_content-0-<?= get_the_ID(); ?>">
-        <h2 class="content__title"><?= $title; ?></h2>
-
+    $content = get_field('content'); ?>
+    <section class="component_full_width_content password-protected" id="full_width_content-0-<?php echo get_the_ID(); ?>">
+        <h2 class="content__title"><?php echo $title; ?></h2>
         <div class="content__container">
             <div class="content__item content__item--0">
                 <div class="content__content">
-                    <?= $content; ?>
+                    <?php echo $content; ?>
                     <hr>
-                    <?= get_the_password_form(); ?>
+                    <?php echo get_the_password_form(); ?>
                 </div>
             </div>
         </div>
