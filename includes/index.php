@@ -29,3 +29,15 @@ require get_template_directory() . '/includes/site-settings.php';
  * Adds template functions
  */
 require get_template_directory() . '/includes/template.php';
+
+/**
+ * Adds image optimize functions
+ */
+require get_template_directory() . '/includes/image-optimize.php';
+
+/**
+ * Page Speed Optimization.
+ */
+if (! is_user_logged_in()) {
+    require get_theme_file_path('includes/page-speed.php');
+}

@@ -21,7 +21,7 @@
                     <ul class="hb-footer__social list-inline">
                         <?php if (isset($socialMedia['settings_linkedin']['url'])) : ?>
                             <li class="hb-footer__social-item list-inline-item">
-                                <a href="<?= $socialMedia['settings_linkedin']['url']; ?>" target="<?= $socialMedia['settings_linkedin']['target']; ?>">
+                                <a href="<?php echo $socialMedia['settings_linkedin']['url']; ?>" target="<?php echo $socialMedia['settings_linkedin']['target']; ?>">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
                             </li>
@@ -29,7 +29,7 @@
 
                         <?php if (isset($socialMedia['settings_twitter']['url'])) : ?>
                             <li class="hb-footer__social-item list-inline-item">
-                                <a href="<?= $socialMedia['settings_twitter']['url']; ?>" target="<?= $socialMedia['settings_twitter']['target']; ?>">
+                                <a href="<?php echo $socialMedia['settings_twitter']['url']; ?>" target="<?php echo $socialMedia['settings_twitter']['target']; ?>">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
@@ -37,7 +37,7 @@
 
                         <?php if (isset($socialMedia['settings_instagram']['url'])) : ?>
                             <li class="hb-footer__social-item list-inline-item">
-                                <a href="<?= $socialMedia['settings_instagram']['url']; ?>" target="<?= $socialMedia['settings_instagram']['target']; ?>">
+                                <a href="<?php echo $socialMedia['settings_instagram']['url']; ?>" target="<?php echo $socialMedia['settings_instagram']['target']; ?>">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
@@ -45,7 +45,7 @@
 
                         <?php if (isset($socialMedia['settings_facebook']['url'])) : ?>
                             <li class="hb-footer__social-item list-inline-item">
-                                <a href="<?= $socialMedia['settings_facebook']['url']; ?>" target="<?= $socialMedia['settings_facebook']['target']; ?>">
+                                <a href="<?php echo $socialMedia['settings_facebook']['url']; ?>" target="<?php echo $socialMedia['settings_facebook']['target']; ?>">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
                             </li>
@@ -56,8 +56,8 @@
                     <ul class="hb-footer__links list-inline">
                         <?php foreach ($footerMenu as $index => $item) : ?>
                             <li class="hb-footer__links-item list-inline-item">
-                                <a href="<?= $item['url']; ?>">
-                                    <?= $item['title']; ?>
+                                <a href="<?php echo $item['url']; ?>">
+                                    <?php echo $item['title']; ?>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -66,9 +66,9 @@
                 <div class="hb-footer__col">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <a href="#" class="hb-footer__logo d-inline-block">
-                            <img src="<?= $footerLogoUrl; ?>" alt="Footer Logo" class="img-fluid">
+                            <img src="<?php echo $footerLogoUrl; ?>" alt="Footer Logo" class="img-fluid">
                         </a>
-                        Copyright © <?= get_bloginfo(); ?>
+                        Copyright &copy; <?php echo get_bloginfo(); ?>
                     </div>
                 </div>
             </div>
