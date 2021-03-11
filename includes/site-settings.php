@@ -1,11 +1,11 @@
 <?php
 
 if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array (
+    acf_add_local_field_group(array(
         'key' => 'site_settings_group',
         'title' => 'Site Settings',
-        'fields' => array (
-            array (
+        'fields' => array(
+            array(
                 'key' => 'settings_general_tab',
                 'label' => 'General',
                 'name' => '',
@@ -13,7 +13,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -22,7 +22,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'endpoint' => 0,
             ),
 
-                array (
+                array(
                     'key' => 'settings_blog',
                     'label' => 'Blog Settings',
                     'name' => 'settings_blog',
@@ -30,14 +30,14 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
                     ),
                     'layout' => 'block',
-                    'sub_fields' => array (
-                        array (
+                    'sub_fields' => array(
+                        array(
                         'key' => 'settings_blog_style',
                         'label' => 'Blog Style',
                         'name' => 'settings_blog_style',
@@ -45,18 +45,18 @@ if (function_exists('acf_add_local_field_group')) {
                         'instructions' => '',
                         'required' => 1,
                         'conditional_logic' => 0,
-                        'wrapper' => array (
+                        'wrapper' => array(
                             'width' => '50',
                             'class' => '',
                             'id' => '',
                         ),
-                        'choices' => array (
+                        'choices' => array(
                             'card-wo-sidebar' => 'Card Style w/o sidebar',
                             'card-w-sidebar' => 'Card Style w sidebar',
                             'list-wo-sidebar' => 'List Style w/o sidebar',
                             'list-w-sidebar' => 'List Style w sidebar',
                         ),
-                        'default_value' => array (
+                        'default_value' => array(
                         ),
                         'allow_null' => 0,
                         'multiple' => 0,
@@ -68,7 +68,7 @@ if (function_exists('acf_add_local_field_group')) {
                     ),
                 ),
 
-                array (
+                array(
                     'key' => 'settings_logo',
                     'label' => 'Logos',
                     'name' => 'settings_logo',
@@ -76,14 +76,14 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
                     ),
                     'layout' => 'block',
-                    'sub_fields' => array (
-                        array (
+                    'sub_fields' => array(
+                        array(
                             'key' => 'settings_logo_primary',
                             'label' => 'Logo',
                             'name' => 'settings_logo_primary',
@@ -91,7 +91,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => 'Leave it blank for using default logo',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '50',
                                 'class' => '',
                                 'id' => '',
@@ -100,7 +100,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'preview_size' => 'thumbnail',
                             'library' => 'all',
                         ),
-                        array (
+                        array(
                             'key' => 'settings_logo_footer',
                             'label' => 'Footer Logo',
                             'name' => 'settings_logo_footer',
@@ -108,7 +108,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => 'Leave it blank for using default logo',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '50',
                                 'class' => '',
                                 'id' => '',
@@ -120,7 +120,7 @@ if (function_exists('acf_add_local_field_group')) {
                     ),
                 ),
 
-                array (
+                array(
                     'key' => 'settings_social_media',
                     'label' => 'Social Media',
                     'name' => 'settings_social_media',
@@ -128,14 +128,14 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
                     ),
                     'layout' => 'block',
-                    'sub_fields' => array (
-                        array (
+                    'sub_fields' => array(
+                        array(
                             'key' => 'settings_instagram',
                             'label' => 'Instagram',
                             'name' => 'settings_instagram',
@@ -143,13 +143,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '25',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_facebook',
                             'label' => 'Facebook',
                             'name' => 'settings_facebook',
@@ -157,13 +157,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '25',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_linkedin',
                             'label' => 'LinkedIn',
                             'name' => 'settings_linkedin',
@@ -171,13 +171,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '25',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_twitter',
                             'label' => 'Twitter',
                             'name' => 'settings_twitter',
@@ -185,7 +185,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '25',
                                 'class' => '',
                                 'id' => '',
@@ -194,7 +194,7 @@ if (function_exists('acf_add_local_field_group')) {
                     ),
                 ),
 
-                array (
+                array(
                     'key' => 'settings_form_tab',
                     'label' => 'Form Settings',
                     'name' => '',
@@ -202,7 +202,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
@@ -211,7 +211,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'endpoint' => 0,
                 ),
 
-                array (
+                array(
                     'key' => 'settings_newsletter',
                     'label' => 'Newsletter',
                     'name' => 'settings_newsletter',
@@ -219,14 +219,14 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
                     ),
                     'layout' => 'block',
-                    'sub_fields' => array (
-                        array (
+                    'sub_fields' => array(
+                        array(
                             'key' => 'settings_newsletter_title',
                             'label' => 'Newsletter Title',
                             'name' => 'settings_newsletter_title',
@@ -235,7 +235,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'required' => 0,
                             'default_value' => 'Join with us, <br> For Our Newsletter.',
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '',
                                 'class' => '',
                                 'id' => '',
@@ -244,7 +244,7 @@ if (function_exists('acf_add_local_field_group')) {
                     ),
                 ),
 
-                array (
+                array(
                     'key' => 'settings_contact',
                     'label' => 'Contact',
                     'name' => 'settings_contact',
@@ -252,14 +252,14 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
                     ),
                     'layout' => 'block',
-                    'sub_fields' => array (
-                        array (
+                    'sub_fields' => array(
+                        array(
                             'key' => 'settings_contact_number',
                             'label' => 'Contact Number',
                             'name' => 'settings_contact_number',
@@ -267,13 +267,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '50',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_title',
                             'label' => 'Top Section Title',
                             'name' => 'settings_contact_top_section_title',
@@ -281,13 +281,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '50',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_contact_icon',
                             'label' => 'Top Section Contact Icon',
                             'name' => 'settings_contact_top_section_contact_icon',
@@ -295,7 +295,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '33',
                                 'class' => '',
                                 'id' => '',
@@ -304,7 +304,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'preview_size' => 'thumbnail',
                             'library' => 'all',
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_contact_title',
                             'label' => 'Top Section Contact Title',
                             'name' => 'settings_contact_top_section_contact_title',
@@ -312,13 +312,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '33',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_contact_body',
                             'label' => 'Top Section Contact Body',
                             'name' => 'settings_contact_top_section_contact_body',
@@ -326,7 +326,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '33',
                                 'class' => '',
                                 'id' => '',
@@ -337,7 +337,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'media_upload' => 1,
                             'delay' => 1,
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_call_icon',
                             'label' => 'Top Section Call Icon',
                             'name' => 'settings_contact_top_section_call_icon',
@@ -345,7 +345,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '33',
                                 'class' => '',
                                 'id' => '',
@@ -354,7 +354,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'preview_size' => 'thumbnail',
                             'library' => 'all',
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_call_title',
                             'label' => 'Top Section Call Title',
                             'name' => 'settings_contact_top_section_call_title',
@@ -362,13 +362,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '33',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_top_section_call_body',
                             'label' => 'Top Section Call Body',
                             'name' => 'settings_contact_top_section_call_body',
@@ -376,7 +376,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '33',
                                 'class' => '',
                                 'id' => '',
@@ -387,7 +387,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'media_upload' => 1,
                             'delay' => 1,
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_bottom_section_title',
                             'label' => 'Bottom Section Title',
                             'name' => 'settings_contact_bottom_section_title',
@@ -395,13 +395,13 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '&nbsp;',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '',
                                 'class' => '',
                                 'id' => '',
                             ),
                         ),
-                        array (
+                        array(
                             'key' => 'settings_contact_bottom_section_body',
                             'label' => 'Bottom Section Body',
                             'name' => 'settings_contact_bottom_section_body',
@@ -409,7 +409,7 @@ if (function_exists('acf_add_local_field_group')) {
                             'instructions' => '',
                             'required' => 0,
                             'conditional_logic' => 0,
-                            'wrapper' => array (
+                            'wrapper' => array(
                                 'width' => '',
                                 'class' => '',
                                 'id' => '',
@@ -423,7 +423,7 @@ if (function_exists('acf_add_local_field_group')) {
                     ),
                 ),
                     
-            array (
+            array(
                 'key' => 'settings_site_wide_scripts_tab',
                 'label' => 'Site Wide Scripts',
                 'name' => '',
@@ -431,7 +431,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -439,7 +439,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'placement' => 'top',
                 'endpoint' => 0,
             ),
-                array (
+                array(
                     'key' => 'settings_script_header',
                     'label' => 'Header',
                     'name' => 'settings_script_header',
@@ -447,7 +447,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
@@ -458,7 +458,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'rows' => '',
                     'new_lines' => '',
                 ),
-                array (
+                array(
                     'key' => 'settings_script_body',
                     'label' => 'Body',
                     'name' => 'settings_script_body',
@@ -466,7 +466,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
@@ -477,7 +477,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'rows' => '',
                     'new_lines' => '',
                 ),
-                array (
+                array(
                     'key' => 'settings_script_footer',
                     'label' => 'Footer',
                     'name' => 'settings_script_footer',
@@ -485,7 +485,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '',
                         'class' => '',
                         'id' => '',
@@ -497,7 +497,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'new_lines' => '',
                 ),
             
-            array (
+            array(
                 'key' => 'settings_api_tab',
                 'label' => 'APIs',
                 'name' => '',
@@ -505,7 +505,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -513,7 +513,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'placement' => 'top',
                 'endpoint' => 0,
             ),
-                array (
+                array(
                     'key' => 'settings_api_google_map',
                     'label' => 'Google Map API',
                     'name' => 'settings_api_google_map',
@@ -521,13 +521,13 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '&nbsp;',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '50',
                         'class' => '',
                         'id' => '',
                     ),
                 ),
-                array (
+                array(
                     'key' => 'settings_tiny_png',
                     'label' => 'Tinypng API',
                     'name' => 'settings_tiny_png',
@@ -535,14 +535,14 @@ if (function_exists('acf_add_local_field_group')) {
                     'instructions' => '&nbsp;',
                     'required' => 0,
                     'conditional_logic' => 0,
-                    'wrapper' => array (
+                    'wrapper' => array(
                         'width' => '50',
                         'class' => '',
                         'id' => '',
                     ),
                 ),
 
-            array (
+            array(
                 'key' => 'settings_advance_tab',
                 'label' => 'Advance',
                 'name' => '',
@@ -550,7 +550,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '',
                     'class' => '',
                     'id' => '',
@@ -599,7 +599,7 @@ if (function_exists('acf_add_local_field_group')) {
                 ),
             ),
 
-            array (
+            array(
                 'key' => 'settings_advance_defer_js',
                 'label' => 'JS Scripts to defer',
                 'name' => 'js_scripts_to_defer',
@@ -607,7 +607,7 @@ if (function_exists('acf_add_local_field_group')) {
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => 0,
-                'wrapper' => array (
+                'wrapper' => array(
                     'width' => '50',
                     'class' => '',
                     'id' => '',
@@ -617,8 +617,8 @@ if (function_exists('acf_add_local_field_group')) {
                 'max' => 0,
                 'layout' => 'table',
                 'button_label' => '',
-                'sub_fields' => array (
-                    array (
+                'sub_fields' => array(
+                    array(
                         'key' => 'js_scripts_to_defer_filename',
                         'label' => 'File Name',
                         'name' => 'file_name',
@@ -626,7 +626,7 @@ if (function_exists('acf_add_local_field_group')) {
                         'instructions' => 'only .js file can be defered',
                         'required' => 0,
                         'conditional_logic' => 0,
-                        'wrapper' => array (
+                        'wrapper' => array(
                             'width' => '',
                             'class' => '',
                             'id' => '',
@@ -640,9 +640,9 @@ if (function_exists('acf_add_local_field_group')) {
                 ),
             ),
         ),
-        'location' => array (
-            array (
-                array (
+        'location' => array(
+            array(
+                array(
                     'param' => 'options_page',
                     'operator' => '==',
                     'value' => 'site-settings',
