@@ -1,25 +1,48 @@
 <?php
 
 // Create a new role called Super Admin which should have FULL control
-add_role('super-admin', 'Super Admin', get_role('administrator')->capabilities);
-
-// If user is KLYP and it is not super user yet, set it as Super Admin
-if (wp_get_current_user()->user_login == 'klyp' && ! in_array('super-admin', wp_get_current_user()->roles)) {
-    wp_get_current_user()->set_role('super-admin');
+if (! $GLOBALS['wp_roles']->is_role('super-admin')) {
+    add_role('super-admin', 'Super Admin', get_role('administrator')->capabilities);
 }
+
+/**
+ * Get all super admins from settings *
+ * @return void
+ */
+function klyp_get_super_admins()
+{
+    // if already super-admin
+    if (array_shift(wp_get_current_user()->roles) == 'super-admin') {
+        return;
+    }
+
+    // get super admins from settings
+    $super_admins = get_field('super_admins', 'option');
+    
+    // if we have a list
+    if ($super_admins) {
+        $super_admins = wp_list_pluck($super_admins, 'username');
+    }
+
+    // If user is KLYP or user in the list and it is not super user yet, set it as Super Admin
+    if (wp_get_current_user()->user_login == 'klyp' || in_array(wp_get_current_user()->ID, $super_admins)) {
+        wp_get_current_user()->set_role('super-admin');
+    }
+}
+add_action('admin_init', 'klyp_get_super_admins');
 
 // If a user is not a super admin, disable access to certain things
 if (! in_array('super-admin', wp_get_current_user()->roles)) {
     add_action('admin_init', 'klyp_remove_access_to_updates');
     add_action('admin_init', 'klyp_remove_menus');
-    add_action('editable_roles', 'remove_super_admin_editable');
+    add_action('editable_roles', 'klyp_remove_super_admin_editable');
 }
 
 /**
  * Remove Super Admin role from roles list
  * @return void
  */
-function remove_super_admin_editable($roles) {
+function klyp_remove_super_admin_editable($roles) {
     if (isset($roles['super-admin'])) {
         unset($roles['super-admin'] );
     }
