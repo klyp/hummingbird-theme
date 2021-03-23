@@ -105,6 +105,7 @@ function process_single_image_batch($batch)
             $file_path = wp_get_original_image_path($image_data['id']);
             $file_url = $image_data['image_url'];
             $image_type = $image_data['image_type'];
+            $extension = pathinfo($file_url, PATHINFO_EXTENSION);
 
             $formats = array('jpg', 'jpeg', 'png');
             $webp_file = str_replace($formats, 'webp', $file_path);
@@ -119,56 +120,58 @@ function process_single_image_batch($batch)
                 'before_optimisation_filesize' => ! empty($file_path) ? filesize($file_path) : '',
             );
 
-            // Creating a compressed image file.
-            try {
-                $source = \Tinify\fromUrl($file_url);
-                $source->toFile($file_path);
+            if (in_array($extension, $formats)) {
+                // Creating a compressed image file.
+                try {
+                    $source = \Tinify\fromUrl($file_url);
+                    $source->toFile($file_path);
 
-                $result['after_optimisation'] = getimagesize($file_path);
-                $result['after_optimisation_filesize'] = filesize($file_path);
+                    $result['after_optimisation'] = getimagesize($file_path);
+                    $result['after_optimisation_filesize'] = filesize($file_path);
 
-                klyp_cc_create_activity_log($image_data['id'], 'Attempt Compressing image', $image_data['image_title'], $result);
-            } catch (Exception $e) {
-                wp_die('Error Creating Compressed Image image : ' . $e->getMessage());
-            }
-
-            // Creating a webp file.
-            try {
-                klyp_cc_create_activity_log($image_data['id'], 'Attempt Creating Webp image', $image_data['image_title'], $result);
-
-                switch ($image_type) {
-                    case 'jpeg':
-                    case 'jpg':
-                        $image = imagecreatefromjpeg($file_path);
-                        ob_start();
-                        imagejpeg($image, NULL, 100);
-                        $cont = ob_get_contents();
-                        ob_end_clean();
-                        break;
-
-                    case 'png':
-                        $image = imagecreatefrompng($file_path);
-                        ob_start();
-                        imagepng($image, NULL, 100);
-                        $cont = ob_get_contents();
-                        ob_end_clean();
-                        break;
-
-                    default:
-                        return;
-                        break;
+                    klyp_cc_create_activity_log($image_data['id'], 'Attempt Compressing image', $image_data['image_title'], $result);
+                } catch (Exception $e) {
+                    wp_die('Error Creating Compressed Image image : ' . $e->getMessage());
                 }
 
-                imagedestroy($image);
-                $content = imagecreatefromstring($cont);
-                imagewebp($content, $webp_file);
-                imagedestroy($content);
+                // Creating a webp file.
+                try {
+                    klyp_cc_create_activity_log($image_data['id'], 'Attempt Creating Webp image', $image_data['image_title'], $result);
 
-                // Add a flag
-                update_post_meta($image_data['id'], '_is_webp_generated', 'true');
-                update_post_meta($image_data['id'], '_webp_generated_url', $webp_url);
-            } catch (Exception $e) {
-                wp_die('Error Creating Webp image : ' . $e->getMessage());
+                    switch ($image_type) {
+                        case 'jpeg':
+                        case 'jpg':
+                            $image = imagecreatefromjpeg($file_path);
+                            ob_start();
+                            imagejpeg($image, NULL, 100);
+                            $cont = ob_get_contents();
+                            ob_end_clean();
+                            break;
+
+                        case 'png':
+                            $image = imagecreatefrompng($file_path);
+                            ob_start();
+                            imagepng($image, NULL, 100);
+                            $cont = ob_get_contents();
+                            ob_end_clean();
+                            break;
+
+                        default:
+                            return;
+                            break;
+                    }
+
+                    imagedestroy($image);
+                    $content = imagecreatefromstring($cont);
+                    imagewebp($content, $webp_file);
+                    imagedestroy($content);
+
+                    // Add a flag
+                    update_post_meta($image_data['id'], '_is_webp_generated', 'true');
+                    update_post_meta($image_data['id'], '_webp_generated_url', $webp_url);
+                } catch (Exception $e) {
+                    wp_die('Error Creating Webp image : ' . $e->getMessage());
+                }
             }
         }
     }

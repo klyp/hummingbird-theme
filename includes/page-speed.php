@@ -10,9 +10,10 @@ function js_async_attr($tag)
 
     if (! $scripts_to_exclude) {
         # Do not add defer or async attribute to these scripts
-        $scripts_to_exclude = array ('jquery.min.js');
+        $scripts_to_exclude = array ('jquery.min.js', 'wp-includes/js');
     } else {
         $scripts_to_exclude = wp_list_pluck($scripts_to_exclude, 'file_name');
+        array_push($scripts_to_exclude, 'wp-includes/js');
     }
 
     foreach ($scripts_to_exclude as $exclude_script) {
