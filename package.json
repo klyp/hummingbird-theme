@@ -14,7 +14,8 @@
     "object-path": ">=0.11.5",
     "lodash.template": ">=4.5.0",
     "axios": ">=0.21.1",
-    "socket.io": ">=2.4.0"
+    "socket.io": ">=2.4.0",
+    "is-svg": ">=4.2.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
