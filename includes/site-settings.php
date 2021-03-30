@@ -558,6 +558,27 @@ if (function_exists('acf_add_local_field_group')) {
                 'placement' => 'top',
                 'endpoint' => 0,
             ),
+            array(
+                'key' => 'settings_advance_max_revision',
+                'label' => 'Max Revisions to keep',
+                'name' => 'max_revision',
+                'type' => 'number',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => 3,
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'min' => '1',
+                'max' => '99',
+                'step' => '',
+            ),
 
             array(
                 'key' => 'settings_advance_super_admins',
@@ -601,7 +622,7 @@ if (function_exists('acf_add_local_field_group')) {
 
             array(
                 'key' => 'settings_advance_defer_js',
-                'label' => 'JS Scripts to defer',
+                'label' => 'JS Scripts not to defer',
                 'name' => 'js_scripts_to_defer',
                 'type' => 'repeater',
                 'instructions' => '',

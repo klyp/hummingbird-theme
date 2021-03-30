@@ -199,3 +199,94 @@ function klyp_remove_footer_admin()
     target="_blank">Klyp.co</a></span>';
 }
 add_filter('admin_footer_text', 'klyp_remove_footer_admin');
+
+/**
+ * Set max post/page revisions
+ * @return void
+ */
+function klyp_set_max_revisions()
+{
+    // add js
+    add_action('admin_enqueue_scripts', function() {
+        wp_enqueue_script('klyp-hummingbird-js', get_template_directory_uri() . '/assets/admin/main.js', array('jquery'));
+    });
+
+    // get max post revisions
+    $max_revision = get_field('max_revision', 'option');
+
+    if (! define('WP_POST_REVISIONS', $max_revision)) {
+        add_action('admin_notices', function() {
+            $screen = get_current_screen();
+            // if not on site settings
+            if (! $screen || $screen->parent_base !== 'site-settings') {
+                return;
+            }
+
+            echo '<div class="notice notice-error is-dismissible">
+                    <p>Please add this line in your <b>wp-config.php</b> <pre>define(\'WP_POST_REVISIONS\', 10, true);</pre></p>
+                  </div>';
+        });
+    }
+}
+// only do this for admin
+if (is_admin()) {
+    add_action('init', 'klyp_set_max_revisions');
+}
+
+/**
+ * Add button after max revision
+ * @param object
+ * @return void
+ */
+function klyp_max_revision_purge_button($field)
+{
+    echo '<div class="acf-actions">
+            <p><a
+                id="klyp-purge-revisions"
+                class="acf-button button button-primary"
+                href=""
+                data-admin-url="' . admin_url('admin-ajax.php') . '"
+                data-nonce="' . wp_create_nonce('klyp-hummingbird') . '"
+                data-event="purge-revisions">
+                    Purge Revisions
+                </a></p>
+          </div>';
+}
+add_action('acf/render_field/key=settings_advance_max_revision', 'klyp_max_revision_purge_button');
+
+/**
+ * Function to clean up revision post type
+ * @return boolean
+ */
+function klyp_clean_up_revisions()
+{
+    if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
+        echo false;
+    }
+
+    global $wpdb;
+
+    // post type to clean
+    $postType = 'revision';
+    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : 10);
+
+    if (! $wpdb->query(
+            $wpdb->prepare(
+                "
+                DELETE a,b,c
+                FROM $wpdb->posts a
+                LEFT JOIN $wpdb->term_relationships b
+                ON (a.ID = b.object_id)
+                LEFT JOIN $wpdb->postmeta c
+                ON (a.ID = c.post_id)
+                WHERE ID IN (
+                    SELECT ID FROM (SELECT ID FROM $wpdb->posts WHERE post_type = %s ORDER BY ID DESC LIMIT 9999, %d) d
+                    )
+                ", $postType, $maxRevision
+            ))) {
+        echo false;
+    }
+    echo true;
+    die();
+}
+add_action('wp_ajax_klyp_clean_up_revisions', 'klyp_clean_up_revisions');
