@@ -254,6 +254,10 @@ function klyp_max_revision_purge_button($field)
 }
 add_action('acf/render_field/key=settings_advance_max_revision', 'klyp_max_revision_purge_button');
 
+/**
+ * Function to clean up revision post type
+ * @return boolean
+ */
 function klyp_clean_up_revisions()
 {
     if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
@@ -263,8 +267,8 @@ function klyp_clean_up_revisions()
     global $wpdb;
 
     // post type to clean
-    $posttype = 'revision';
-    $max_revision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : 10);
+    $postType = 'revision';
+    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : 10);
 
     if (! $wpdb->query(
             $wpdb->prepare(
@@ -278,10 +282,8 @@ function klyp_clean_up_revisions()
                 WHERE ID IN (
                     SELECT ID FROM (SELECT ID FROM $wpdb->posts WHERE post_type = %s ORDER BY ID DESC LIMIT 9999, %d) d
                     )
-                ", $posttype, $max_revision
-            )
-        )) {
-            echo $wpdb->request;
+                ", $postType, $maxRevision
+            ))) {
         echo false;
     }
     echo true;
