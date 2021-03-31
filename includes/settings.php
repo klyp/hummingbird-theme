@@ -1,5 +1,11 @@
 <?php
 
+if (is_admin()) {
+    add_action('admin_enqueue_scripts', function() {
+        wp_enqueue_script('klyp-hummingbird-js', get_template_directory_uri() . '/assets/admin/main.js', array('jquery'));
+    });
+}
+
 // Create a new role called Super Admin which should have FULL control
 if (! $GLOBALS['wp_roles']->is_role('super-admin')) {
     add_role('super-admin', 'Super Admin', get_role('administrator')->capabilities);
@@ -202,7 +208,7 @@ add_filter('admin_footer_text', 'klyp_remove_footer_admin');
 
 /**
  * Set max post/page revisions
- * @return void
+ * @return int
  */
 function klyp_set_max_revisions()
 {
@@ -212,26 +218,11 @@ function klyp_set_max_revisions()
     });
 
     // get max post revisions
-    $max_revision = get_field('max_revision', 'option');
+    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : -1);
 
-    if (! define('WP_POST_REVISIONS', $max_revision)) {
-        add_action('admin_notices', function() {
-            $screen = get_current_screen();
-            // if not on site settings
-            if (! $screen || $screen->parent_base !== 'site-settings') {
-                return;
-            }
-
-            echo '<div class="notice notice-error is-dismissible">
-                    <p>Please add this line in your <b>wp-config.php</b> <pre>define(\'WP_POST_REVISIONS\', 10, true);</pre></p>
-                  </div>';
-        });
-    }
+    return (int) $maxRevision;
 }
-// only do this for admin
-if (is_admin()) {
-    add_action('init', 'klyp_set_max_revisions');
-}
+add_filter('wp_revisions_to_keep', 'klyp_set_max_revisions', 1);
 
 /**
  * Add button after max revision
@@ -261,32 +252,50 @@ add_action('acf/render_field/key=settings_advance_max_revision', 'klyp_max_revis
 function klyp_clean_up_revisions()
 {
     if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
-        echo false;
+        $return['message'] = esc_html__('Invalid request.');
+        wp_send_json_error($return);
+        die();
     }
 
     global $wpdb;
-
-    // post type to clean
     $postType = 'revision';
-    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : 10);
+    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : -1);
+    $totalRevisions = 0;
 
-    if (! $wpdb->query(
-            $wpdb->prepare(
-                "
-                DELETE a,b,c
-                FROM $wpdb->posts a
-                LEFT JOIN $wpdb->term_relationships b
-                ON (a.ID = b.object_id)
-                LEFT JOIN $wpdb->postmeta c
-                ON (a.ID = c.post_id)
-                WHERE ID IN (
-                    SELECT ID FROM (SELECT ID FROM $wpdb->posts WHERE post_type = %s ORDER BY ID DESC LIMIT 9999, %d) d
-                    )
-                ", $postType, $maxRevision
-            ))) {
-        echo false;
+    $allRevisions = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT DISTINCT post_parent
+            FROM $wpdb->posts
+            WHERE post_type = %s", $postType
+        )
+    );
+
+    if ($allRevisions) {
+        foreach($allRevisions as $key => $revision) {
+            $revisions = wp_get_post_revisions($revision->post_parent);
+
+            if (count($revisions) <= $maxRevision ) {
+                continue;
+            }
+
+            $totalRevisions += count($revision);
+            $revisionsToRemove = array_slice($revisions, $maxRevision, null, true);
+
+            foreach($revisionsToRemove as $revisionRemoved) {
+                wp_delete_post_revision($revisionRemoved->ID);
+            }
+        }
+
+        if ($totalRevisions > 0) {
+            $return['message'] = esc_html__(sprintf('A total of %d revision(s) in %d post(s) have been purged.', $totalRevisions, count($allRevisions)));
+        } else {
+            $return['message'] = esc_html__('Nothing to purge.');
+        }
+    } else {
+        $return['message'] = esc_html__('Nothing to purge.');
     }
-    echo true;
+
+    wp_send_json_success($return);
     die();
 }
 add_action('wp_ajax_klyp_clean_up_revisions', 'klyp_clean_up_revisions');
