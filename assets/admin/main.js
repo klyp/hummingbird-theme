@@ -18,11 +18,7 @@
                         nonce: nonce
                     },
                     success: function(response) {
-                        if (response == 1) {
-                            alert('All revisions have been purged!');
-                        } else {
-                            alert('Something went wrong, please contact your administrator.');
-                        }
+                        alert(response.data.message);
                     }
                 });
             } else {
