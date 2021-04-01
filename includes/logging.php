@@ -23,21 +23,23 @@ function klyp_add_log_table_db()
 
 add_action('after_setup_theme', 'klyp_add_log_table_db');
 
-function klyp_log_login($user_login, $user)
+function klyp_insert_user_log($user)
 {
     global $wpdb;
     $tablename = $wpdb->prefix . 'logs';
-    echo '<pre>';
-    print_r(klyp_get_the_user_ip());
-    echo '</pre>';die;
     $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     $data = array(
         'user_id'   => $user->ID,
         'url'       => $url,
         'action'    => $_SERVER['REQUEST_METHOD'],
-        'data'      => '',
+        'data'      => json_encode(array()),
         'ip'        => klyp_get_the_user_ip()
     );
     $wpdb->insert($tablename, $data);
+}
+
+function klyp_log_login($user_login, $user)
+{
+    klyp_insert_user_log($user);
 }
 add_action('wp_login', 'klyp_log_login', 10, 2);
