@@ -1,0 +1,98 @@
+/*=============================================
+=            Banner Section CSS            =
+=============================================*/
+.hb-fs-banner__flex {
+    @extend .align-items-center;
+    @extend .d-flex;
+}
+
+.hb-fs-banner {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .hb-btn-primary {
+        display: block;
+        margin-right: 0;
+            
+        @include media-breakpoint-up(md) {
+            display: inline-block;
+            margin-right: 30px;
+        }
+    }
+}
+
+.hb-fs-banner__height {
+    min-height: 100vh;
+}
+
+.hb-fs-banner__height--value {
+    @extend .align-items-center;
+    @extend .d-flex;
+}
+
+.hb-fs-banner__large {
+    padding: 0;
+
+    @include media-breakpoint-up(md) {
+        min-height: 660px;
+        padding: 139px 0;
+    }
+}
+
+.hb-fs-banner__content {
+    max-width: 532px;
+    padding: 55px 0;
+
+    @include media-breakpoint-up(sm) {
+        padding: 50px 0;
+    }
+}
+
+.hb-fs-banner__content--center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hb-fs-banner__content--right {
+    margin-left: auto;
+    text-align: right;
+}
+
+.hb-fs-banner__intro {
+    color: $c-white;
+    font-family: $ff-circularstd-medium;
+    font-size: $fs-small;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-medium;
+    }
+}
+
+.hb-fs-banner__title {
+    color: $c-atlantis;
+    font-size: $fs-medium;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-x-large;
+    }
+}
+
+.hb-fs-banner__title--small {
+    font-size: $fs-medium;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-large;
+    }
+}
+
+.hb-fs-banner__title--gray {
+    color: $c-abbey;
+}
+
+.hb-fs-banner__text {
+    color: $c-white;
+    margin-bottom: 30px;
+}
+/*=====  End of Banner Section CSS  ======*/

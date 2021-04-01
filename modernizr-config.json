@@ -1,0 +1,10 @@
+{
+  "minify": true,
+  "classPrefix": "hb_",
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/img/webp"
+  ]
+}

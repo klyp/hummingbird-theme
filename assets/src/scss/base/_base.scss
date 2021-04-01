@@ -1,0 +1,293 @@
+@import "colors", "typography", "bootstrap";
+
+/*=============================================
+=            Global CSS            =
+=============================================*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: $c-abbey;
+    font-family: $ff-circularstd-book;
+    font-size: $fs-small;
+}
+
+h1,
+h2 {
+    font-family: $ff-modulus-b;
+}
+
+.hb-container {
+    @extend .container;
+}
+
+.hb-container-fluid {
+    @extend .container-fluid;
+}
+
+.hb-row {
+    @extend .row;
+}
+
+.hb-col-full {
+    @extend .col-12;
+}
+
+.hb-bg-light {
+    background-color: $c-alabaster;
+}
+
+.hb-btn-row {
+    a {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+            margin-right: 30px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.hb-btn-primary {
+    background-color: $c-cerise;
+    border: 2px solid $c-cerise;
+    border-radius: 90px;
+    color: $c-white;
+    display: inline-block;
+    font-family: $ff-circularstd-book;
+    font-size: $fs-small;
+    min-width: 143px;
+    padding: 6px 23px;
+    text-align: center;
+    transition: 0.3s linear all;
+
+    &:hover {
+        color: $c-white;
+        text-decoration: none;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: inline-block;
+    }
+}
+
+.hb-btn-primary--width {
+    display: block;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        display: inline-block;
+        width: auto;
+    }
+}
+
+.hb-btn-primary--white {
+    background-color: $c-white;
+    border-color: $c-white;
+    color: $c-cerise;
+}
+
+.hb-btn-primary--outline {
+    background-color: transparent;
+
+    &:hover {
+        background-color: $c-cerise;
+    }
+}
+
+.hb-btn-primary--outline-white {
+    border-color: $c-white;
+}
+
+.hb-btn-primary--outline-gray {
+    color: $c-abbey;
+}
+
+.hb-module-separator {
+    padding: 40px 0;
+}
+
+.hb-module-separator__title {
+    color: $c-atlantis;
+    font-family: $ff-circularstd-medium;
+    font-size: $fs-medium;
+    line-height: 30px;
+    margin: 0;
+}
+
+.hb-gradient-primary {
+    background: linear-gradient(135.31deg, $c-cerise, $c-tall-poppy);
+}
+
+.hb-gradient-secondary {
+    background: linear-gradient(135.31deg, $c-confetti, $c-sushi);
+}
+
+.hb-short-content__title {
+    color: $c-atlantis;
+    font-size: $fs-medium;
+    line-height: 28px;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-x-large;
+        line-height: 52px;
+    }
+}
+/*=====  End of Global CSS  ======*/
+
+/*=============================================
+=            Unstyled list CSS            =
+=============================================*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 16px 0 16px 35px;
+
+    li {
+        margin-bottom: 5px;
+        position: relative;
+
+        &:last-child {
+            margin: 0;
+        }
+
+        &:after {
+            background-color: $c-cerise;
+            border-radius: 50%;
+            content: "";
+            height: 10px;
+            left: -20px;
+            position: absolute;
+            top: 6px;
+            width: 10px;
+        }
+    }
+}
+/*=====  End of Unstyled list CSS  ======*/
+
+/*=============================================
+=            Ordered List CSS            =
+=============================================*/
+ol {
+    counter-reset: my-awesome-counter;
+    list-style-type: none;
+    margin: 0;
+    padding: 16px 0 16px 35px;
+
+    li {
+        counter-increment: my-awesome-counter;
+        position: relative;
+
+        &:after {
+            background-color: $c-white;
+            content: "(" counter(my-awesome-counter) ")";
+            height: auto;
+            left: -25px;
+            position: absolute;
+            top: -1px;
+            width: auto;
+        }
+    }
+}
+/*=====  End of Ordered List CSS  ======*/
+
+/*=============================================
+=            Table CSS            =
+=============================================*/
+table {
+    border-collapse: collapse;
+    color: $c-abbey !important;
+    margin: 15px 0 35px !important;
+    text-align: center;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 50px !important;
+    }
+
+    thead {
+        background-color: $c-atlantis;
+
+        th {
+            border: 0;
+            color: $c-abbey;
+            font-size: $fs-normal;
+            min-width: 140px;
+            padding: 0.75rem;
+            vertical-align: bottom;
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background-color: $c-wild-sand;
+            }
+
+            td {
+                border: 0;
+                padding: 0.75rem;
+            }
+        }
+    }
+}
+/*=====  End of Table CSS  ======*/
+
+/*=============================================
+=            Blockquote CSS            =
+=============================================*/
+blockquote {
+    color: $c-atlantis;
+    font-family: $ff-modulus-b;
+    font-size: $fs-medium;
+    line-height: 30px;
+    margin: 0 auto;
+    max-width: 688px;
+    padding: 30px 0;
+    width: 75%;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-large;
+        line-height: 44px;
+    }
+
+    &:after,
+    &:before {
+        color: $c-cerise;
+        content: "“";
+        font-family: $ff-circularstd-medium;
+        font-size: $fs-xx-large;
+        left: 0;
+        position: absolute;
+        top: 50%;
+
+        @include media-breakpoint-up(md) {
+            font-size: 144px;
+        }
+
+        @include media-breakpoint-up(lg) {
+            left: 100px;
+        }
+    }
+
+    &:after {
+        content: "”";
+        left: auto;
+        right: 0;
+
+        @include media-breakpoint-up(lg) {
+            right: 100px;
+        }
+    }
+}
+/*=====  End of Blockquote CSS  ======*/

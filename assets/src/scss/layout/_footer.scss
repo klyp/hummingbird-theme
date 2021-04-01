@@ -1,0 +1,102 @@
+/*=============================================
+=            Footer Section CSS            =
+=============================================*/
+.hb-footer {
+    background-color: $c-atlantis;
+    color: $c-white;
+    font-size: $fs-xsmall;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.hb-footer__row {
+    @extend .align-items-center;
+    @extend .flex-row-reverse;
+    @extend .row;
+}
+
+.hb-footer__col {
+    @extend .col-12;
+
+    @include media-breakpoint-up(lg) {
+        @extend .col-lg-4;
+    }
+}
+
+.hb-footer__social {
+    margin-bottom: 16px;
+    padding: 0;
+
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 0;
+        text-align: right;
+    }
+}
+
+.hb-footer__social-item {
+    margin-bottom: 0;
+    margin-right: 17px !important;
+
+    &:after {
+        display: none;
+    }
+
+    &:last-child {
+        margin-right: 0 !important;
+    }
+
+    @include media-breakpoint-up(md) {
+        margin-right: 14px !important;
+
+        &:last-child {
+            margin-right: 0 !important;
+        }
+    }
+
+    a {
+        border: 1px solid $c-white;
+        border-radius: 50%;
+        color: $c-white;
+        display: inline-block;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        width: 25px;
+
+        &:hover {
+            background-color: $c-cerise;
+            border-color: $c-cerise;
+        }
+    }
+}
+
+.hb-footer__links {
+    margin-bottom: 16px;
+    padding: 0;
+
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 0;
+    }
+}
+
+.hb-footer__links-item {
+    margin-bottom: 0;
+
+    &:after {
+        display: none;
+    }
+
+    a {
+        color: $c-white;
+
+        &:hover {
+            color: $c-cerise;
+            text-decoration: none;
+        }
+    }
+}
+
+.hb-footer__logo {
+    max-width: 35px;
+}
+/*=====  End of Footer Section CSS  ======*/

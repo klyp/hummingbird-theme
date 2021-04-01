@@ -1,0 +1,69 @@
+
+/*=============================================
+=            Typography Variable and Declaration            =
+=============================================*/
+@font-face {
+    font-family: 'Circularstd-Bold';
+    src: url('../fonts/CIRCULARSTD-BOLD.otf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circularstd-Medium';
+    src: url('../fonts/CIRCULARSTD-MEDIUM.OTF');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circularstd-Book';
+    src: url('../fonts/CIRCULARSTD-BOOK.OTF');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Modulus-Bold';
+    src: url('../fonts/Modulus-Bold.otf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Modulus-Regular';
+    src: url('../fonts/Modulus-Regular.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Modulus-Medium';
+    src: url('../fonts/Modulus-Medium.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica.ttf');
+    font-style: normal;
+}
+
+
+/*----------  Font Family Variable  ----------*/
+
+
+$ff-modulus-b: 'Modulus-Bold';
+$ff-modulus-m: 'Modulus-Medium';
+$ff-modulus-r: 'Modulus-Regular';
+$ff-circularstd-bold: 'Circularstd-Bold';
+$ff-circularstd-book: 'Circularstd-Book';
+$ff-circularstd-medium: 'Circularstd-Medium';
+
+
+/*----------  Font Size Variable  ----------*/
+
+$fs-xx-large    : 80px;
+$fs-x-large     : 48px;
+$fs-large       : 36px;
+$fs-medium      : 24px;
+$fs-normal      : 18px;
+$fs-small       : 16px;
+$fs-xsmall      : 13px;
+
+/*=====  End of Typography Variable and Declaration  ======*/

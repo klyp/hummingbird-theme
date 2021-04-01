@@ -1,0 +1,389 @@
+/*=============================================
+=            Form CSS            =
+=============================================*/
+.hb-form__container {
+    @extend .container;
+    padding: 50px 15px;
+    position: relative;
+}
+
+.hb-form__container--border {
+    &:after {
+        border-top: 1px solid $c-dusty-gray;
+        content: "";
+        left: 15px;
+        position: absolute;
+        right: 15px;
+        top: 0;
+    }
+}
+
+.hb-form {
+    .form-group {
+        margin-bottom: 10px;
+
+        label {
+            margin-bottom: 3px;
+        }
+    }
+
+    .form-control {
+        background-color: $c-alabaster;
+        border: 1px solid $c-alto;
+        border-radius: 0;
+        min-height: 40px;
+
+        &:focus {
+            border-color: $c-atlantis;
+            box-shadow: none;
+        }
+    }
+}
+
+.hb-form__select {
+    position: relative;
+
+    img {
+        position: absolute;
+        right: 15px;
+        top: 15px
+    }
+}
+
+.hb-form {
+    .wpcf7-checkbox {
+        .wpcf7-list-item {
+            margin-left: 0;
+            margin-right: 40px;
+            margin-top: 20px;
+            padding-left: 35px;
+            position: relative;
+            width: calc(50% - 20px);
+
+            @include media-breakpoint-up(md) {
+                margin-right: 30px;
+                width: calc(25% - 30px);
+            }
+
+            &:nth-child(2n) {
+                margin-right: 0;
+
+                @include media-breakpoint-up(md) {
+                    margin-right: 30px;
+                }
+            }
+
+            input[type="checkbox"] {
+                bottom: 0;
+                cursor: pointer;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                opacity: 0;
+                width: 100%;
+                z-index: 55;
+
+                &:checked {
+                    ~ .wpcf7-list-item-label {
+                        &:after {
+                            background-color: $c-cerise;
+                            border-color: $c-cerise;
+                        }
+
+                        &:before {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &:hover {
+                    ~ .wpcf7-list-item-label {
+                        &:after {
+                            border-color: $c-cerise;
+                        }
+                    }
+                }
+            }
+        }
+
+        .wpcf7-list-item-label {
+            &:after {
+                border: 2px solid $c-silver;
+                border-radius: 4px;
+                height: 25px;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 25px;
+            }
+
+            &:before {
+                border: solid $c-white;
+                border-width: 0 2px 2px 0;
+                content: "";
+                height: 10px;
+                left: 10px;
+                opacity: 1;
+                position: absolute;
+                top: 5px;
+                width: 6px;
+                transform: rotate(45deg);
+                z-index: 4;
+            }
+        }
+    }
+
+    .wpcf7-radio {
+        .wpcf7-list-item {
+            margin-left: 0;
+            margin-right: 40px;
+            margin-top: 20px;
+            padding-left: 35px;
+            position: relative;
+            width: calc(50% - 20px);
+
+            @include media-breakpoint-up(md) {
+                margin-right: 30px;
+                width: calc(25% - 30px);
+            }
+
+            &:nth-child(2n) {
+                margin-right: 0;
+
+                @include media-breakpoint-up(md) {
+                    margin-right: 30px;
+                }
+            }
+            
+
+            input[type="radio"] {
+                bottom: 0;
+                cursor: pointer;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                opacity: 0;
+                width: 100%;
+                z-index: 55;
+
+                &:checked {
+                    ~ .wpcf7-list-item-label {
+                        &:after {
+                            border-color: $c-cerise;
+                        }
+
+                        &:before {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                &:hover {
+                    ~ .wpcf7-list-item-label {
+                        &:after {
+                            border-color: $c-cerise;
+                        }
+                    }
+                }
+            }
+        }
+
+        .wpcf7-list-item-label {
+            &:after {
+                border: 2px solid $c-silver;
+                border-radius: 50%;
+                height: 25px;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 25px;
+            }
+
+            &:before {
+                background-color: $c-cerise;
+                border-radius: 50%;
+                content: "";
+                height: 17px;
+                left: 4px;
+                opacity: 0;
+                position: absolute;
+                top: 4px;
+                width: 17px;
+            }
+        }
+    }
+}
+
+.hb-form__checkbox,
+.hb-form__radio {
+    bottom: 0;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+
+    &:checked {
+        ~ .hb-form__checkbox-checkmark {
+            background-color: $c-cerise;
+            border-color: $c-cerise;
+
+            &:before {
+                opacity: 1;
+            }
+        }
+
+        ~ .hb-form__radio-dot {
+            border-color: $c-cerise;
+
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &:disabled {
+        display: none;
+
+        ~ * {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+    }
+
+    &:hover {
+        ~ .hb {
+            &-form {
+                &__checkbox,
+                &__radio {
+                    &-checkmark,
+                    &-dot {
+                        border-color: $c-cerise;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hb-form__checkbox-checkmark,
+.hb-form__checkbox-dot,
+.hb-form__radio-checkmark,
+.hb-form__radio-dot {
+    border: 2px solid $c-silver;
+    border-radius: 4px;
+    height: 25px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 25px;
+
+    &:before {
+        border: solid $c-white;
+        border-width: 0 2px 2px 0;
+        content: "";
+        height: 10px;
+        left: 8px;
+        opacity: 0;
+        position: absolute;
+        top: 4px;
+        width: 6px;
+        transform: rotate(45deg);
+    }
+}
+
+.hb-form__checkbox-dot,
+.hb-form__radio-dot {
+    border-radius: 50%;
+
+    &:before {
+        display: none;
+    }
+
+    &:after {
+        background-color: $c-cerise;
+        border-radius: 50%;
+        content: "";
+        height: 17px;
+        left: 2px;
+        opacity: 0;
+        position: absolute;
+        top: 2px;
+        width: 17px;
+    }
+}
+
+.hb-form__custom {
+    margin-right: 40px;
+    margin-top: 20px;
+    padding-left: 35px;
+    position: relative;
+    width: calc(50% - 40px);
+
+    @include media-breakpoint-up(md) {
+        margin-right: 30px;
+        width: calc(25% - 30px);
+
+        &:nth-child(4n) {
+            margin-right: 0 !important;
+        }
+
+        &--half {
+            width: calc(50% - 30px);
+
+            &:nth-child(2n) {
+                margin-right: 0 !important;
+            }
+        }
+    }
+
+    &:nth-child(2n) {
+        margin-right: 0;
+
+        @include media-breakpoint-up(md) {
+            margin-right: 30px;
+        }
+    }
+
+    label {
+        margin-bottom: 0 !important;
+    }
+}
+
+.hb-form__custom-contact {
+    > span {
+        display: block;
+    }
+}
+
+.hb-form__title {
+    color: $c-atlantis;
+    font-family: $ff-circularstd-medium;
+    font-size: $fs-normal;
+    line-height: 24px;
+    margin-bottom: 5px;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-medium;
+        line-height: 30px;
+    }
+}
+
+.hb-form__sub-title {
+    margin-bottom: 15px;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-normal;
+        line-height: 30px;
+        margin-bottom: 35px;
+    }
+}
+/*=====  End of Form CSS  ======*/

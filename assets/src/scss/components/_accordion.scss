@@ -1,0 +1,88 @@
+/*=============================================
+=            Accordion Section CSS            =
+=============================================*/
+.hb-accordion {
+    padding: 60px 0;
+}
+
+.hb-accordion__card {
+    border: 1px solid $c-silver;
+    border-radius: 0;
+    margin-bottom: -1px;
+
+    .collapsed {
+        ~ .hb-accordion__card-icon {
+            opacity: 1;
+            transform: translateY(-50%) rotate(0);
+        }
+    }
+}
+
+.hb-accordion__card-header {
+    border-radius: 0;
+    margin-bottom: -1px;
+    padding: 0;
+    position: relative;
+}
+
+.hb-accordion__card-icon {
+    font-size: $fs-small;
+    opacity: .35;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+.hb-accordion__card-body {
+    p {
+        margin-bottom: 25px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.hb-accordion__card-btn {
+    background-color: $c-wild-sand;
+    color: $c-atlantis !important;
+    display: block;
+    font-family: $ff-circularstd-medium;
+    line-height: 20px;
+    padding: 15px;
+    position: relative;
+    text-align: left;
+    text-decoration: none !important;
+    width: 100%;
+
+    &.collapsed {
+        background-color: $c-white;
+        color: $c-abbey !important;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-normal;
+    }
+}
+
+.hb-accordion__title {
+    color: $c-atlantis;
+    font-family: $ff-circularstd-medium;
+    font-size: $fs-normal;
+    margin: 20px 0;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-medium;
+        margin: 29px 0 18px;
+    }
+}
+/*=====  End of Accordion Section CSS  ======*/

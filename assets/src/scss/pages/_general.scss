@@ -1,0 +1,118 @@
+/*=============================================
+=            Geneal CSS            =
+=============================================*/
+.hb-general__txt-img-title {
+    color: $c-black;
+    font-size: $fs-medium;
+    line-height: 28px;
+    margin: 15px 0;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-x-large;
+        line-height: 52px;
+        margin: 20px 0;
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin: 40px 0 30px;
+    }
+}
+
+.hb-general__txt-img-image {
+    margin-bottom: 20px;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 30px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 40px;
+    }
+}
+
+.hb-general__txt-img-content {
+    h2,h3,h4,h5,h6 {
+        color: $c-atlantis;
+        font-family: $ff-circularstd-medium;
+        margin-bottom: 10px;
+
+        @include media-breakpoint-up(md) {
+            margin-bottom: 20px;
+        }
+    }
+
+    h2 {
+        font-size: $fs-normal;
+        line-height: 24px;
+
+        @include media-breakpoint-up(md) {
+            font-size: $fs-medium;
+            line-height: 30px;
+        }
+    }
+}
+
+.hb-general__title-small {
+    color: $c-atlantis;
+    font-family: $ff-circularstd-medium;
+    font-size: $fs-normal;
+    line-height: 24px;
+    margin-bottom: 10px;
+
+    @include media-breakpoint-up(md) {
+        font-size: $fs-medium;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+.hb-general__youtube {
+    margin-bottom: 35px;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 50px;
+    }
+}
+
+.hb-general__youtube__wrap {
+    margin-bottom: 30px;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: 60px;
+    }
+}
+
+.hb-general__youtube-popup-video {
+    position: relative;
+
+    &:after {
+        background-color: rgba($c-black, 0.5);
+        bottom: 0;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+.hb-general__youtube-play-icon {
+    left: 0;
+    margin: 0 auto;
+    max-width: 42px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    @include media-breakpoint-up(md) {
+        max-width: 72px;
+    }
+
+    @include media-breakpoint-up(lg) {
+        max-width: 102px;
+    }
+}
+/*=====  End of Geneal CSS  ======*/
