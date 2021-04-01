@@ -41,3 +41,10 @@ require get_template_directory() . '/includes/image-optimize.php';
 if (! is_user_logged_in()) {
     require get_theme_file_path('includes/page-speed.php');
 }
+
+/**
+ * User activity logging.
+ */
+if ( is_user_logged_in()) {
+    require get_theme_file_path('includes/logging/Hummingbird.php');
+}
