@@ -208,8 +208,3 @@ add_filter('excerpt_length', 'klyp_excerpt_length', 999);
  * Custom Functions
  */
 require get_template_directory() . '/includes/index.php';
-
-/**
- * Custom Logging Functions
- */
-require get_template_directory() . '/includes/logging.php';
