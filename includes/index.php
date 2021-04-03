@@ -49,6 +49,10 @@ if (! is_user_logged_in()) {
  * User activity logging.
  */
 if ( is_user_logged_in()) {
-    require get_theme_file_path('includes/logging/Hummingbird.php');
-    new Hummingbird();
+    require get_theme_file_path('includes/logging/HummingbirdLog.php');
+    new HummingbirdLog();
+
+    require get_theme_file_path('includes/logging/HummingbirdLogTable.php');
+    require get_theme_file_path('includes/logging/HummingbirdLogUI.php');
+    new HummingbirdLogUI();
 }

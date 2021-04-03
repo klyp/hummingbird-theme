@@ -1,19 +1,17 @@
 <?php
 
-namespace Hummingbird;
-
 defined('ABSPATH') or die();
 
 /**
- * Main class for Hummingbird
+ * Main class for HummingbirdLog
  */
-class Hummingbird
+class HummingbirdLog
 {
     protected $postData = array();
     protected $postType = '';
     protected $postUrl  = '';
 
-    public function __construct()
+    function __construct()
     {
         add_action('after_setup_theme', array(&$this, 'klyp_add_log_table_db'));
         add_action('wp_login', array(&$this, 'klyp_log_login'), 10, 2);
