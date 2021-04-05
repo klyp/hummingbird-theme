@@ -25,5 +25,10 @@
                 return;
             }
         });
+
+        $('.hb-log__data').on('click', function() {
+            $('.klyp-modal').removeClass('show');
+            $(this).closest('td').find('.klyp-modal').addClass('show');
+        })
     });
 })(jQuery);

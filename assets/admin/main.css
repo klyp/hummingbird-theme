@@ -1,0 +1,27 @@
+.klyp-modal {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.15);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    display: none;
+}
+
+.klyp-modal.show {
+ display: flex;
+}
+
+.klyp-modal__content {
+    background-color: #fff;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 10px;
+}

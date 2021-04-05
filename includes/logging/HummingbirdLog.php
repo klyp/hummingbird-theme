@@ -25,6 +25,7 @@ class HummingbirdLog
         global $wpdb;
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         $tableName = $wpdb->prefix . 'hummingbird_logs';
+        $wpdb->hummingbird_log = $tableName;
 
         $sql = "
             CREATE TABLE IF NOT EXISTS {$tableName} (
@@ -60,13 +61,15 @@ class HummingbirdLog
 
     function klyp_log_login($user_login, $user)
     {
-        klyp_insert_user_log($user);
+        $this->klyp_insert_user_log($user);
     }
 
     function klyp_log_post_data($data, $postarr)
     {
-        $this->postData = $postarr;
-        $this->postUrl  = $postarr['referredby'];
+        if ($postarr['post_status'] !== 'auto-draft') {
+            $this->postData = $postarr;
+            $this->postUrl  = isset($postarr['referredby']) ? $postarr['referredby'] : $postarr['guid'];
+        }
         return $data;
     }
 

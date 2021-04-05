@@ -26,7 +26,7 @@ class HummingbirdLogUI
             _x('Hummingbird Log', 'Menu Title', 'hummingbird'),
             'edit_themes',
             'hummingbird_log_page',
-            array(&$this, 'activity_log_page_func'),
+            array(&$this, 'klypActivityLogPageFunc'),
             '',
             '4.1'
         );
@@ -45,5 +45,20 @@ class HummingbirdLogUI
         }
         
         return $this->listTable;
+    }
+    
+    public function klypActivityLogPageFunc()
+    {
+        $this->getListTable()->prepareItems();
+        ?>
+        <div class="wrap">
+            <h1 class="hb-title"><?php _ex('Humingbird Activity Log', 'Page and Menu Title', 'hummingbird'); ?></h1>
+
+            <form id="activity-filter" method="get">
+                <input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']); ?>" />
+                <?php $this->getListTable()->display(); ?>
+            </form>
+        </div>
+        <?php
     }
 }

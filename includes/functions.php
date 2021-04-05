@@ -94,3 +94,12 @@ function klyp_generate_nav_menu($location)
 
     return $newMenu;
 }
+
+function customCssAdmin()
+{
+    wp_enqueue_style(
+        'klyp-script-admin',
+        get_stylesheet_directory_uri() . '/assets/admin/main.css',
+    );
+}
+add_action('admin_head', 'customCssAdmin');

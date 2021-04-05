@@ -4,8 +4,6 @@
  * Adds ACF.
  */
 
-use Hummingbird\Hummingbird;
-
 require get_template_directory() . '/includes/acf.php';
 
 /**
@@ -48,7 +46,7 @@ if (! is_user_logged_in()) {
 /**
  * User activity logging.
  */
-if ( is_user_logged_in()) {
+if (is_user_logged_in()) {
     require get_theme_file_path('includes/logging/HummingbirdLog.php');
     new HummingbirdLog();
 
