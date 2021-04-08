@@ -1,5 +1,20 @@
 <?php
 
+$args = [
+    'post_type' => 'global-component',
+    'posts_per_page' => - 1,
+    'fields' => 'ids',
+    'meta_query' => []
+];
+$args['meta_query'][] = [
+    'key' => 'select_global_component',
+    'value' => '0',
+    'compare' => '==',
+    'type' => 'CHAR'
+];
+$query = new WP_Query($args);
+$postIds = $query->posts;
+// print_r($postIds);die;
 $fields = array(
     'component_blockquote' => array(
         'key' => 'component_blockquote',
@@ -32,7 +47,7 @@ $fields = array(
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
-                    'width' => '',
+                    'width' => '50',
                     'class' => '',
                     'id' => '',
                 ),
@@ -41,6 +56,28 @@ $fields = array(
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
+            ),
+            array(
+                'key' => 'component_blockquote_global_component',
+                'label' => 'Global Component',
+                'name' => 'component_blockquote_global_component',
+                'type' => 'select',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => 'select_global_component',
+                ),
+                'choices' => $fieldNames,
+                'default_value' => false,
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 0,
+                'return_format' => 'value',
+                'ajax' => 0,
+                'placeholder' => '',
             ),
             array(
                 'key' => 'component_blockquote_id',
