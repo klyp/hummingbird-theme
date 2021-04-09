@@ -1,20 +1,7 @@
 <?php
 
-$args = [
-    'post_type' => 'global-component',
-    'posts_per_page' => - 1,
-    'fields' => 'ids',
-    'meta_query' => []
-];
-$args['meta_query'][] = [
-    'key' => 'select_global_component',
-    'value' => '0',
-    'compare' => '==',
-    'type' => 'CHAR'
-];
-$query = new WP_Query($args);
-$postIds = $query->posts;
-// print_r($postIds);die;
+$compNames = klyp_get_the_global_components('blockquote');
+
 $fields = array(
     'component_blockquote' => array(
         'key' => 'component_blockquote',
@@ -60,17 +47,17 @@ $fields = array(
             array(
                 'key' => 'component_blockquote_global_component',
                 'label' => 'Global Component',
-                'name' => 'component_blockquote_global_component',
+                'name' => 'blockquote_global_component',
                 'type' => 'select',
                 'instructions' => '',
-                'required' => 1,
+                'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '50',
                     'class' => '',
-                    'id' => 'select_global_component',
+                    'id' => '',
                 ),
-                'choices' => $fieldNames,
+                'choices' => $compNames,
                 'default_value' => false,
                 'allow_null' => 0,
                 'multiple' => 0,
@@ -124,7 +111,15 @@ $fields = array(
                 'type' => 'tab',
                 'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => 0,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'component_blockquote_global_component',
+                            'operator' => '==',
+                            'value' => '',
+                        ),
+                    ),
+                ),
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',

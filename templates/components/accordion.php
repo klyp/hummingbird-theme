@@ -3,10 +3,11 @@
     $componentId     = get_sub_field('component_accordion_id') ?: 'random_' . rand();
     $componentClass  = get_sub_field('component_accordion_class');
     $enableComponent = get_sub_field('component_accordion_enable');
+    $globalComponent = get_sub_field('component_accordion_global_component');
 
     //Settings.
-    $accordionItems  = get_sub_field('accordion_items');
-    $accordionIcon   = get_sub_field('component_accordion_fa_icons');
+    $accordionItems  = klyp_get_the_field_values($globalComponent, 'accordion', 'accordion_items');
+    $accordionIcon   = klyp_get_the_field_values($globalComponent, 'accordion', 'accordion_fa_icon');
 ?>
 
 <?php if ($enableComponent): ?>

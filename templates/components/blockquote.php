@@ -1,11 +1,12 @@
 <?php
     // General.
-    $componentId    = get_sub_field('component_blockquote_id') ?: 'random_' . rand();
-    $componentClass = get_sub_field('component_blockquote_class');
+    $componentId     = get_sub_field('component_blockquote_id') ?: 'random_' . rand();
+    $componentClass  = get_sub_field('component_blockquote_class');
+    $enableComponent = get_sub_field('component_blockquote_enable');
+    $globalComponent = get_sub_field('component_blockquote_global_component');
 
     //Settings.
-    $enableComponent = get_sub_field('component_blockquote_enable');
-    $blockquote     = get_sub_field('component_blockquote_quote');
+    $blockquote      = klyp_get_the_field_values($globalComponent, 'blockquote', 'quote');
 ?>
 
 <?php if ($enableComponent): ?>

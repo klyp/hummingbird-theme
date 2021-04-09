@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Add global component functions.
+ */
+require get_theme_file_path('includes/global-components.php');
+
+/**
  * Adds ACF.
  */
 require get_template_directory() . '/includes/acf.php';
@@ -43,11 +48,11 @@ if (! is_user_logged_in()) {
 }
 
 /**
- * Adds Custom post type: Custom Component
+ * Adds Custom post type: Global Components.
  */
-require get_stylesheet_directory() . '/includes/post-types/global-components.php';
+require get_theme_file_path('includes/post-types/global-components.php');
 
 /**
- * Adds extra case study post type acf field for site.
+ * Adds extra global components post type acf field for site.
  */
 require get_theme_file_path('includes/global-components-settings-acf.php');

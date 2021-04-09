@@ -3,11 +3,12 @@
     $componentId          = get_sub_field('component_advance_counter_id') ?: 'random_' . rand();
     $componentClass       = get_sub_field('component_advance_counter_class');
     $enableComponent      = get_sub_field('component_advance_counter_enable');
+    $globalComponent      = get_sub_field('component_advance_counter_component');
 
     // Settings
-    $title                = get_sub_field('component_advance_counter_title');
-    $subTitle             = get_sub_field('component_advance_counter_subtitle');
-    $percentage           = get_sub_field('component_advance_counter_percentage');
+    $title                = klyp_get_the_field_values($globalComponent, 'advance_counter', 'title');
+    $subTitle             = klyp_get_the_field_values($globalComponent, 'advance_counter', 'subtitle');
+    $percentage           = klyp_get_the_field_values($globalComponent, 'advance_counter', 'percentage');
 ?>
 
 <?php if ($enableComponent) : ?>
