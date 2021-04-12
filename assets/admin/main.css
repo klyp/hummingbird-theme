@@ -15,13 +15,16 @@
 }
 
 .klyp-modal.show {
- display: flex;
+    display: flex;
 }
 
-.klyp-modal__content {
+.klyp-modal__content--log {
     background-color: #fff;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 40px;
     border-radius: 10px;
+    margin: 0 auto;
+    max-height: 70vh;
+    overflow: auto;
+    padding: 40px;
+    white-space: pre;
+    width: 80vw;
 }

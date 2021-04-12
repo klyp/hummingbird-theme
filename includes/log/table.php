@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) exit;
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
 if (! class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
@@ -21,16 +21,16 @@ class HummingbirdLogTable extends WP_List_Table
             'per_page',
             array(
                 'default' => 20,
-                'label'   => __('User Activities', 'hummingbird'),
+                'label'   => __('Number of logs per page:', 'hummingbird'),
                 'option'  => 'edit_hummingbird_logs_per_page',
             )
         );
 
-        add_filter('set-screen-option', array(&$this, 'setScreenOption'), 10, 3);
+        add_filter('set-screen-option', array(&$this, 'set_screen_option'), 10, 3);
         set_screen_options();
     }
 
-    function setScreenOption($status, $option, $value)
+    function set_screen_option($status, $option, $value)
     {
         if ($option === 'edit_hummingbird_logs_per_page') {
             return $value;
@@ -75,8 +75,7 @@ class HummingbirdLogTable extends WP_List_Table
                 $return = $this->getActionLabel($item->action);
                 break;
             case 'date':
-                $return .= '<br />' . date('d/m/Y', strtotime($item->date));
-                $return .= '<br />' . date('H:i:s', strtotime($item->date));
+                $return .=  date(get_option( 'date_format' ), strtotime($item->date)) . ' - ' . date(get_option('time_format'), strtotime($item->date));
                 break;
             case 'ip':
                 $return = $item->ip;
@@ -85,8 +84,10 @@ class HummingbirdLogTable extends WP_List_Table
                 $jsonData = json_decode($item->data, true);
                 $return = '';
                 if (! empty($jsonData)) {
-                    $return .= '<a href="javascript:void(0);" class="hb-log__data">Show</a>';
-                    $return .= '<div class="klyp-modal"><div class="klyp-modal__content">' . $item->data . '</div></div>';
+                    $return .= '<a href="javascript:void(0);" class="hb-log__data">Show</a>
+                                <div class="klyp-modal">
+                                    <div class="klyp-modal__content--log">' . $item->data . '</div>
+                                </div>';
                 }
                 break;
             default:
@@ -94,14 +95,13 @@ class HummingbirdLogTable extends WP_List_Table
                     $return = $item->$column_name;
                 }
         }
-        
         return $return;
     }
 
     public function prepareItems()
     {
         global $wpdb;
-    
+
         $itemsPerPage           = $this->get_items_per_page('edit_hummingbird_logs_per_page', 20);
         $this->_column_headers  = array($this->get_columns(), get_hidden_columns($this->screen), $this->getSortableColumns());
         $where                  = ' WHERE 1 = 1';
@@ -113,7 +113,6 @@ class HummingbirdLogTable extends WP_List_Table
 
         $offset = ($this->get_pagenum() - 1) * $itemsPerPage;
 
-        
         $totalItems = $wpdb->get_var(
             'SELECT COUNT(`id`) FROM  `' . $wpdb->hummingbird_log . '`
                 ' . $where
@@ -121,7 +120,7 @@ class HummingbirdLogTable extends WP_List_Table
 
         $itemsOrderby = filter_input(INPUT_GET, 'orderby', FILTER_SANITIZE_STRING);
         if (empty($itemsOrderby)) {
-            $itemsOrderby = 'date DESC'; // Sort by time by default.
+            $itemsOrderby = 'date DESC';
         }
 
         $this->items = $wpdb->get_results(
@@ -145,11 +144,14 @@ class HummingbirdLogTable extends WP_List_Table
     public function column_user_id($item)
     {
         global $wp_roles;
-        
+
         if (! empty($item->user_id) && (int) $item->user_id !== 0) {
             $user = get_user_by('id', $item->user_id);
             return sprintf(
-                '<a href="%s">%s <span class="aal-author-name">%s</span></a><br /><small>%s</small>',
+                '<a href="%s">%s <br>
+                    <span class="aal-author-name">%s</span>
+                </a><br>
+                <small>%s</small>',
                 get_edit_user_link($user->ID),
                 get_avatar($user->ID, 40),
                 $user->display_name,

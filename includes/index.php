@@ -44,13 +44,18 @@ if (! is_user_logged_in()) {
 }
 
 /**
- * User activity logging.
+ * If admin, then add all these.
  */
-if (is_user_logged_in()) {
-    require get_theme_file_path('includes/logging/HummingbirdLog.php');
+if (is_admin()) {
+    // includes admin
+    require get_theme_file_path('includes/admin.php');
+
+    // includes logging
+    require get_theme_file_path('includes/log/class.php');
     new HummingbirdLog();
 
-    require get_theme_file_path('includes/logging/HummingbirdLogTable.php');
-    require get_theme_file_path('includes/logging/HummingbirdLogUI.php');
+    // db + ui
+    require get_theme_file_path('includes/log/table.php');
+    require get_theme_file_path('includes/log/ui.php');
     new HummingbirdLogUI();
 }

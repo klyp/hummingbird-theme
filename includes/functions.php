@@ -44,14 +44,14 @@ function klyp_get_nav_menu_items_by_location($location, $args = [])
 {
     // Get all locations
     $locations = get_nav_menu_locations();
- 
+
     // Get object id by location
     if (isset($locations[$location])) {
         $object = wp_get_nav_menu_object($locations[$location]);
- 
+
         // Get menu items by menu name
         $menuItems = wp_get_nav_menu_items($object->name, $args);
- 
+
         // Return menu post objects
         return $menuItems;
     }
@@ -94,12 +94,3 @@ function klyp_generate_nav_menu($location)
 
     return $newMenu;
 }
-
-function customCssAdmin()
-{
-    wp_enqueue_style(
-        'klyp-script-admin',
-        get_stylesheet_directory_uri() . '/assets/admin/main.css',
-    );
-}
-add_action('admin_head', 'customCssAdmin');

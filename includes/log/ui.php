@@ -1,6 +1,6 @@
 <?php
 
-defined('ABSPATH') or die();
+if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * Main class for HummingbirdLogUI
@@ -15,48 +15,53 @@ class HummingbirdLogUI
 
     function __construct()
     {
-        add_action('admin_menu', array(&$this, 'klypLogCreateAdminMenu'), 20);
+        add_action('admin_menu', array(&$this, 'klyp_log_create_admin_menu'), 20);
     }
 
-
-    function klypLogCreateAdminMenu()
+    /**
+     * Create admin menu
+     * @return void
+     */
+    function klyp_log_create_admin_menu()
     {
         $this->screens['main'] = add_menu_page(
-            _x('Hummingbird Log', 'Page Title', 'hummingbird'),
-            _x('Hummingbird Log', 'Menu Title', 'hummingbird'),
+            __('Site Logs', 'Page Title', 'hummingbird'),
+            __('Site Logs', 'Menu Title', 'hummingbird'),
             'edit_themes',
             'hummingbird_log_page',
-            array(&$this, 'klypActivityLogPageFunc'),
+            array(&$this, 'klyp_activity_log_page_func'),
             '',
             '4.1'
         );
-        // Just make sure we are create instance.
-        add_action('load-' . $this->screens['main'], array(&$this, 'getListTable'));
+        add_action('load-' . $this->screens['main'], array(&$this, 'get_list_table'));
     }
 
     /**
      * @return HummingbirdLogTable
      */
-    public function getListTable()
+    public function get_list_table()
     {
         if (is_null($this->listTable)) {
             $this->listTable = new HummingbirdLogTable(array('screen' => $this->screens['main']));
-            // do_action('aal_admin_page_load', $this->listTable);
         }
-        
+
         return $this->listTable;
     }
-    
-    public function klypActivityLogPageFunc()
+
+    /**
+     * Set up log page
+     * @return void
+     */
+    public function klyp_activity_log_page_func()
     {
-        $this->getListTable()->prepareItems();
+        $this->get_list_table()->prepareItems();
         ?>
         <div class="wrap">
-            <h1 class="hb-title"><?php _ex('Humingbird Activity Log', 'Page and Menu Title', 'hummingbird'); ?></h1>
+            <h1 class="hb-title"><?php __('Site Activity Log', 'Page and Menu Title', 'hummingbird'); ?></h1>
 
             <form id="activity-filter" method="get">
                 <input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']); ?>" />
-                <?php $this->getListTable()->display(); ?>
+                <?php $this->get_list_table()->display(); ?>
             </form>
         </div>
         <?php

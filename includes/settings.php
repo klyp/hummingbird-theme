@@ -1,11 +1,5 @@
 <?php
 
-if (is_admin()) {
-    add_action('admin_enqueue_scripts', function() {
-        wp_enqueue_script('klyp-hummingbird-js', get_template_directory_uri() . '/assets/admin/main.js', array('jquery'));
-    });
-}
-
 // Create a new role called Super Admin which should have FULL control
 if (! $GLOBALS['wp_roles']->is_role('super-admin')) {
     add_role('super-admin', 'Super Admin', get_role('administrator')->capabilities);
@@ -212,11 +206,6 @@ add_filter('admin_footer_text', 'klyp_remove_footer_admin');
  */
 function klyp_set_max_revisions()
 {
-    // add js
-    add_action('admin_enqueue_scripts', function() {
-        wp_enqueue_script('klyp-hummingbird-js', get_template_directory_uri() . '/assets/admin/main.js', array('jquery'));
-    });
-
     // get max post revisions
     $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : -1);
 
@@ -271,17 +260,17 @@ function klyp_clean_up_revisions()
     );
 
     if ($allRevisions) {
-        foreach($allRevisions as $key => $revision) {
+        foreach ($allRevisions as $key => $revision) {
             $revisions = wp_get_post_revisions($revision->post_parent);
 
-            if (count($revisions) <= $maxRevision ) {
+            if (count($revisions) <= $maxRevision) {
                 continue;
             }
 
             $totalRevisions += count($revision);
             $revisionsToRemove = array_slice($revisions, $maxRevision, null, true);
 
-            foreach($revisionsToRemove as $revisionRemoved) {
+            foreach ($revisionsToRemove as $revisionRemoved) {
                 wp_delete_post_revision($revisionRemoved->ID);
             }
         }
