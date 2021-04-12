@@ -1,12 +1,13 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_counter_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_counter_class');
-    $enableComponent      = get_sub_field('component_counter_enable');
+    $componentId     = get_sub_field('component_counter_id') ?: 'random_' . rand();
+    $componentClass  = get_sub_field('component_counter_class');
+    $enableComponent = get_sub_field('component_counter_enable');
+    $globalComponent = get_sub_field('component_counter_global_component');
 
     //Settings.
-    $enableIcon         = get_sub_field('component_counter_enable_icons');
-    $counters           = get_sub_field('component_counter_counters');
+    $enableIcon      = klyp_get_the_field_values($globalComponent, 'counter', 'enable_icons');
+    $counters        = klyp_get_the_field_values($globalComponent, 'counter', 'counters');
 
 if ($enableIcon) {
     $countClass     = 'hb-counter__count--gray';
@@ -18,29 +19,29 @@ if ($enableIcon) {
 ?>
 
 <?php if ($enableComponent): ?>
-<section id="<?php echo $componentId; ?>" class="hb-counter hb-bg-light text-center <?php echo $componentClass; ?>">
-    <div class="hb-container">
-        <div class="hb-row">
-            <?php foreach ($counters as $key => $counter) : ?>
-                <div class="hb-counter__col">
-                    <div class="hb-counter__content <?php echo $contentClass; ?>">
-                        <?php if ($enableIcon) : ?>
-                            <div class="hb-counter__icon">
-                                <img src="<?php echo $counter['icon']['url'] ?>" alt="<?php echo $counter['icon']['title'] ?>">
+    <section id="<?php echo $componentId; ?>" class="hb-counter hb-bg-light text-center <?php echo $componentClass; ?>">
+        <div class="hb-container">
+            <div class="hb-row">
+                <?php foreach ($counters as $key => $counter) : ?>
+                    <div class="hb-counter__col">
+                        <div class="hb-counter__content <?php echo $contentClass; ?>">
+                            <?php if ($enableIcon) : ?>
+                                <div class="hb-counter__icon">
+                                    <img src="<?php echo $counter['icon']['url'] ?>" alt="<?php echo $counter['icon']['title'] ?>">
+                                </div>
+                            <?php endif; ?>
+                            <h2 class="hb-counter__count <?php echo $countClass; ?>">
+                                <span class="hb-counter__number">
+                                    <?php echo $counter['stat'] ?>
+                                </span>
+                            </h2>
+                            <div class="hb-counter__title">
+                                <?php echo $counter['title'] ?>
                             </div>
-                        <?php endif; ?>
-                        <h2 class="hb-counter__count <?php echo $countClass; ?>">
-                            <span class="hb-counter__number">
-                                <?php echo $counter['stat'] ?>
-                            </span>
-                        </h2>
-                        <div class="hb-counter__title">
-                            <?php echo $counter['title'] ?>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 <?php endif; ?>

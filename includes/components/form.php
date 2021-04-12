@@ -1,5 +1,7 @@
 <?php
 
+$compNames = klyp_get_the_global_components('form');
+
 $fields = array(
     'component_form' => array(
         'key' => 'component_form',
@@ -32,7 +34,7 @@ $fields = array(
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
-                    'width' => '',
+                    'width' => '50',
                     'class' => '',
                     'id' => '',
                 ),
@@ -41,6 +43,28 @@ $fields = array(
                 'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
+            ),
+            array(
+                'key' => 'component_form_global_component',
+                'label' => 'Global Component',
+                'name' => 'form_global_component',
+                'type' => 'select',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '50',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'choices' => $compNames,
+                'default_value' => false,
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 0,
+                'return_format' => 'value',
+                'ajax' => 0,
+                'placeholder' => '',
             ),
             array(
                 'key' => 'component_form_id',
@@ -87,7 +111,15 @@ $fields = array(
                 'type' => 'tab',
                 'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => 0,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'component_form_global_component',
+                            'operator' => '==',
+                            'value' => '',
+                        ),
+                    ),
+                ),
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
