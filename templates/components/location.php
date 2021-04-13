@@ -6,8 +6,8 @@
     $globalComponent = get_sub_field('component_location_global_component');
 
     //Settings.
-    $style           = klyp_get_the_field_values($globalComponent, 'breadcrumb', 'style');
-    $addresses       = klyp_get_the_field_values($globalComponent, 'breadcrumb', 'addresses');
+    $style           = klyp_get_the_field_values($globalComponent, 'location', 'style');
+    $addresses       = klyp_get_the_field_values($globalComponent, 'location', 'addresses');
 
 if ($style == 'full-width') {
     $containerClass = 'hb-container-fluid';
