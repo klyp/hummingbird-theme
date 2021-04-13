@@ -43,7 +43,13 @@ function custom_global_components_post_type() {
 
     register_post_type('global-component', $args);
 }
-add_action('init', 'custom_global_components_post_type', 0);
+
+// get settings
+$settings_blog_style = get_field('settings_blog', 'option')['global_component_enable'];
+
+if ($settings_blog_style == 1) {
+    add_action('init', 'custom_global_components_post_type', 0);
+}
 
 /**
  * Add new column for global component
