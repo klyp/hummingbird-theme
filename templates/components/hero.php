@@ -3,18 +3,19 @@
     $componentId            = get_sub_field('component_hero_id') ?: 'random_' . rand();
     $componentClass         = get_sub_field('component_hero_class');
     $enableComponent        = get_sub_field('component_hero_enable');
+    $globalComponent        = get_sub_field('component_hero_global_component');
 
     //Settings.
-    $alignment              = get_sub_field('component_hero_alignment');
-    $size                   = get_sub_field('component_hero_size');
-    $image                  = get_sub_field('component_hero_image');
-    $header                 = get_sub_field('component_hero_header');
-    $subHeader              = get_sub_field('component_hero_subheader');
-    $description            = get_sub_field('component_hero_desciption');
-    $primaryCta             = get_sub_field('component_hero_primary_cta');
-    $secondaryCta           = get_sub_field('component_hero_secondary_cta');
-    $desktopImagePosition   = get_sub_field('component_hero_desktop_position');
-    $mobileImagePosition    = get_sub_field('component_hero_mobile_position');
+    $alignment              = klyp_get_the_field_values($globalComponent, 'hero', 'alignment');
+    $size                   = klyp_get_the_field_values($globalComponent, 'hero', 'size');
+    $image                  = klyp_get_the_field_values($globalComponent, 'hero', 'image');
+    $header                 = klyp_get_the_field_values($globalComponent, 'hero', 'header');
+    $subHeader              = klyp_get_the_field_values($globalComponent, 'hero', 'sub_header');
+    $description            = klyp_get_the_field_values($globalComponent, 'hero', 'description');
+    $primaryCta             = klyp_get_the_field_values($globalComponent, 'hero', 'primary_cta');
+    $secondaryCta           = klyp_get_the_field_values($globalComponent, 'hero', 'secondary_cta');
+    $desktopImagePosition   = klyp_get_the_field_values($globalComponent, 'hero', 'desktop_image_position');
+    $mobileImagePosition    = klyp_get_the_field_values($globalComponent, 'hero', 'mobile_image_position');
 
 switch ($size) {
     case 'full-height':
@@ -58,39 +59,39 @@ switch ($alignment) {
     ?>
 
 <?php if ($enableComponent): ?>
-<section id="<?php echo $componentId; ?>" class="hb-fs-banner <?php echo $componentClass; ?>">
-    <div class="hb-container">
-        <div class="hb-row">
-            <div class="hb-col-full">
-                <div class="<?php echo $heightClass; ?> hb-fs-banner__height--value">
-                    <div class="hb-fs-banner__content <?php echo $alignClass; ?>">
-                        <h5 class="hb-fs-banner__intro">
-                            <?php echo $subHeader; ?>
-                        </h5>
-                        <h2 class="hb-fs-banner__title">
-                            <?php echo $header; ?>
-                        </h2>
-                        <div class="hb-fs-banner__text">
-                            <p>
-                               <?php echo $description; ?>
-                            </p>
-                        </div>
-                        <div class="hb-btn-row">
-                            <?php if ($primaryCta) : ?>
-                                <a href="<?php echo $primaryCta['url']; ?>" class="hb-btn-primary" target="<?php echo $primaryCta['target']; ?>">
-                                    <?php echo $primaryCta['title']; ?>
-                                </a>
-                            <?php endif; ?>
+    <section id="<?php echo $componentId; ?>" class="hb-fs-banner <?php echo $componentClass; ?>">
+        <div class="hb-container">
+            <div class="hb-row">
+                <div class="hb-col-full">
+                    <div class="<?php echo $heightClass; ?> hb-fs-banner__height--value">
+                        <div class="hb-fs-banner__content <?php echo $alignClass; ?>">
+                            <h5 class="hb-fs-banner__intro">
+                                <?php echo $subHeader; ?>
+                            </h5>
+                            <h2 class="hb-fs-banner__title">
+                                <?php echo $header; ?>
+                            </h2>
+                            <div class="hb-fs-banner__text">
+                                <p>
+                                <?php echo $description; ?>
+                                </p>
+                            </div>
+                            <div class="hb-btn-row">
+                                <?php if ($primaryCta) : ?>
+                                    <a href="<?php echo $primaryCta['url']; ?>" class="hb-btn-primary" target="<?php echo $primaryCta['target']; ?>">
+                                        <?php echo $primaryCta['title']; ?>
+                                    </a>
+                                <?php endif; ?>
 
-                            <?php if ($secondaryCta) : ?>
-                                <a href="<?php echo $secondaryCta['url']; ?>" class="hb-btn-primary hb-btn-primary--outline" target="<?php echo $secondaryCta['target']; ?>"><?php echo $secondaryCta['title']; ?></a>
-                            <?php endif; ?>
+                                <?php if ($secondaryCta) : ?>
+                                    <a href="<?php echo $secondaryCta['url']; ?>" class="hb-btn-primary hb-btn-primary--outline" target="<?php echo $secondaryCta['target']; ?>"><?php echo $secondaryCta['title']; ?></a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
+    </section>
+    <?php echo klyp_minimize_css(klyp_process_css($customCss)); ?>
 <?php endif; ?>
