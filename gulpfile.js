@@ -142,7 +142,7 @@ function watchFiles()
 {
   gulp.watch('./assets/src/scss/**/*', css);
   gulp.watch('./assets/src/js/**/*', scripts);
-  gulp.watch('./assets/src/img/**/*', images);
+  gulp.watch('./assets/src/image/**/*', images);
   gulp.watch('./assets/src/fonts/**/*', fonts);
   gulp.watch('./*.html', html);
 }
