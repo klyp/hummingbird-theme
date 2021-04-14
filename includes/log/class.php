@@ -17,13 +17,23 @@ class HummingbirdLog
     function __construct()
     {
         add_action('after_setup_theme', array(&$this, 'klyp_add_log_table_db'));
+
+        // login
         add_action('wp_login', array(&$this, 'klyp_log_login'), 10, 2);
+
+        // posts
         add_action('transition_post_status', array(&$this, 'klyp_log_transition_post_status'), 10, 3);
         add_action('delete_post', array(&$this, 'klyp_log_delete_post'));
         add_filter('wp_insert_post_data', array(&$this, 'klyp_log_post_data'), 10, 2);
-        add_action('update_option', array(&$this, 'klyp_log_option_update'), 10, 3);
-        // add_action('add_option', array(&$this, 'klyp_log_option_update'), 10, 2);
-        add_action('init', array(&$this, 'klyp_log_requests'), 10);
+
+        //options
+        add_action('updated_option', array(&$this, 'klyp_log_option_update'), 10, 3);
+
+        // plugin
+        add_action('activated_plugin', array(&$this, 'klyp_log_plugin_activated'), 10, 1);
+        add_action('deactivated_plugin', array(&$this, 'klyp_log_plugin_deactivated'), 10, 1);
+        add_action('upgrader_process_complete', array( &$this, 'klyp_log_plugin_install_update' ), 10, 2);
+        add_action('deleted_plugin', array( &$this, 'klyp_log_plugin_delete' ), 10, 2);
     }
 
     /**
@@ -59,24 +69,23 @@ class HummingbirdLog
      * @param string $action
      * @return void
      */
-    function klyp_insert_user_log($user, $action = '')
+    function klyp_insert_user_log($action = '', $user = null)
     {
-        global $wpdb;
-        $tableName = $wpdb->prefix . HB_LOG_TABLE;
+        if (! $user) {
+            $user = get_user_by('id', get_current_user_id());
+        }
         $url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-        $data = array(
-            'user_id'   => $user->ID,
-            'url'       => ($this->postUrl) ?: $url,
-            'action'    => ($action) ?: $_SERVER['REQUEST_METHOD'],
-            'type'      => $this->postType,
-            'data'      => json_encode($this->postData, JSON_PRETTY_PRINT),
-            'ip'        => klyp_get_the_user_ip()
-        );
-        var_dump($data);
-        var_dump($wpdb->insert($tableName, $data));
-        echo $wpdb->last_query;
 
-        exit();
+        global $wpdb;
+
+        $wpdb->query(
+            $wpdb->prepare(
+                "INSERT INTO " . $wpdb->prefix . HB_LOG_TABLE . "
+                (user_id, url, action, type, data, ip)
+                VALUES (%d, %s, %s, %s, %s, %s)",
+                $user->ID, ($this->postUrl) ?: $url, ($action) ?: $_SERVER['REQUEST_METHOD'], $this->postType, json_encode($this->postData, JSON_PRETTY_PRINT), klyp_get_the_user_ip()
+            )
+        );
     }
 
     /**
@@ -87,7 +96,7 @@ class HummingbirdLog
      */
     function klyp_log_login($user_login, $user)
     {
-        $this->klyp_insert_user_log($user);
+        $this->klyp_insert_user_log('login', $user);
     }
 
     /**
@@ -138,8 +147,7 @@ class HummingbirdLog
             return;
         }
         $this->postType = $post->post_type;
-        $user = get_user_by('id', get_current_user_id());
-        $this->klyp_insert_user_log($user, $action);
+        $this->klyp_insert_user_log($action);
     }
 
     /**
@@ -168,42 +176,121 @@ class HummingbirdLog
             return;
         }
 
-        $user = get_user_by('id', get_current_user_id());
-        $this->klyp_insert_user_log($user, 'deleted');
+        $this->klyp_insert_user_log('deleted');
     }
 
+    /**
+     * Log option update
+     * @param string
+     * @param string
+     * @param string
+     * @return void
+     */
     function klyp_log_option_update($option_name, $old_value, $value)
     {
-        $action = 'update';
+        $action = 'updated';
 
         switch ($option_name) {
             case '_transient_doing_cron':
             case '_transient_timeout_users_online':
+            case '_site_transient_update_plugins':
+            case '_site_transient_update_core':
+            case '_site_transient_update_themes':
+            case 'cron':
+            case 'active_plugins':
+            case 'recently_activated':
                 return;
         }
-
-        $postData['old_value'] = $old_value;
-        $postData['new_value'] = $value;
-        $user = get_user_by('id', get_current_user_id());
-        $this->postType = $option_name;
+        // $option_name
+        $postData[$option_name]['old_value'] = $old_value;
+        $postData[$option_name]['new_value'] = $value;
+        $this->postType = 'options';
         $this->postData = $postData;
-        $this->klyp_insert_user_log($user, $action);
+        $this->klyp_insert_user_log($action);
     }
 
-
-    function klyp_log_requests()
+    /**
+     * Log plugin activated
+     * @param string
+     * @return void
+     */
+    function klyp_log_plugin_activated($plugin_name)
     {
+        $this->postType = 'plugin';
+        $this->postData = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin_name, true, false);;
+        $this->klyp_insert_user_log('activated');
+    }
 
-        if (isset($_GET['action']) && ! empty($_GET['action'])) {
-            if (isset($_GET['plugin']) && ! empty($_GET['plugin'])) {
-                $this->postType = 'plugin';
-                $action = $_GET['action'];
-                $postData['plugin'] = $_GET['plugin'];
+    /**
+     * Log plugin deactivated
+     * @param string
+     * @return void
+     */
+    function klyp_log_plugin_deactivated($plugin_name)
+    {
+        $this->postType = 'plugin';
+        $this->postData = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin_name, true, false);
+        $this->klyp_insert_user_log('deactivated');
+    }
+
+    /**
+     * Log plugin install or update
+     * @param object
+     * @param array
+     * @return void
+     */
+    function klyp_log_plugin_install_update($upgrader, $extra)
+    {
+        if (! isset($extra['type']) || $extra['type'] !== 'plugin') {
+            return;
+        }
+
+        if ($extra['action'] === 'install') {
+            $path = $upgrader->plugin_info();
+
+            if (! $path) {
+                return;
             }
 
-            $user = get_user_by('id', get_current_user_id());
-            $this->postData = $postData;
-            $this->klyp_insert_user_log($user, $action);
+            $data = get_plugin_data( $upgrader->skin->result['local_destination'] . '/' . $path, true, false );
+
+            $this->postType = 'plugin';
+            $this->postData = $data;
+            $this->klyp_insert_user_log('installed');
+        }
+
+        if ($extra['action'] === 'update') {
+            if (isset($extra['bulk']) && $extra['bulk'] === true) {
+                $slugs = $extra['plugins'];
+            } else {
+                if (! isset($upgrader->skin->plugin)) {
+                    return;
+                }
+            }
+
+            // go through the log
+            foreach ($slugs as $slug) {
+                $data = get_plugin_data(WP_PLUGIN_DIR . '/' . $slug, true, false);
+
+                $this->postType = 'plugin';
+                $this->postData = $data;
+                $this->klyp_insert_user_log('updated');
+            }
+        }
+    }
+
+    /**
+     * Log plugin delete
+     * @param string
+     * @param boolean
+     * @return void
+     */
+    function klyp_log_plugin_delete($plugin_name, $success)
+    {
+        if ($success === true) {
+            $this->postType = 'plugin';
+            $this->postData = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin_name, true, false);
+            $this->klyp_insert_user_log('deleted');
         }
     }
 }
