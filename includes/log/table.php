@@ -105,12 +105,12 @@ class HummingbirdLogTable extends WP_List_Table
 
     public function searchBox($text, $input_id)
     {
-        $searchData = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';
+        $searchData = isset($_REQUEST['search_ip']) ? sanitize_text_field($_REQUEST['search_ip']) : '';
 
         $input_id = $input_id . '-search-input'; ?>
         <p class="search-box">
             <label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
-            <input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo esc_attr($searchData); ?>" />
+            <input type="search" id="<?php echo $input_id ?>" name="search_ip" value="<?php echo esc_attr($searchData); ?>" />
             <?php submit_button($text, 'button', false, false, array('id' => 'search-submit')); ?>
         </p>
         <?php
@@ -128,7 +128,6 @@ class HummingbirdLogTable extends WP_List_Table
         $users = $wpdb->get_results(
             'SELECT DISTINCT `user_id` FROM `' . $wpdb->hummingbird_log . '`
                 WHERE 1 = 1
-                ' . $this->_get_where_by_role() . '
                 GROUP BY `user_id`
                 ORDER BY `user_id`
             ;'
@@ -165,7 +164,6 @@ class HummingbirdLogTable extends WP_List_Table
         $types = $wpdb->get_results(
             'SELECT DISTINCT `type` FROM `' . $wpdb->hummingbird_log . '`
                 WHERE 1 = 1
-                ' . $this->_get_where_by_role() . '
                 GROUP BY `type`
                 ORDER BY `type`
             ;'
@@ -188,7 +186,6 @@ class HummingbirdLogTable extends WP_List_Table
         $actions = $wpdb->get_results(
             'SELECT DISTINCT `action` FROM `' . $wpdb->hummingbird_log . '`
                 WHERE 1 = 1
-                ' . $this->_get_where_by_role() . '
                 GROUP BY `action`
                 ORDER BY `action`
             ;'
@@ -236,9 +233,9 @@ class HummingbirdLogTable extends WP_List_Table
         $this->_column_headers  = array($this->get_columns(), get_hidden_columns($this->screen), $this->getSortableColumns(), 'user_id');
         $where                  = ' WHERE 1 = 1';
 
-        if (isset($_REQUEST['s'])) {
+        if (isset($_REQUEST['search_ip'])) {
             // Search only searches 'ip' fields.
-            $where .= $wpdb->prepare(' AND `ip` LIKE %s', '%' . $wpdb->esc_like($_REQUEST['s']) . '%');
+            $where .= $wpdb->prepare(' AND `ip` LIKE %s', '%' . $wpdb->esc_like($_REQUEST['search_ip']) . '%');
         }
 
         if (! empty($_REQUEST['typefilter'])) {
