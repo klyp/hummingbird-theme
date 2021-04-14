@@ -30,8 +30,8 @@ class HummingbirdLogUI
             'edit_themes',
             'hummingbird_log_page',
             array(&$this, 'klyp_activity_log_page_func'),
-            '',
-            '4.1'
+            'dashicons-visibility',
+            '99'
         );
         add_action('load-' . $this->screens['main'], array(&$this, 'get_list_table'));
     }

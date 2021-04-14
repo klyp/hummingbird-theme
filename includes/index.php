@@ -46,7 +46,7 @@ if (! is_user_logged_in()) {
 /**
  * If admin, then add all these.
  */
-// if (is_admin()) {
+if (is_admin()) {
     // includes admin
     require get_theme_file_path('includes/admin.php');
 
@@ -58,4 +58,4 @@ if (! is_user_logged_in()) {
     require get_theme_file_path('includes/log/table.php');
     require get_theme_file_path('includes/log/ui.php');
     new HummingbirdLogUI();
-// }
+}

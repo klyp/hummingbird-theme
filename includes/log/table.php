@@ -61,9 +61,10 @@ class HummingbirdLogTable extends WP_List_Table
     public function getSortableColumns()
     {
         return array(
-            'user_id' => 'user_id',
-            'ip' => 'ip',
-            'date' => array('date', true),
+            'user_id'   => 'user_id',
+            'ip'        => 'ip',
+            'type'      => 'type',
+            'date'      => array('date', true),
         );
     }
 
@@ -74,8 +75,11 @@ class HummingbirdLogTable extends WP_List_Table
             case 'action':
                 $return = $this->getActionLabel($item->action);
                 break;
+            case 'type':
+                $return = $this->getActionLabel($item->type);
+                break;
             case 'date':
-                $return .=  date(get_option( 'date_format' ), strtotime($item->date)) . ' - ' . date(get_option('time_format'), strtotime($item->date));
+                $return =  date(get_option('date_format'), strtotime($item->date)) . ' - ' . date(get_option('time_format'), strtotime($item->date));
                 break;
             case 'ip':
                 $return = $item->ip;
@@ -94,6 +98,7 @@ class HummingbirdLogTable extends WP_List_Table
                 if (isset($item->$column_name)) {
                     $return = $item->$column_name;
                 }
+                break;
         }
         return $return;
     }
@@ -103,7 +108,7 @@ class HummingbirdLogTable extends WP_List_Table
         global $wpdb;
 
         $itemsPerPage           = $this->get_items_per_page('edit_hummingbird_logs_per_page', 20);
-        $this->_column_headers  = array($this->get_columns(), get_hidden_columns($this->screen), $this->getSortableColumns());
+        $this->_column_headers  = array($this->get_columns(), get_hidden_columns($this->screen), $this->getSortableColumns(), 'user_id');
         $where                  = ' WHERE 1 = 1';
 
         if (isset($_REQUEST['s'])) {
@@ -111,8 +116,14 @@ class HummingbirdLogTable extends WP_List_Table
             $where .= $wpdb->prepare(' AND `object_name` LIKE %s', '%' . $wpdb->esc_like($_REQUEST['s']) . '%');
         }
 
-        $offset = ($this->get_pagenum() - 1) * $itemsPerPage;
+        if (! isset($_REQUEST['order']) || ! in_array($_REQUEST['order'], array('desc', 'asc'))) {
+            $_REQUEST['order'] = 'DESC';
+        }
+        if (! isset($_REQUEST['orderby']) || ! in_array($_REQUEST['orderby'], array('user_id', 'ip', 'type', 'date'))) {
+            $_REQUEST['orderby'] = 'date';
+        }
 
+        $offset = ($this->get_pagenum() - 1) * $itemsPerPage;
         $totalItems = $wpdb->get_var(
             'SELECT COUNT(`id`) FROM  `' . $wpdb->hummingbird_log . '`
                 ' . $where
@@ -169,4 +180,5 @@ class HummingbirdLogTable extends WP_List_Table
         $return = sprintf('<a href="%s">%s</a>', $item->url, $item->url);
         return $return;
     }
+    
 }
