@@ -61,9 +61,9 @@ class HummingbirdLogTable extends WP_List_Table
     public function getSortableColumns()
     {
         return array(
-            'user_id'   => 'user_id',
-            'ip'        => 'ip',
-            'type'      => 'type',
+            'user_id'   => array('display_name', true),
+            'ip'        => array('ip', true),
+            'type'      => array('type', true),
             'date'      => array('date', true),
         );
     }
@@ -103,6 +103,131 @@ class HummingbirdLogTable extends WP_List_Table
         return $return;
     }
 
+    public function searchBox($text, $input_id)
+    {
+        $searchData = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';
+
+        $input_id = $input_id . '-search-input'; ?>
+        <p class="search-box">
+            <label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
+            <input type="search" id="<?php echo $input_id ?>" name="s" value="<?php echo esc_attr($searchData); ?>" />
+            <?php submit_button($text, 'button', false, false, array('id' => 'search-submit')); ?>
+        </p>
+        <?php
+    }
+
+    public function extraTablenav($which)
+    {
+        global $wpdb;
+        
+        if ($which !== 'top') {
+            return;
+        }
+        echo '<div class="alignleft actions">';
+
+        $users = $wpdb->get_results(
+            'SELECT DISTINCT `user_id` FROM `' . $wpdb->hummingbird_log . '`
+                WHERE 1 = 1
+                ' . $this->_get_where_by_role() . '
+                GROUP BY `user_id`
+                ORDER BY `user_id`
+            ;'
+        );
+
+        if ($users) {
+            if (! isset($_REQUEST['userfilter'])) {
+                $_REQUEST['userfilter'] = '';
+            }
+
+            $output = array();
+            foreach ($users as $user) {
+                if (0 === (int) $user->user_id) {
+                    $output[0] = __('N/A', 'hummingbird');
+                    continue;
+                }
+
+                $userData = get_user_by('id', $user->user_id);
+                if ($userData) {
+                    $output[ $userData->ID ] = $userData->display_name;
+                }
+            }
+
+            if (! empty($output)) {
+                echo '<select name="userfilter" id="hs-filter-userfilter">';
+                printf('<option value="">%s</option>', __('All Users', 'hummingbird'));
+                foreach ($output as $key => $value) {
+                    printf('<option value="%s"%s>%s</option>', $key, selected($_REQUEST['userfilter'], $key, false), $value);
+                }
+                echo '</select>';
+            }
+        }
+
+        $types = $wpdb->get_results(
+            'SELECT DISTINCT `type` FROM `' . $wpdb->hummingbird_log . '`
+                WHERE 1 = 1
+                ' . $this->_get_where_by_role() . '
+                GROUP BY `type`
+                ORDER BY `type`
+            ;'
+        );
+
+        if ($types) {
+            if (! isset($_REQUEST['typefilter'])) {
+                $_REQUEST['typefilter'] = '';
+            }
+            $output = array();
+            foreach ($types as $type) {
+                $output[] = sprintf('<option value="%s"%s>%s</option>', $type->type, selected($_REQUEST['typefilter'], $type->type, false), __($type->type, 'hummingbird'));
+            }
+            echo '<select name="typefilter" id="hs-filter-typefilter">';
+            printf('<option value="">%s</option>', __('All Types', 'hummingbird'));
+            echo implode('', $output);
+            echo '</select>';
+        }
+        
+        $actions = $wpdb->get_results(
+            'SELECT DISTINCT `action` FROM `' . $wpdb->hummingbird_log . '`
+                WHERE 1 = 1
+                ' . $this->_get_where_by_role() . '
+                GROUP BY `action`
+                ORDER BY `action`
+            ;'
+        );
+
+        if ($actions) {
+            if (! isset($_REQUEST['actionfilter'])) {
+                $_REQUEST['actionfilter'] = '';
+            }
+            $output = array();
+            foreach ($actions as $action) {
+                $output[] = sprintf('<option value="%s"%s>%s</option>', $action->action, selected($_REQUEST['actionfilter'], $action->action, false), ucfirst(__($action->action, 'hummingbird')));
+            }
+            echo '<select name="actionfilter" id="hs-filter-actionfilter">';
+            printf('<option value="">%s</option>', __('All Actions', 'hummingbird'));
+            echo implode('', $output);
+            echo '</select>';
+            submit_button(__('Filter', 'hummingbird'), 'button', 'hb-filter', false, array('id' => 'activity-query-submit'));
+        }
+
+        echo '</div>';
+    }
+
+    public function display_tablenav($which)
+    {
+        if ('top' == $which) {
+            $this->searchBox(__('Search IP', 'hummingbird'), 'hb-log');
+        }
+        ?>
+        <div class="tablenav <?php echo esc_attr($which); ?>">
+            <?php
+            $this->extraTablenav($which);
+            $this->pagination($which);
+            ?>
+            <br class="clear" />
+        </div>
+        <?php
+    }
+
     public function prepareItems()
     {
         global $wpdb;
@@ -112,8 +237,20 @@ class HummingbirdLogTable extends WP_List_Table
         $where                  = ' WHERE 1 = 1';
 
         if (isset($_REQUEST['s'])) {
-            // Search only searches 'description' fields.
-            $where .= $wpdb->prepare(' AND `object_name` LIKE %s', '%' . $wpdb->esc_like($_REQUEST['s']) . '%');
+            // Search only searches 'ip' fields.
+            $where .= $wpdb->prepare(' AND `ip` LIKE %s', '%' . $wpdb->esc_like($_REQUEST['s']) . '%');
+        }
+
+        if (! empty($_REQUEST['typefilter'])) {
+            $where .= $wpdb->prepare(' AND `type` = %s', $_REQUEST['typefilter']);
+        }
+
+        if (! empty($_REQUEST['actionfilter'])) {
+            $where .= $wpdb->prepare(' AND `action` = %s', $_REQUEST['actionfilter']);
+        }
+
+        if (! empty($_REQUEST['userfilter'])) {
+            $where .= $wpdb->prepare(' AND `user_id` = %s', $_REQUEST['userfilter']);
         }
 
         if (! isset($_REQUEST['order']) || ! in_array($_REQUEST['order'], array('desc', 'asc'))) {
@@ -131,13 +268,19 @@ class HummingbirdLogTable extends WP_List_Table
 
         $itemsOrderby = filter_input(INPUT_GET, 'orderby', FILTER_SANITIZE_STRING);
         if (empty($itemsOrderby)) {
-            $itemsOrderby = 'date DESC';
+            $itemsOrderby = 'date';
+        }
+
+        $itemsOrder = strtoupper($_REQUEST['order']);
+        if (empty($itemsOrder) || ! in_array($itemsOrder, array('DESC', 'ASC'))) {
+            $itemsOrder = 'DESC'; // Descending order by default.
         }
 
         $this->items = $wpdb->get_results(
             $wpdb->prepare(
-                'SELECT * FROM `' . $wpdb->hummingbird_log . '`
-                    ' . $where . ' ORDER BY ' . $itemsOrderby . ' LIMIT %d, %d;',
+                'SELECT hb_log.* FROM `' . $wpdb->hummingbird_log . '` as hb_log
+                    JOIN `' . $wpdb->prefix . 'users' . '` as users ON users.ID = hb_log.user_id ' .
+                    $where . ' ORDER BY ' . $itemsOrderby . ' ' . $itemsOrder . ' LIMIT %d, %d;',
                 $offset,
                 $itemsPerPage
             )
@@ -180,5 +323,4 @@ class HummingbirdLogTable extends WP_List_Table
         $return = sprintf('<a href="%s">%s</a>', $item->url, $item->url);
         return $return;
     }
-    
 }

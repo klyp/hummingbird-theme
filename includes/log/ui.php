@@ -57,7 +57,7 @@ class HummingbirdLogUI
         $this->get_list_table()->prepareItems();
         ?>
         <div class="wrap">
-            <h1 class="hb-title"><?php __('Site Activity Log', 'Page and Menu Title', 'hummingbird'); ?></h1>
+            <h1 class="hb-title"><?php echo __('Site Activity Log', 'Page and Menu Title', 'hummingbird'); ?></h1>
 
             <form id="activity-filter" method="get">
                 <input type="hidden" name="page" value="<?php echo esc_attr($_REQUEST['page']); ?>" />
