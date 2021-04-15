@@ -18,10 +18,12 @@ function klyp_get_super_admins()
 
     // get super admins from settings
     $super_admins = get_field('super_admins', 'option');
-    
+
     // if we have a list
     if ($super_admins) {
         $super_admins = wp_list_pluck($super_admins, 'username');
+    } else {
+        $super_admins = array();
     }
 
     // If user is KLYP or user in the list and it is not super user yet, set it as Super Admin
@@ -42,9 +44,10 @@ if (! in_array('super-admin', wp_get_current_user()->roles)) {
  * Remove Super Admin role from roles list
  * @return void
  */
-function klyp_remove_super_admin_editable($roles) {
+function klyp_remove_super_admin_editable($roles)
+{
     if (isset($roles['super-admin'])) {
-        unset($roles['super-admin'] );
+        unset($roles['super-admin']);
     }
     return $roles;
 }
@@ -69,7 +72,8 @@ function klyp_remove_menus()
             'wpcf7',
             'flamingo',
             'site-settings',
-            'wpseo_dashboard'
+            'wpseo_dashboard',
+            'hummingbird_log_page'
         );
         foreach ($GLOBALS['menu'] as $key => $menu) {
             if (! in_array($menu[2], $allowed_menus)) {

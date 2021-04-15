@@ -1,8 +1,6 @@
-(function($)
-{
+(function($) {
     'use strict';
-    $(function()
-    {
+    $(function() {
         $('#klyp-purge-revisions').on('click', function(e) {
             e.preventDefault();
 
@@ -24,18 +22,6 @@
             } else {
                 return;
             }
-        });
-
-        $(document).on('click', '.hb-log__data', function() {           
-            // var theContent = JSON.parse($(this).parent().find('.klyp-modal .klyp-modal__content--log').html());
-            var theContent = $(this).parent().find('.klyp-modal .klyp-modal__content--log').html();
-            // $(this).parent().find('.klyp-modal .klyp-modal__content--log').html(JSON.stringify(theContent, null, '\t'));
-            $(this).parent().find('.klyp-modal .klyp-modal__content--log').html(theContent);
-            $(this).parent().find('.klyp-modal').toggleClass('show');
-        });
-
-        $('.klyp-modal').on('click', function() {
-            $(this).removeClass('show');
         });
     });
 })(jQuery);

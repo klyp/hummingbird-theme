@@ -18,12 +18,16 @@ class HummingbirdLog
     {
         add_action('after_setup_theme', array(&$this, 'klyp_add_log_table_db'));
 
-        // login
+        // user
         add_action('wp_login', array(&$this, 'klyp_log_login'), 10, 2);
+        add_action('clear_auth_cookie', array( &$this, 'klyp_log_logout'));
+        add_action('delete_user', array( &$this, 'klyp_log_user_delete'), 10, 1);
+        add_action('user_register', array(&$this, 'klyp_log_user_register'), 10, 1);
+        add_action('profile_update', array( &$this, 'klyp_log_user_updated'), 10, 1);
 
         // posts
         add_action('transition_post_status', array(&$this, 'klyp_log_transition_post_status'), 10, 3);
-        add_action('delete_post', array(&$this, 'klyp_log_delete_post'));
+        add_action('delete_post', array(&$this, 'klyp_log_delete_post'), 10, 1);
         add_filter('wp_insert_post_data', array(&$this, 'klyp_log_post_data'), 10, 2);
 
         //options
@@ -34,6 +38,11 @@ class HummingbirdLog
         add_action('deactivated_plugin', array(&$this, 'klyp_log_plugin_deactivated'), 10, 1);
         add_action('upgrader_process_complete', array( &$this, 'klyp_log_plugin_install_update' ), 10, 2);
         add_action('deleted_plugin', array( &$this, 'klyp_log_plugin_delete' ), 10, 2);
+
+        // menu
+        add_action('wp_update_nav_menu', array(&$this, 'klyp_log_menu_create_update'), 10, 1);
+        add_action('wp_create_nav_menu', array(&$this, 'klyp_log_menu_create_update'), 10, 1);
+        add_action('delete_nav_menu', array(&$this, 'klyp_log_menu_delete'), 10, 3);
     }
 
     /**
@@ -89,14 +98,73 @@ class HummingbirdLog
     }
 
     /**
-     * Log use login
+     * Log user login
      * @param string
      * @param object
      * @return void
      */
     function klyp_log_login($user_login, $user)
     {
+        $this->postType = 'user';
         $this->klyp_insert_user_log('login', $user);
+    }
+
+    /**
+     * Log user logout
+     * @return void
+     */
+    function klyp_log_logout()
+    {
+        $user = wp_get_current_user();
+
+        if (empty($user) || ! $user->exists()) {
+            return;
+        }
+
+        $this->postType = 'user';
+        $this->klyp_insert_user_log('logout', $user);
+    }
+
+    /**
+     * Log user deleted
+     * @param int
+     * @return void
+     */
+    function klyp_log_user_delete($user_id)
+    {
+        $user = get_user_by('id', $user_id);
+
+        $this->postType = 'user';
+        $this->postData = $user;
+        $this->klyp_insert_user_log('deleted');
+    }
+
+    /**
+     * Log user created
+     * @param int
+     * @return void
+     */
+    function klyp_log_user_register($user_id)
+    {
+        $user = get_user_by('id', $user_id);
+
+        $this->postType = 'user';
+        $this->postData = $user;
+        $this->klyp_insert_user_log('created');
+    }
+
+    /**
+     * Log user updated
+     * @param int
+     * @return void
+     */
+    function klyp_log_user_updated($user_id)
+    {
+        $user = get_user_by('id', $user_id);
+
+        $this->postType = 'user';
+        $this->postData = $user;
+        $this->klyp_insert_user_log('updated');
     }
 
     /**
@@ -292,5 +360,42 @@ class HummingbirdLog
             $this->postData = get_plugin_data(WP_PLUGIN_DIR . '/' . $plugin_name, true, false);
             $this->klyp_insert_user_log('deleted');
         }
+    }
+
+    /**
+     * Log menu create or update
+     * @param int
+     * @return void
+     */
+    function klyp_log_menu_create_update($nav_id)
+    {
+        // get menu
+        $menu = wp_get_nav_menu_object($nav_id);
+
+        if ($menu) {
+            if (current_filter() == 'wp_create_nav_menu') {
+                $action = 'created';
+            } else {
+                $action = 'updated';
+            }
+
+            $this->postType = 'menu';
+            $this->postData = $menu;
+            $this->klyp_insert_user_log($action);
+        }
+    }
+
+    /**
+     * Log menu delete
+     * @param string
+     * @param int
+     * @param object
+     * @return void
+     */
+    function klyp_log_menu_delete($term, $tt_id, $nav)
+    {
+        $this->postType = 'menu';
+        $this->postData = $nav;
+        $this->klyp_insert_user_log('deleted');
     }
 }

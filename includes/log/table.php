@@ -70,6 +70,7 @@ class HummingbirdLogTable extends WP_List_Table
 
     public function column_default($item, $column_name)
     {
+        $time_stamp = date(get_option('date_format'), strtotime($item->date)) . ' - ' . date(get_option('time_format'), strtotime($item->date));
         $return = '';
         switch ($column_name) {
             case 'action':
@@ -79,7 +80,7 @@ class HummingbirdLogTable extends WP_List_Table
                 $return = $this->getActionLabel($item->type);
                 break;
             case 'date':
-                $return =  date(get_option('date_format'), strtotime($item->date)) . ' - ' . date(get_option('time_format'), strtotime($item->date));
+                $return =  $time_stamp;
                 break;
             case 'ip':
                 $return = $item->ip;
@@ -88,10 +89,22 @@ class HummingbirdLogTable extends WP_List_Table
                 $jsonData = json_decode($item->data, true);
                 $return = '';
                 if (! empty($jsonData)) {
-                    $return .= '<a href="javascript:void(0);" class="hb-log__data">Show</a>
-                                <div class="klyp-modal">
-                                    <div class="klyp-modal__content--log">' . $item->data . '</div>
-                                </div>';
+                    $return .= '
+                        <label class="button button-primary" for="hb-log-' . $item->id . '">' . __('Show', 'hummingbird') . '</label>
+                        <input class="klyp-modal__state" id="hb-log-' . $item->id . '" type="checkbox">
+                        <div class="klyp-modal">
+                            <label class="klyp-modal__bg" for="hb-log-' . $item->id . '"></label>
+                            <div class="klyp-modal__inner">
+                                <label class="klyp-modal__close" for="hb-log-' . $item->id . '"></label>
+                                <h2>
+                                    ' . get_user_by('id', $item->user_id)->display_name . ' 
+                                    ' . $item->action . ' a 
+                                    ' . $item->type . ' @ 
+                                    ' . $time_stamp . '                                    
+                                </h2>
+                                <div class="klyp-modal__content">' . $item->data . '</div>
+                            </div>
+                        </div>';
                 }
                 break;
             default:
@@ -103,14 +116,14 @@ class HummingbirdLogTable extends WP_List_Table
         return $return;
     }
 
-    public function searchBox($text, $input_id)
+    public function searchBox($text, $search_input_id)
     {
         $searchData = isset($_REQUEST['search_ip']) ? sanitize_text_field($_REQUEST['search_ip']) : '';
 
-        $input_id = $input_id . '-search-input'; ?>
+        $search_input_id = $search_input_id . '-search-input'; ?>
         <p class="search-box">
-            <label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
-            <input type="search" id="<?php echo $input_id ?>" name="search_ip" value="<?php echo esc_attr($searchData); ?>" />
+            <label class="screen-reader-text" for="<?php echo $search_input_id ?>"><?php echo $text; ?>:</label>
+            <input type="search" id="<?php echo $search_input_id ?>" name="search_ip" value="<?php echo esc_attr($searchData); ?>" />
             <?php submit_button($text, 'button', false, false, array('id' => 'search-submit')); ?>
         </p>
         <?php
@@ -119,7 +132,7 @@ class HummingbirdLogTable extends WP_List_Table
     public function extraTablenav($which)
     {
         global $wpdb;
-        
+
         if ($which !== 'top') {
             return;
         }
@@ -175,14 +188,14 @@ class HummingbirdLogTable extends WP_List_Table
             }
             $output = array();
             foreach ($types as $type) {
-                $output[] = sprintf('<option value="%s"%s>%s</option>', $type->type, selected($_REQUEST['typefilter'], $type->type, false), __($type->type, 'hummingbird'));
+                $output[] = sprintf('<option value="%s"%s>%s</option>', $type->type, selected($_REQUEST['typefilter'], $type->type, false), $this->getActionLabel(__($type->type, 'hummingbird')));
             }
             echo '<select name="typefilter" id="hs-filter-typefilter">';
             printf('<option value="">%s</option>', __('All Types', 'hummingbird'));
             echo implode('', $output);
             echo '</select>';
         }
-        
+
         $actions = $wpdb->get_results(
             'SELECT DISTINCT `action` FROM `' . $wpdb->hummingbird_log . '`
                 WHERE 1 = 1
@@ -197,7 +210,7 @@ class HummingbirdLogTable extends WP_List_Table
             }
             $output = array();
             foreach ($actions as $action) {
-                $output[] = sprintf('<option value="%s"%s>%s</option>', $action->action, selected($_REQUEST['actionfilter'], $action->action, false), ucfirst(__($action->action, 'hummingbird')));
+                $output[] = sprintf('<option value="%s"%s>%s</option>', $action->action, selected($_REQUEST['actionfilter'], $action->action, false), $this->getActionLabel(__($action->action, 'hummingbird')));
             }
             echo '<select name="actionfilter" id="hs-filter-actionfilter">';
             printf('<option value="">%s</option>', __('All Actions', 'hummingbird'));
@@ -270,7 +283,7 @@ class HummingbirdLogTable extends WP_List_Table
 
         $itemsOrder = strtoupper($_REQUEST['order']);
         if (empty($itemsOrder) || ! in_array($itemsOrder, array('DESC', 'ASC'))) {
-            $itemsOrder = 'DESC'; // Descending order by default.
+            $itemsOrder = 'DESC';
         }
 
         $this->items = $wpdb->get_results(
