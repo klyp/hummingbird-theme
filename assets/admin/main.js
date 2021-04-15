@@ -1,8 +1,6 @@
-(function($)
-{
+(function($) {
     'use strict';
-    $(function()
-    {
+    $(function() {
         $('#klyp-purge-revisions').on('click', function(e) {
             e.preventDefault();
 
