@@ -3,6 +3,7 @@
 /**
  * Adds ACF.
  */
+
 require get_template_directory() . '/includes/acf.php';
 
 /**
@@ -43,8 +44,13 @@ if (! is_user_logged_in()) {
 }
 
 /**
- * Admin logging.
+ * If admin, then add all these.
  */
 if (is_admin()) {
-    require get_theme_file_path('includes/log.php');
+    require get_theme_file_path('includes/admin.php');
 }
+
+/**
+ * Logging.
+ */
+require get_theme_file_path('includes/log/index.php');

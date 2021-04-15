@@ -1,11 +1,5 @@
 <?php
 
-if (is_admin()) {
-    add_action('admin_enqueue_scripts', function() {
-        wp_enqueue_script('klyp-hummingbird-js', get_template_directory_uri() . '/assets/admin/main.js', array('jquery'));
-    });
-}
-
 // Create a new role called Super Admin which should have FULL control
 if (! $GLOBALS['wp_roles']->is_role('super-admin')) {
     add_role('super-admin', 'Super Admin', get_role('administrator')->capabilities);
@@ -24,10 +18,12 @@ function klyp_get_super_admins()
 
     // get super admins from settings
     $super_admins = get_field('super_admins', 'option');
-    
+
     // if we have a list
     if ($super_admins) {
         $super_admins = wp_list_pluck($super_admins, 'username');
+    } else {
+        $super_admins = array();
     }
 
     // If user is KLYP or user in the list and it is not super user yet, set it as Super Admin
@@ -48,9 +44,10 @@ if (! in_array('super-admin', wp_get_current_user()->roles)) {
  * Remove Super Admin role from roles list
  * @return void
  */
-function klyp_remove_super_admin_editable($roles) {
+function klyp_remove_super_admin_editable($roles)
+{
     if (isset($roles['super-admin'])) {
-        unset($roles['super-admin'] );
+        unset($roles['super-admin']);
     }
     return $roles;
 }
@@ -75,7 +72,8 @@ function klyp_remove_menus()
             'wpcf7',
             'flamingo',
             'site-settings',
-            'wpseo_dashboard'
+            'wpseo_dashboard',
+            'hummingbird_log_page'
         );
         foreach ($GLOBALS['menu'] as $key => $menu) {
             if (! in_array($menu[2], $allowed_menus)) {
@@ -212,11 +210,6 @@ add_filter('admin_footer_text', 'klyp_remove_footer_admin');
  */
 function klyp_set_max_revisions()
 {
-    // add js
-    add_action('admin_enqueue_scripts', function() {
-        wp_enqueue_script('klyp-hummingbird-js', get_template_directory_uri() . '/assets/admin/main.js', array('jquery'));
-    });
-
     // get max post revisions
     $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : -1);
 
@@ -271,17 +264,17 @@ function klyp_clean_up_revisions()
     );
 
     if ($allRevisions) {
-        foreach($allRevisions as $key => $revision) {
+        foreach ($allRevisions as $key => $revision) {
             $revisions = wp_get_post_revisions($revision->post_parent);
 
-            if (count($revisions) <= $maxRevision ) {
+            if (count($revisions) <= $maxRevision) {
                 continue;
             }
 
             $totalRevisions += count($revision);
             $revisionsToRemove = array_slice($revisions, $maxRevision, null, true);
 
-            foreach($revisionsToRemove as $revisionRemoved) {
+            foreach ($revisionsToRemove as $revisionRemoved) {
                 wp_delete_post_revision($revisionRemoved->ID);
             }
         }
