@@ -8,6 +8,7 @@ require get_theme_file_path('includes/global-components.php');
 /**
  * Adds ACF.
  */
+
 require get_template_directory() . '/includes/acf.php';
 
 /**
@@ -56,3 +57,15 @@ require get_theme_file_path('includes/post-types/global-components.php');
  * Adds extra global components post type acf field for site.
  */
 require get_theme_file_path('includes/global-components-settings-acf.php');
+
+/**
+ * If admin, then add all these.
+ */
+if (is_admin()) {
+    require get_theme_file_path('includes/admin.php');
+}
+
+/**
+ * Logging.
+ */
+require get_theme_file_path('includes/log/index.php');

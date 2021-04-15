@@ -17,7 +17,7 @@ function js_async_attr($tag)
     }
 
     foreach ($scripts_to_exclude as $exclude_script) {
-        if (true == strpos($tag, $exclude_script)) {
+        if (! empty($exclude_script) && strpos($tag, $exclude_script) === true) {
             return $tag;
         }
     }
