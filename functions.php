@@ -137,12 +137,6 @@ function klyp_footer_scripts()
 add_action('get_footer', 'klyp_footer_scripts');
 
 /**
- * Disable Gutenberg
- */
-add_filter('use_block_editor_for_post', '__return_false', 10);
-add_filter('use_block_editor_for_post_type', '__return_false', 10);
-
-/**
  * Modify mimes.
  *
  * @param array $mimes types of files.
