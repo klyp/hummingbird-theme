@@ -22,6 +22,11 @@ require get_template_directory() . '/includes/functions.php';
 require get_template_directory() . '/includes/page.php';
 
 /**
+ * Adds import export page functions.
+ */
+require get_template_directory() . '/includes/import-export.php';
+
+/**
  * Adds settings functions
  */
 require get_template_directory() . '/includes/settings.php';

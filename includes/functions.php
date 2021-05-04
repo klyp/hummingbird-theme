@@ -1,6 +1,18 @@
 <?php
 
 /**
+ * Set valid query vars
+ * @param array
+ * @return array
+ */
+function klyp_query_var($vars) {
+    $vars[] = 'exportNonce';
+    $vars[] = 'exportID';
+    return $vars;
+}
+add_filter('query_vars', 'klyp_query_var');
+
+/**
  * Get user IP
  * @return string
  */

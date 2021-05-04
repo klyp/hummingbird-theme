@@ -9,6 +9,7 @@
     top: 0;
     transition: opacity .25s ease;
     visibility: hidden;
+    z-index: 9;
 }
 .klyp-modal__bg {
     bottom: 0;
@@ -21,11 +22,13 @@
 .klyp-modal__state {
     display: none !important;
 }
-.klyp-modal__state:checked + .klyp-modal {
+.klyp-modal__state:checked + .klyp-modal,
+.klyp-modal.active {
     opacity: 1;
     visibility: visible;
 }
-.klyp-modal__state:checked + .klyp-modal .klyp-modal__inner {
+.klyp-modal__state:checked + .klyp-modal .klyp-modal__inner,
+.klyp-modal.active .klyp-modal__inner {
     top: 0;
 }
 .klyp-modal__inner {
@@ -42,6 +45,10 @@
     top: -20%;
     transition: top .25s ease;
     width: 50%;
+}
+.klyp-modal__inner.import {
+    height: 100px;
+    width: 350px;
 }
 .klyp-modal__inner h2 {
     border-bottom: 1px solid #ccd0d4;

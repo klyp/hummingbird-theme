@@ -257,18 +257,88 @@ class HummingbirdLog
     function klyp_log_option_update($option_name, $old_value, $value)
     {
         $action = 'updated';
+        $whitelist = array(
+            // settings - general
+            'admin_email',
+            'blogdescription',
+            'blogname',
+            'date_format',
+            'default_role',
+            'home',
+            'siteurl',
+            'start_of_week',
+            'time_format',
+            'timezone_string',
+            'users_can_register',
 
-        switch ($option_name) {
-            case '_transient_doing_cron':
-            case '_transient_timeout_users_online':
-            case '_site_transient_update_plugins':
-            case '_site_transient_update_core':
-            case '_site_transient_update_themes':
-            case 'cron':
-            case 'active_plugins':
-            case 'recently_activated':
-                return;
+            // settings - writing
+            'default_category',
+            'default_email_category',
+            'default_post_format',
+            'mailserver_login',
+            'mailserver_pass',
+            'mailserver_url',
+            'ping_sites',
+            'use_balanceTags',
+            'use_smilies',
+
+            // settings - reading
+            'blog_public',
+            'page_for_posts',
+            'page_on_front',
+            'posts_per_page',
+            'posts_per_rss',
+            'rss_use_excerpt',
+            'show_on_front',
+
+            // settings - discussion
+            'avatar_default',
+            'avatar_rating',
+            'blacklist_keys',
+            'close_comments_days_old',
+            'close_comments_for_old_posts',
+            'comment_max_links',
+            'comment_moderation',
+            'comment_order',
+            'comment_registration',
+            'comment_whitelist',
+            'comments_notify',
+            'comments_per_page',
+            'default_comment_status',
+            'default_comments_page',
+            'default_ping_status',
+            'default_pingback_flag',
+            'moderation_keys',
+            'moderation_notify',
+            'page_comments',
+            'require_name_email',
+            'show_avatars',
+            'thread_comments_depth',
+            'thread_comments',
+
+            // settings - media
+            'large_size_h',
+            'large_size_w',
+            'medium_size_h',
+            'medium_size_w',
+            'thumbnail_crop',
+            'thumbnail_size_h',
+            'thumbnail_size_w',
+            'uploads_use_yearmonth_folders',
+
+            // settings - permalinks
+            'category_base',
+            'permalink_structure',
+            'tag_base',
+
+            // settings - widgets
+            'sidebars_widgets'
+        );
+
+        if (! in_array($option_name, $whitelist)) {
+            return;
         }
+
         // $option_name
         $postData[$option_name]['old_value'] = $old_value;
         $postData[$option_name]['new_value'] = $value;

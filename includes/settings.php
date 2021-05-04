@@ -162,7 +162,7 @@ function klyp_admin_login_logo()
     echo '
     <style type="text/css">
         #login h1 a, .login h1 a {
-        background-image: url(' . get_stylesheet_directory_uri() . '/assets/dist/image/Klyp-Logo-RGB-Orange.png);
+        background-image: url(' . get_template_directory_uri() . '/assets/dist/image/Klyp-Logo-RGB-Orange.png);
         background-repeat: no-repeat;
         background-size: 100% auto;
         height:160px;

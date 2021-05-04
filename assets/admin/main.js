@@ -23,5 +23,23 @@
                 return;
             }
         });
+
+        $('.klyp-modal__open').on('click', function(e) {
+            e.preventDefault();
+            $('.klyp-modal').addClass('active');
+        });
+
+        $('.klyp-modal__close').on('click', function(e) {
+            e.preventDefault();
+            $('.klyp-modal').removeClass('active');
+        });
+
+        $('.klyp-import-components').on('click', function(e) {
+            e.preventDefault();
+            
+            var target = $(this).data('target');
+
+            $('#klyp-import-page-id').val(target);
+        });
     });
 })(jQuery);
