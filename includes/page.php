@@ -78,7 +78,6 @@ function klyp_hook_body($classes)
 
 /**
  * Add site wide body script for version 5.2.0 and up
- * 
  * @return string
  */
 function klyp_hook_body_v5() {
