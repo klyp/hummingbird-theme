@@ -102,7 +102,7 @@ class HummingbirdLogTable extends WP_List_Table
                                     ' . $item->type . ' @ 
                                     ' . $time_stamp . '                                    
                                 </h2>
-                                <div class="klyp-modal__content">' . $item->data . '</div>
+                                <textarea class="klyp-modal__content" disabled="disabled" readonly="readonly">' . $item->data . '</textarea>
                             </div>
                         </div>';
                 }
