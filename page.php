@@ -38,13 +38,7 @@ if (post_password_required()) {
             if (have_posts()) :
                 while (have_posts()) :
                     the_post();
-                    if (have_rows('components')) {
-                        while (have_rows('components')) {
-                            the_row();
-                            $layoutName = get_row_layout();
-                            get_template_part('/templates/components/' . $layoutName);
-                        }
-                    }
+                    the_content();
                 endwhile;
             endif;
             ?>

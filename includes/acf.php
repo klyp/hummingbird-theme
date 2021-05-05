@@ -14,6 +14,21 @@ function klyp_acf_google_map_api($api)
 }
 add_filter('acf/fields/google_map/api', 'klyp_acf_google_map_api');
 
+function klyp_block_custom_category($categories, $post)
+{
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug'  => 'acf',
+                'title' => 'ACF',
+            ),
+        )
+    );
+}
+
+add_filter('block_categories', 'klyp_block_custom_category', 10, 2);
+
 /**
  * Initialize ACF Settings
  * @return void
@@ -23,9 +38,46 @@ function klyp_acf_init()
     if ($api_google_map = get_field('settings_api_google_map', 'option')) {
         acf_update_setting('google_api_key', $api_google_map);
     }
+    if (function_exists('acf_register_block')) {
+        acf_register_block(
+            array(
+                'name'              => 'components',
+                'title'             => __('Components'),
+                'description'       => __('A custom components block.'),
+                'render_callback'   => 'klyp_acf_block_render_callback',
+                'category'          => 'acf',
+                'mode'              => 'edit',
+                'post_types'        => array('post', 'page'),
+                'icon'              => 'list-view',
+                'keywords'          => array( 'components', 'acf' ),
+                'supports'          => array(
+                    'mode' => false,
+                    'multiple' => false
+                )
+            )
+        );
+    }
 }
 add_action('acf/init', 'klyp_acf_init');
 
+/**
+ * Component Block Callback Function.
+ *
+ * @param   array $block The block settings and attributes.
+ * @param   string $content The block inner HTML (empty).
+ * @param   bool $is_preview True during AJAX preview.
+ * @param   (int|string) $post_id The post ID this block is saved to.
+ */
+function klyp_acf_block_render_callback($block, $content = '', $is_preview = false, $post_id = 0)
+{
+    if (have_rows('components')) {
+        while (have_rows('components')) {
+            the_row();
+            $layoutName = get_row_layout();
+            get_template_part('/templates/components/' . $layoutName);
+        }
+    }
+}
 
 /**
  * Save ACF into JSON

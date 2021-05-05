@@ -27,10 +27,10 @@ if (function_exists('acf_add_local_field_group')) {
             'location' => array(
                 array(
                     array(
-                        'param' => 'post_type',
+                        'param' => 'block',
                         'operator' => '==',
-                        'value' => 'page',
-                    ),
+                        'value' => 'acf/components',
+                    )
                 ),
             ),
             'menu_order' => 0,
