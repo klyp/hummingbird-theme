@@ -22,7 +22,7 @@
                                 <?php echo $header; ?>
                             </h2>
                         <?php endif; ?>
-                        <?php if ($header) : ?>
+                        <?php if ($image) : ?>
                             <div class="hb-general__txt-img-image">
                                 <picture>
                                     <source srcset="<?php echo get_post_meta($image['id'], '_webp_generated_url', true);?>" type="image/webp">
