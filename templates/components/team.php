@@ -1,16 +1,16 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_team_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_team_class');
-    $enableComponent = get_sub_field('component_team_enable');
-    $globalComponent = get_sub_field('component_team_global_component');
+    $componentId     = get_field('component_team_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_team_class');
+    $enableComponent = get_field('component_team_enable');
+    $globalComponent = get_field('component_team_global_component');
 
     //Settings.
     $heading         = klyp_get_the_field_values($globalComponent, 'team', 'heading');
     $teams           = klyp_get_the_field_values($globalComponent, 'team', 'teams');
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-card-list <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

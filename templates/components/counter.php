@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_counter_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_counter_class');
-    $enableComponent = get_sub_field('component_counter_enable');
-    $globalComponent = get_sub_field('component_counter_global_component');
+    $componentId     = get_field('component_counter_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_counter_class');
+    $enableComponent = get_field('component_counter_enable');
+    $globalComponent = get_field('component_counter_global_component');
 
     //Settings.
     $enableIcon      = klyp_get_the_field_values($globalComponent, 'counter', 'enable_icons');
@@ -18,7 +18,7 @@ if ($enableIcon) {
 }
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-counter hb-bg-light text-center <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

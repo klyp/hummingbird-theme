@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_timeline_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_timeline_class');
-    $enableComponent      = get_sub_field('component_timeline_enable');
-    $globalComponent      = get_sub_field('component_timeline_global_component');
+    $componentId          = get_field('component_timeline_id') ?: 'random_' . rand();
+    $componentClass       = get_field('component_timeline_class');
+    $enableComponent      = get_field('component_timeline_enable');
+    $globalComponent      = get_field('component_timeline_global_component');
 
     // Settings
     $timelineData         = klyp_get_the_field_values($globalComponent, 'timeline', 'timeline_data');

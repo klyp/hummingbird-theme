@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId            = get_sub_field('component_hero_id') ?: 'random_' . rand();
-    $componentClass         = get_sub_field('component_hero_class');
-    $enableComponent        = get_sub_field('component_hero_enable');
-    $globalComponent        = get_sub_field('component_hero_global_component');
+    $componentId            = get_field('component_hero_id') ?: 'random_' . rand();
+    $componentClass         = get_field('component_hero_class');
+    $enableComponent        = get_field('component_hero_enable');
+    $globalComponent        = get_field('component_hero_global_component');
 
     //Settings.
     $alignment              = klyp_get_the_field_values($globalComponent, 'hero', 'alignment');
@@ -49,7 +49,7 @@ switch ($alignment) {
 
     // generate css
     $customCss[$componentId]['desktop'] = array (
-        'background-image' => 'url('. $image . ')',
+        'background-image' => 'url(' . $image . ')',
         'background-position' => $desktopImagePosition,
     );
 
@@ -58,7 +58,7 @@ switch ($alignment) {
     );
     ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-fs-banner <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

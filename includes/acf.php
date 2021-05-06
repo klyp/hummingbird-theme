@@ -38,25 +38,6 @@ function klyp_acf_init()
     if ($api_google_map = get_field('settings_api_google_map', 'option')) {
         acf_update_setting('google_api_key', $api_google_map);
     }
-    if (function_exists('acf_register_block')) {
-        acf_register_block(
-            array(
-                'name'              => 'components',
-                'title'             => __('Components'),
-                'description'       => __('A custom components block.'),
-                'render_callback'   => 'klyp_acf_block_render_callback',
-                'category'          => 'acf',
-                'mode'              => 'edit',
-                'post_types'        => array('post', 'page'),
-                'icon'              => 'list-view',
-                'keywords'          => array( 'components', 'acf' ),
-                'supports'          => array(
-                    'mode' => false,
-                    'multiple' => false
-                )
-            )
-        );
-    }
 }
 add_action('acf/init', 'klyp_acf_init');
 
@@ -70,13 +51,8 @@ add_action('acf/init', 'klyp_acf_init');
  */
 function klyp_acf_block_render_callback($block, $content = '', $is_preview = false, $post_id = 0)
 {
-    if (have_rows('components')) {
-        while (have_rows('components')) {
-            the_row();
-            $layoutName = get_row_layout();
-            get_template_part('/templates/components/' . $layoutName);
-        }
-    }
+    $layoutName = str_replace($block['category'] . '/', '', $block['name']);
+    get_template_part('/templates/components/' . $layoutName);
 }
 
 /**
@@ -139,11 +115,59 @@ if (class_exists('acf')) {
 
     $componentFields = array();
     // Generate components
-    foreach ($components as $component) {
-        require locate_template('includes/components/' . $component . '.php');
-        $componentFields = array_merge($componentFields, $fields);
+    if (function_exists('acf_register_block')) {
+        foreach ($components as $component) {
+            require locate_template('includes/components/' . $component . '.php');
+            $componentFields = array_merge($componentFields, $fields);
+        }
+        if (! empty($componentFields)) {
+            foreach ($componentFields as $key => $data) {
+                acf_register_block(
+                    array(
+                        'name'              => $data['name'],
+                        'title'             => __($data['label']),
+                        'description'       => __($data['label']),
+                        'render_callback'   => 'klyp_acf_block_render_callback',
+                        'category'          => 'acf',
+                        'mode'              => 'edit',
+                        'post_types'        => array('post', 'page'),
+                        'icon'              => 'list-view',
+                        'keywords'          => array('components', $data['name']),
+                        'supports'          => array(
+                            'mode' => false
+                        ),
+                    )
+                );
+                $data['location'] = array(
+                    array(
+                        array(
+                            'param' => 'block',
+                            'operator' => '==',
+                            'value' => 'acf/' . $data['name'],
+                        )
+                    ),
+                );
+                $data['menu_order'] = 0;
+                $data['position'] = 'normal';
+                $data['style'] = 'default';
+                $data['fields'] = $data['sub_fields'];
+                $data['label_placement'] = 'top';
+                $data['instruction_placement'] = 'label';
+                $data['hide_on_screen'] = array(
+                    0 => 'the_content',
+                    1 => 'excerpt',
+                    2 => 'discussion',
+                    3 => 'comments',
+                    4 => 'revisions',
+                    5 => 'format',
+                    6 => 'categories',
+                    7 => 'tags',
+                    8 => 'send-trackbacks',
+                );
+                acf_add_local_field_group($data);
+            }
+        }
     }
-    require_once locate_template('includes/components/index.php');
 }
 
 /**

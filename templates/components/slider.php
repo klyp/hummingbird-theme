@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_slider_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_slider_class');
-    $enableComponent = get_sub_field('component_slider_enable');
-    $globalComponent = get_sub_field('component_slider_global_component');
+    $componentId     = get_field('component_slider_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_slider_class');
+    $enableComponent = get_field('component_slider_enable');
+    $globalComponent = get_field('component_slider_global_component');
 
     //Settings.
     $style           = klyp_get_the_field_values($globalComponent, 'slider', 'style');
@@ -24,7 +24,7 @@ switch ($style) {
 }
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-slider <?php echo $componentClass; ?>">
         <div class="hb-slider__slide owl-carousel owl-theme">
             <?php foreach ($sliders as $key => $slider) : ?>

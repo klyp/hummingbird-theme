@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_content_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_content_class');
-    $enableComponent = get_sub_field('component_content_enable');
-    $globalComponent = get_sub_field('component_content_global_component');
+    $componentId     = get_field('component_content_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_content_class');
+    $enableComponent = get_field('component_content_enable');
+    $globalComponent = get_field('component_content_global_component');
 
     //Settings.
     $image           = klyp_get_the_field_values($globalComponent, 'content', 'header_image');

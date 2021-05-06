@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_call_to_action_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_call_to_action_class');
-    $enableComponent      = get_sub_field('component_cta_enable');
-    $globalComponent      = get_sub_field('component_call_to_action_global_component');
+    $componentId          = get_field('component_call_to_action_id') ?: 'random_' . rand();
+    $componentClass       = get_field('component_call_to_action_class');
+    $enableComponent      = get_field('component_cta_enable');
+    $globalComponent      = get_field('component_call_to_action_global_component');
 
     //Settings.
     $alignment            = klyp_get_the_field_values($globalComponent, 'call_to_action', 'alignment');
@@ -36,26 +36,28 @@ switch ($alignment) {
         break;
 }
 
-    // generate css
+// generate css
+if ($image) {
     $customCss[$componentId]['desktop'] = array (
         '.hb-no-webp .hb-cta-section__bg' => array (
-            'background-image' => 'url('. $image['url'] . ')',
+            'background-image' => 'url(' . $image['url'] . ')',
             'background-position' => $desktopImagePosition,
         ),
 
         '.hb-webp .hb-cta-section__bg' => array (
-            'background-image' => 'url('. get_post_meta($image['id'], '_webp_generated_url', true) . ')',
+            'background-image' => 'url(' . get_post_meta($image['id'], '_webp_generated_url', true) . ')',
         ),
     );
+}
 
-    $customCss[$componentId]['mobile'] = array (
-        '.hb-cta-section__bg' => array (
-            'background-position' => $mobileImagePosition,
-        )
-    );
-    ?>
+$customCss[$componentId]['mobile'] = array (
+    '.hb-cta-section__bg' => array (
+        'background-position' => $mobileImagePosition,
+    )
+);
+?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-cta-section <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

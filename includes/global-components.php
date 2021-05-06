@@ -114,7 +114,7 @@ function klyp_get_the_field_values($globalComponent, $compName, $fieldName)
         $data = get_field('global_component_fields', $globalComponent);
         $fieldValue = $data['global_component_fields_'. $compName][$fieldName];
     } else {
-        $fieldValue      = get_sub_field($fieldName);
+        $fieldValue      = get_field($fieldName);
     }
 
     return $fieldValue;

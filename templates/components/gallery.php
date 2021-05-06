@@ -1,21 +1,21 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_gallery_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_gallery_class');
-    $enableComponent = get_sub_field('component_gallery_enable');
-    $globalComponent = get_sub_field('component_gallery_global_component');
+    $componentId     = get_field('component_gallery_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_gallery_class');
+    $enableComponent = get_field('component_gallery_enable');
+    $globalComponent = get_field('component_gallery_global_component');
 
     //Settings.
     $galleryItems    = klyp_get_the_field_values($globalComponent, 'gallery', 'gallery_items');
 
-if (count($galleryItems) == 6) {
+if (!empty($galleryItems) && count($galleryItems) == 6) {
     $galleryColClass = 'hb-gallery-popup__col-third';
 } else {
     $galleryColClass = 'hb-gallery-popup__col-half';
 }
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-gallery-popup <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

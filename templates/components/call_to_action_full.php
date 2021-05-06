@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_call_to_action_full_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_call_to_action_full_class');
-    $enableComponent      = get_sub_field('component_cta_full_enable');
-    $globalComponent      = get_sub_field('component_call_to_action_full_global_component');
+    $componentId          = get_field('component_call_to_action_full_id') ?: 'random_' . rand();
+    $componentClass       = get_field('component_call_to_action_full_class');
+    $enableComponent      = get_field('component_cta_full_enable');
+    $globalComponent      = get_field('component_call_to_action_full_global_component');
 
     //Settings.
     $image                = klyp_get_the_field_values($globalComponent, 'call_to_action_full', 'image');
@@ -14,7 +14,7 @@
 
     // generate css
     $customCss[$componentId]['desktop'] = array (
-        'background-image' => 'url('. $image . ')',
+        'background-image' => 'url(' . $image . ')',
         'background-position' => $desktopImagePosition,
     );
 
@@ -23,7 +23,7 @@
     );
     ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-fs-banner hb-fs-banner--left <?php echo $componentClass; ?>">
         <div class="hb-container">
                 <div class="hb-row">

@@ -1,16 +1,16 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_accordion_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_accordion_class');
-    $enableComponent = get_sub_field('component_accordion_enable');
-    $globalComponent = get_sub_field('component_accordion_global_component');
+    $componentId     = get_field('component_accordion_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_accordion_class');
+    $enableComponent = get_field('component_accordion_enable');
+    $globalComponent = get_field('component_accordion_global_component');
 
     //Settings.
     $accordionItems  = klyp_get_the_field_values($globalComponent, 'accordion', 'accordion_items');
     $accordionIcon   = klyp_get_the_field_values($globalComponent, 'accordion', 'accordion_fa_icon');
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-accordion <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

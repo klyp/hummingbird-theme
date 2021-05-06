@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_cards_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_cards_class');
-    $enableComponent = get_sub_field('component_card_enable');
-    $globalComponent = get_sub_field('component_cards_global_component');
+    $componentId     = get_field('component_cards_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_cards_class');
+    $enableComponent = get_field('component_card_enable');
+    $globalComponent = get_field('component_cards_global_component');
 
     //Settings.
     $style           = klyp_get_the_field_values($globalComponent, 'cards', 'style');
@@ -42,7 +42,7 @@ switch ($style) {
 }
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <?php if ($layout == '1') : ?>
         <section id="<?php echo $componentId; ?>" class="hb-card <?php echo $componentClass; ?>
         <?php echo $sectionClass; ?>" style="background-color: <?php echo $style_color; ?>">

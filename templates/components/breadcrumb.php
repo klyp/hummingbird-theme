@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_breadcrumb_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_breadcrumb_class');
-    $enableComponent      = get_sub_field('component_breadcumb_enable');
-    $globalComponent      = get_sub_field('component_breadcumb_global_component');
+    $componentId          = get_field('component_breadcrumb_id') ?: 'random_' . rand();
+    $componentClass       = get_field('component_breadcrumb_class');
+    $enableComponent      = get_field('component_breadcumb_enable');
+    $globalComponent      = get_field('component_breadcumb_global_component');
 
     //Settings.
     $breadcrumbTitle      = klyp_get_the_field_values($globalComponent, 'breadcrumb', 'title');
@@ -21,7 +21,7 @@
     );
     ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-breadcumb hb-gradient-primary hb-breadcumb--color-white <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

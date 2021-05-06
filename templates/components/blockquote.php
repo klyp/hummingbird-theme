@@ -1,15 +1,15 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_blockquote_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_blockquote_class');
-    $enableComponent = get_sub_field('component_blockquote_enable');
-    $globalComponent = get_sub_field('component_blockquote_global_component');
+    $componentId     = get_field('component_blockquote_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_blockquote_class');
+    $enableComponent = get_field('component_blockquote_enable');
+    $globalComponent = get_field('component_blockquote_global_component');
 
     //Settings.
     $blockquote      = klyp_get_the_field_values($globalComponent, 'blockquote', 'quote');
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-general <?php echo $componentClass; ?>">
         <div class="hb-general__blockquote">
             <div class="hb-container">

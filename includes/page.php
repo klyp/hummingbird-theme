@@ -80,7 +80,8 @@ function klyp_hook_body($classes)
  * Add site wide body script for version 5.2.0 and up
  * @return string
  */
-function klyp_hook_body_v5() {
+function klyp_hook_body_v5()
+{
     echo get_field('settings_script_body', 'options');
 }
 
@@ -119,8 +120,6 @@ function klyp_process_css($styles = null)
     // Variables decleration
     $temp           = '';
     $tempM          = '';
-    $desktopcss     = '';
-    $mobilecss      = '';
     $css            = '';
 
     foreach ($styles as $section => $breakpoint) {

@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_icon_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_icon_class');
-    $enableComponent = get_sub_field('component_icon_enable');
-    $globalComponent = get_sub_field('component_icon_global_component');
+    $componentId     = get_field('component_icon_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_icon_class');
+    $enableComponent = get_field('component_icon_enable');
+    $globalComponent = get_field('component_icon_global_component');
 
     //Settings.
     $iconTitle       = klyp_get_the_field_values($globalComponent, 'icon', 'title');
@@ -17,7 +17,7 @@
     );
     ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-bg-light hb-icon-card <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

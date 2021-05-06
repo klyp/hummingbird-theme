@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_tile_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_tile_class');
-    $enableComponent      = get_sub_field('component_tile_enable');
-    $globalComponent      = get_sub_field('component_tile_global_component');
+    $componentId          = get_field('component_tile_id') ?: 'random_' . rand();
+    $componentClass       = get_field('component_tile_class');
+    $enableComponent      = get_field('component_tile_enable');
+    $globalComponent      = get_field('component_tile_global_component');
 
     // Settings
     $tileData             = klyp_get_the_field_values($globalComponent, 'tile', 'tile_data');

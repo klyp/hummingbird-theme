@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId     = get_sub_field('component_images_id') ?: 'random_' . rand();
-    $componentClass  = get_sub_field('component_images_class');
-    $enableComponent = get_sub_field('component_images_enable');
-    $globalComponent = get_sub_field('component_images_global_component');
+    $componentId     = get_field('component_images_id') ?: 'random_' . rand();
+    $componentClass  = get_field('component_images_class');
+    $enableComponent = get_field('component_images_enable');
+    $globalComponent = get_field('component_images_global_component');
 
     //Settings.
     $imageTitle      = klyp_get_the_field_values($globalComponent, 'images', 'title');
@@ -11,7 +11,7 @@
     $imageItems      = klyp_get_the_field_values($globalComponent, 'images', 'gallery');
 ?>
 
-<?php if ($enableComponent): ?>
+<?php if ($enableComponent) : ?>
     <section id="<?php echo $componentId; ?>" class="hb-gallery <?php echo $componentClass; ?>">
         <div class="hb-container">
             <div class="hb-row">

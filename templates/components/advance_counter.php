@@ -1,9 +1,9 @@
 <?php
     // General.
-    $componentId          = get_sub_field('component_advance_counter_id') ?: 'random_' . rand();
-    $componentClass       = get_sub_field('component_advance_counter_class');
-    $enableComponent      = get_sub_field('component_advance_counter_enable');
-    $globalComponent      = get_sub_field('component_advance_counter_global_component');
+    $componentId          = get_field('component_advance_counter_id') ?: 'random_' . rand();
+    $componentClass       = get_field('component_advance_counter_class');
+    $enableComponent      = get_field('component_advance_counter_enable');
+    $globalComponent      = get_field('component_advance_counter_global_component');
 
     // Settings
     $title                = klyp_get_the_field_values($globalComponent, 'advance_counter', 'title');
