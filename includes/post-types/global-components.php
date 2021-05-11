@@ -28,17 +28,18 @@ function custom_global_components_post_type() {
         'labels'              => $labels,
         'supports'            => array('title'),
         'hierarchical'        => false,
-        'public'              => true,
+        'public'              => false,
         'show_ui'             => true,
         'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
+        'show_in_nav_menus'   => false,
         'show_in_admin_bar'   => true,
         'menu_position'       => 5,
         'can_export'          => true,
-        'has_archive'         => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
+        'has_archive'         => false,
+        'exclude_from_search' => true,
+        'publicly_queryable'  => false,
         'capability_type'     => 'post',
+        'rewrite'             => false
     );
 
     register_post_type('global-component', $args);
