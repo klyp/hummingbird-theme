@@ -83,6 +83,13 @@
     transform: rotate(-45deg);
 }
 .klyp-modal__content {
+    background: none !important;
+    border: none;
+    box-shadow: none !important;
+    box-sizing: border-box;
+    color: black !important;
+    height: calc(100% - 55px);
     white-space: pre;
+    width: 100%;
     word-wrap: break-word;
 }
