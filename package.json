@@ -12,14 +12,15 @@
     "gulp-terser": "^1.2.0",
     "hosted-git-info": ">=2.8.9",
     "is-svg": ">=4.2.2",
-    "lodash": ">=4.17.21",
-    "lodash.template": ">=4.5.0",
+    "lodash": "^4.17.21",
+    "lodash.template": "^4.5.0",
     "object-path": ">=0.11.5",
     "postcss": "^8.2.15",
     "postcss-combine-media-query": "^1.0.1",
     "socket.io": ">=2.4.0",
     "xmlhttprequest-ssl": ">=1.6.2",
-    "ws": ">=7.4.6"
+    "ws": ">=7.4.6",
+    "minimatch": "^3.0.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
