@@ -18,7 +18,8 @@
     "postcss": "^8.2.15",
     "postcss-combine-media-query": "^1.0.1",
     "socket.io": ">=2.4.0",
-    "xmlhttprequest-ssl": ">=1.6.2"
+    "xmlhttprequest-ssl": ">=1.6.2",
+    "ws": ">=7.4.6"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
@@ -46,7 +47,6 @@
     "modernizr": "^3.11.3",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.15.0",
-    "select2": "^4.0.13",
-    "ws": ">=7.4.6"
+    "select2": "^4.0.13"
   }
 }
