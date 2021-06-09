@@ -131,7 +131,7 @@ function process_single_image_batch($batch)
 
                     klyp_cc_create_activity_log($image_data['id'], 'Attempt Compressing image', $image_data['image_title'], $result);
                 } catch (Exception $e) {
-                    wp_die('Error Creating Compressed Image image : ' . $e->getMessage());
+                    klyp_cc_create_activity_log($image_data['id'], 'Error Creating Compressed Image', $image_data['image_title'], $e->getMessage());
                 }
 
                 // Creating a webp file.
@@ -170,7 +170,7 @@ function process_single_image_batch($batch)
                     update_post_meta($image_data['id'], '_is_webp_generated', 'true');
                     update_post_meta($image_data['id'], '_webp_generated_url', $webp_url);
                 } catch (Exception $e) {
-                    wp_die('Error Creating Webp image : ' . $e->getMessage());
+                    klyp_cc_create_activity_log($image_data['id'], 'Error Creating Webp image', $image_data['image_title'], $e->getMessage());
                 }
             }
         }
