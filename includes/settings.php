@@ -336,7 +336,7 @@ function klyp_enable_multisite_login()
             if ($the_node[0] == 'blog') {
                 $node->href = add_query_arg([
                     // current site id, target site id, current user id, expiry
-                    'klyp-login' => base64url_encode($current_site_id . '-' . $the_node[1] . '-' . $current_user->ID . '-' . strtotime('+30 seconds'))
+                    'klyp-login' => base64url_encode($current_site_id . '-' . $the_node[1] . '-' . $current_user->ID . '-' . strtotime('+1 hour'))
                 ], $node->href);
 
                 $wp_admin_bar->add_node($node);
@@ -366,8 +366,8 @@ function klyp_single_login()
             wp_die('Login failed, please contact us for more details (Token Expired).');
         }
 
-        // get the site
-        if (empty(get_site($referral_site)) || intval($referral_site) !== get_current_site()->id) {
+        // chec the site
+        if (empty(get_site($referral_site)) || intval($target_site) !== get_current_site()->id) {
             wp_die('Login failed, please contact us for more details (Invalid site).');
         }
 
