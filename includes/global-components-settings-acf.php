@@ -1,13 +1,15 @@
 <?php
 
-$fieldNames = array('' => 'Select');
-$fields     = klyp_change_the_component_field($componentFields);
+if (isset($componentFields)) {
+    $fieldNames = array('' => 'Select');
+    $fields     = klyp_change_the_component_field($componentFields);
 
-// To create array of exising components.
-foreach ($componentFields as $componentField) {
-    foreach ($componentField as $cfKey => $cfValue) {
-        if (! in_array($componentField['label'], $fieldNames)) {
-           $fieldNames[$componentField['name']] = $componentField['label'];
+    // To create array of exising components.
+    foreach ($componentFields as $componentField) {
+        foreach ($componentField as $cfKey => $cfValue) {
+            if (! in_array($componentField['label'], $fieldNames)) {
+                $fieldNames[$componentField['name']] = $componentField['label'];
+            }
         }
     }
 }
@@ -95,4 +97,3 @@ if (function_exists('acf_add_local_field_group')) {
         )
     );
 }
-
