@@ -366,8 +366,8 @@ function klyp_single_login()
             wp_die('Login failed, please contact us for more details (Token Expired).');
         }
 
-        // chec the site
-        if (empty(get_site($referral_site)) || intval($target_site) !== get_current_site()->id) {
+        // check the site
+        if (empty(get_site($referral_site)) || intval($target_site) !== intval(get_blog_details()->blog_id)) {
             wp_die('Login failed, please contact us for more details (Invalid site).');
         }
 
