@@ -292,3 +292,106 @@ function klyp_clean_up_revisions()
     die();
 }
 add_action('wp_ajax_klyp_clean_up_revisions', 'klyp_clean_up_revisions');
+
+/**
+ * Encrypt string using base64
+ * @param string
+ * @return void
+ */
+function base64url_encode($data)
+{
+    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+}
+
+/**
+ * Decrypt string using base64
+ *
+ * @param string
+ * @return void
+ */
+function base64url_decode($data)
+{
+    return base64_decode(strtr($data, '-_', '+/') . str_repeat('=', 3 - (3 + strlen($data)) % 4));
+}
+
+/**
+ * Checks if site is multisite then add link
+ * @return void
+ */
+function klyp_enable_multisite_login()
+{
+    global $wp_admin_bar;
+
+    $nodes              = $wp_admin_bar->get_nodes();
+    $current_site_id    = get_current_blog_id();
+    $current_site       = get_site($current_site_id);
+    $current_user       = wp_get_current_user();
+
+    foreach ($nodes as $node) {
+        // only update urls on network sites
+        if (isset($node->href) && isset($node->id)) {
+            $the_node = explode('-', $node->id);
+
+            // if a site
+            if ($the_node[0] == 'blog') {
+                $node->href = add_query_arg([
+                    // current site id, target site id, current user id, expiry
+                    'klyp-login' => base64url_encode($current_site_id . '-' . $the_node[1] . '-' . $current_user->ID . '-' . strtotime('+30 seconds'))
+                ], $node->href);
+
+                $wp_admin_bar->add_node($node);
+            }
+        }
+    }
+}
+
+/**
+ * Login user from multisite
+ * @return void
+ */
+function klyp_single_login()
+{
+    if (isset($_GET['klyp-login'])) {
+        // if user already logged in then redirect
+        if (is_user_logged_in()) {
+            wp_redirect(remove_query_arg(['klyp-login']));
+            exit();
+        }
+
+        // decrypt
+        list($referral_site, $target_site, $current_user_id, $expiry_time) = explode('-', base64url_decode(sanitize_text_field($_GET['klyp-login'])));
+
+        // check expiry time
+        if ($expiry_time < time()) {
+            wp_die('Login failed, please contact us for more details (Token Expired).');
+        }
+
+        // get the site
+        if (empty(get_site($referral_site)) || intval($referral_site) !== get_current_site()->id) {
+            wp_die('Login failed, please contact us for more details (Invalid site).');
+        }
+
+        // current user
+        $current_user = get_user_by('ID', intval($current_user_id));
+        // if all good, then authorize current user and checks if user belongs to a site
+        if (is_user_member_of_blog($current_user->ID, intval($target_site))) {
+            // set cookie
+            wp_set_auth_cookie($current_user->ID, true);
+            // set current user
+            wp_set_current_user($current_user->ID);
+            // log user
+            add_action('init', function () use ($current_user) {
+                do_action('wp_login', $current_user->name, $current_user);
+            });
+            wp_redirect(remove_query_arg(['klyp-login']));
+            exit();
+        } else {
+            wp_die('Login failed, please contact us for more details (Invalid target user site).');
+        }
+    }
+}
+// if site is a multi site then enable single login
+if (is_multisite()) {
+    add_action('wp_before_admin_bar_render', 'klyp_enable_multisite_login');
+    add_action('init', 'klyp_single_login');
+}
