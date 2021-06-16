@@ -359,7 +359,7 @@ function klyp_single_login()
         }
 
         // decrypt
-        list($referral_site, $target_site, $current_user_id, $expiry_time) = explode('-', base64url_decode(sanitize_text_field($_GET['klyp-login'])));
+        list($referral_site, $target_site, $current_user_id, $expiry_time) = array_pad(explode('-', base64url_decode(sanitize_text_field($_GET['klyp-login']))), 4, '');
 
         // check expiry time
         if ($expiry_time < time()) {
@@ -390,8 +390,42 @@ function klyp_single_login()
         }
     }
 }
+
+/**
+ * Single logout
+ * @return void
+ */
+function klyp_single_logout()
+{
+    // get all sites
+    $sites = get_sites(array('public' => true));
+    // get current user id before we log out
+    $current_user_id = get_current_user_id();
+
+    // let's go through all the sites in the network
+    foreach ($sites as $site) {
+        // if site id isn't from the original site
+        if (intval(get_blog_details()->blog_id) != intval($site->blog_id)) {
+            // let's switch to this site
+            switch_to_blog($site->blog_id);
+            // if the user is logged in on this site, then log them out
+            if (is_user_logged_in()) {
+                // get session tokens from this user
+                $sessions = WP_Session_Tokens::get_instance($current_user_id);
+                // destroy tokens
+                $sessions->destroy_all();
+            }
+            // let's go back to original site so we can be redirected properly
+            restore_current_blog();
+        }
+    }
+    wp_redirect(get_home_url());
+    exit();
+}
+
 // if site is a multi site then enable single login
 if (is_multisite()) {
-    add_action('wp_before_admin_bar_render', 'klyp_enable_multisite_login');
     add_action('init', 'klyp_single_login');
+    add_action('wp_before_admin_bar_render', 'klyp_enable_multisite_login');
+    add_action('clear_auth_cookie', 'klyp_single_logout');
 }
