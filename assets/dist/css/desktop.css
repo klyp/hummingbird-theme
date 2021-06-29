@@ -1,12 +1,6 @@
 @media (min-width: 576px) {
   .container,
   .hb-container,
-  .hb-form__container {
-    max-width: 540px;
-  }
-
-  .container,
-  .hb-container,
   .hb-form__container,
   .container-sm {
     max-width: 540px;
@@ -15,7 +9,6 @@
   .col-sm {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -316,6 +309,10 @@
   .navbar-expand-sm > .container-xl,
   .navbar-expand-sm > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+
+  .navbar-expand-sm .navbar-nav-scroll {
+    overflow: visible;
   }
 
   .navbar-expand-sm .navbar-collapse {
@@ -1121,12 +1118,6 @@
 @media (min-width: 768px) {
   .container,
   .hb-container,
-  .hb-form__container {
-    max-width: 720px;
-  }
-
-  .container,
-  .hb-container,
   .hb-form__container,
   .container-sm,
   .container-md {
@@ -1136,7 +1127,6 @@
   .col-md {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -1395,6 +1385,10 @@
   .navbar-expand-md > .container-xl,
   .navbar-expand-md > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+
+  .navbar-expand-md .navbar-nav-scroll {
+    overflow: visible;
   }
 
   .navbar-expand-md .navbar-collapse {
@@ -2633,12 +2627,6 @@
 @media (min-width: 992px) {
   .container,
   .hb-container,
-  .hb-form__container {
-    max-width: 960px;
-  }
-
-  .container,
-  .hb-container,
   .hb-form__container,
   .container-sm,
   .container-md,
@@ -2652,7 +2640,6 @@
   .hb-gallery-popup__col-half {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -2905,6 +2892,10 @@
   .navbar-expand-lg > .container-xl,
   .navbar-expand-lg > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+
+  .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible;
   }
 
   .navbar-expand-lg .navbar-collapse {
@@ -3796,12 +3787,6 @@
 @media (min-width: 1200px) {
   .container,
   .hb-container,
-  .hb-form__container {
-    max-width: 1140px;
-  }
-
-  .container,
-  .hb-container,
   .hb-form__container,
   .container-sm,
   .container-md,
@@ -3813,7 +3798,6 @@
   .col-xl {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -4059,6 +4043,10 @@
   .navbar-expand-xl > .container-xl,
   .navbar-expand-xl > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+
+  .navbar-expand-xl .navbar-nav-scroll {
+    overflow: visible;
   }
 
   .navbar-expand-xl .navbar-collapse {

@@ -20,7 +20,8 @@
     "socket.io": ">=2.4.0",
     "xmlhttprequest-ssl": ">=1.6.2",
     "ws": ">=7.4.6",
-    "minimatch": "^3.0.2"
+    "minimatch": "^3.0.2",
+    "trim-newlines": ">=3.0.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",

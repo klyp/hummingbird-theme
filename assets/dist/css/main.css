@@ -1272,7 +1272,7 @@ img.mfp-img {
 }
 
 /*!
- * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 .fa,
@@ -1529,10 +1529,6 @@ readers do not read off random characters that represent icons */
 
 .fa-adn:before {
   content: "\f170";
-}
-
-.fa-adobe:before {
-  content: "\f778";
 }
 
 .fa-adversal:before {
@@ -1831,6 +1827,14 @@ readers do not read off random characters that represent icons */
   content: "\f7e5";
 }
 
+.fa-bacteria:before {
+  content: "\e059";
+}
+
+.fa-bacterium:before {
+  content: "\e05a";
+}
+
 .fa-bahai:before {
   content: "\f666";
 }
@@ -2084,7 +2088,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-box-tissue:before {
-  content: "\f95b";
+  content: "\e05b";
 }
 
 .fa-boxes:before {
@@ -2579,6 +2583,10 @@ readers do not read off random characters that represent icons */
   content: "\f382";
 }
 
+.fa-cloudflare:before {
+  content: "\e07d";
+}
+
 .fa-cloudscale:before {
   content: "\f383";
 }
@@ -2852,7 +2860,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-dailymotion:before {
-  content: "\f952";
+  content: "\e052";
 }
 
 .fa-dashcube:before {
@@ -2865,6 +2873,10 @@ readers do not read off random characters that represent icons */
 
 .fa-deaf:before {
   content: "\f2a4";
+}
+
+.fa-deezer:before {
+  content: "\e077";
 }
 
 .fa-delicious:before {
@@ -3111,6 +3123,10 @@ readers do not read off random characters that represent icons */
   content: "\f282";
 }
 
+.fa-edge-legacy:before {
+  content: "\e078";
+}
+
 .fa-edit:before {
   content: "\f044";
 }
@@ -3284,7 +3300,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-faucet:before {
-  content: "\f905";
+  content: "\e005";
 }
 
 .fa-fax:before {
@@ -3448,7 +3464,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-firefox-browser:before {
-  content: "\f907";
+  content: "\e007";
 }
 
 .fa-first-aid:before {
@@ -3767,6 +3783,10 @@ readers do not read off random characters that represent icons */
   content: "\f3aa";
 }
 
+.fa-google-pay:before {
+  content: "\e079";
+}
+
 .fa-google-play:before {
   content: "\f3ab";
 }
@@ -3891,6 +3911,10 @@ readers do not read off random characters that represent icons */
   content: "\f3ad";
 }
 
+.fa-guilded:before {
+  content: "\e07e";
+}
+
 .fa-guitar:before {
   content: "\f7a6";
 }
@@ -3936,7 +3960,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-hand-holding-medical:before {
-  content: "\f95c";
+  content: "\e05c";
 }
 
 .fa-hand-holding-usd:before {
@@ -3992,7 +4016,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-hand-sparkles:before {
-  content: "\f95d";
+  content: "\e05d";
 }
 
 .fa-hand-spock:before {
@@ -4008,7 +4032,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-hands-wash:before {
-  content: "\f95e";
+  content: "\e05e";
 }
 
 .fa-handshake:before {
@@ -4016,11 +4040,11 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-handshake-alt-slash:before {
-  content: "\f95f";
+  content: "\e05f";
 }
 
 .fa-handshake-slash:before {
-  content: "\f960";
+  content: "\e060";
 }
 
 .fa-hanukiah:before {
@@ -4052,19 +4076,19 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-head-side-cough:before {
-  content: "\f961";
+  content: "\e061";
 }
 
 .fa-head-side-cough-slash:before {
-  content: "\f962";
+  content: "\e062";
 }
 
 .fa-head-side-mask:before {
-  content: "\f963";
+  content: "\e063";
 }
 
 .fa-head-side-virus:before {
-  content: "\f964";
+  content: "\e064";
 }
 
 .fa-heading:before {
@@ -4121,6 +4145,10 @@ readers do not read off random characters that represent icons */
 
 .fa-history:before {
   content: "\f1da";
+}
+
+.fa-hive:before {
+  content: "\e07f";
 }
 
 .fa-hockey-puck:before {
@@ -4204,7 +4232,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-house-user:before {
-  content: "\f965";
+  content: "\e065";
 }
 
 .fa-houzz:before {
@@ -4252,7 +4280,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-ideal:before {
-  content: "\f913";
+  content: "\e013";
 }
 
 .fa-igloo:before {
@@ -4295,12 +4323,20 @@ readers do not read off random characters that represent icons */
   content: "\f05a";
 }
 
+.fa-innosoft:before {
+  content: "\e080";
+}
+
 .fa-instagram:before {
   content: "\f16d";
 }
 
 .fa-instagram-square:before {
-  content: "\f955";
+  content: "\e055";
+}
+
+.fa-instalod:before {
+  content: "\e081";
 }
 
 .fa-intercom:before {
@@ -4456,7 +4492,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-laptop-house:before {
-  content: "\f966";
+  content: "\e066";
 }
 
 .fa-laptop-medical:before {
@@ -4620,7 +4656,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-lungs-virus:before {
-  content: "\f967";
+  content: "\e067";
 }
 
 .fa-lyft:before {
@@ -4792,7 +4828,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-microblog:before {
-  content: "\f91a";
+  content: "\e01a";
 }
 
 .fa-microchip:before {
@@ -4848,7 +4884,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-mixer:before {
-  content: "\f956";
+  content: "\e056";
 }
 
 .fa-mizuni:before {
@@ -4993,6 +5029,10 @@ readers do not read off random characters that represent icons */
 
 .fa-object-ungroup:before {
   content: "\f248";
+}
+
+.fa-octopus-deploy:before {
+  content: "\e082";
 }
 
 .fa-odnoklassniki:before {
@@ -5168,7 +5208,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-people-arrows:before {
-  content: "\f968";
+  content: "\e068";
 }
 
 .fa-people-carry:before {
@@ -5177,6 +5217,10 @@ readers do not read off random characters that represent icons */
 
 .fa-pepper-hot:before {
   content: "\f816";
+}
+
+.fa-perbyte:before {
+  content: "\e083";
 }
 
 .fa-percent:before {
@@ -5256,7 +5300,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-pied-piper-square:before {
-  content: "\f91e";
+  content: "\e01e";
 }
 
 .fa-piggy-bank:before {
@@ -5300,7 +5344,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-plane-slash:before {
-  content: "\f969";
+  content: "\e069";
 }
 
 .fa-play:before {
@@ -5404,11 +5448,11 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-pump-medical:before {
-  content: "\f96a";
+  content: "\e06a";
 }
 
 .fa-pump-soap:before {
-  content: "\f96b";
+  content: "\e06b";
 }
 
 .fa-pushed:before {
@@ -5663,6 +5707,10 @@ readers do not read off random characters that represent icons */
   content: "\f156";
 }
 
+.fa-rust:before {
+  content: "\e07a";
+}
+
 .fa-sad-cry:before {
   content: "\f5b3";
 }
@@ -5792,7 +5840,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-shield-virus:before {
-  content: "\f96c";
+  content: "\e06c";
 }
 
 .fa-ship:before {
@@ -5812,7 +5860,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-shopify:before {
-  content: "\f957";
+  content: "\e057";
 }
 
 .fa-shopping-bag:before {
@@ -5869,6 +5917,10 @@ readers do not read off random characters that represent icons */
 
 .fa-simplybuilt:before {
   content: "\f215";
+}
+
+.fa-sink:before {
+  content: "\e06d";
 }
 
 .fa-sistrix:before {
@@ -5996,7 +6048,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-soap:before {
-  content: "\f96e";
+  content: "\e06e";
 }
 
 .fa-socks:before {
@@ -6220,7 +6272,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-stopwatch-20:before {
-  content: "\f96f";
+  content: "\e06f";
 }
 
 .fa-store:before {
@@ -6232,11 +6284,11 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-store-alt-slash:before {
-  content: "\f970";
+  content: "\e070";
 }
 
 .fa-store-slash:before {
-  content: "\f971";
+  content: "\e071";
 }
 
 .fa-strava:before {
@@ -6519,6 +6571,10 @@ readers do not read off random characters that represent icons */
   content: "\f3ff";
 }
 
+.fa-tiktok:before {
+  content: "\e07b";
+}
+
 .fa-times:before {
   content: "\f00d";
 }
@@ -6556,7 +6612,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-toilet-paper-slash:before {
-  content: "\f972";
+  content: "\e072";
 }
 
 .fa-toolbox:before {
@@ -6596,7 +6652,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-trailer:before {
-  content: "\f941";
+  content: "\e041";
 }
 
 .fa-train:before {
@@ -6727,6 +6783,10 @@ readers do not read off random characters that represent icons */
   content: "\f5ca";
 }
 
+.fa-uncharted:before {
+  content: "\e084";
+}
+
 .fa-underline:before {
   content: "\f0cd";
 }
@@ -6744,7 +6804,7 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-unity:before {
-  content: "\f949";
+  content: "\e049";
 }
 
 .fa-universal-access:before {
@@ -6765,6 +6825,10 @@ readers do not read off random characters that represent icons */
 
 .fa-unlock-alt:before {
   content: "\f13e";
+}
+
+.fa-unsplash:before {
+  content: "\e07c";
 }
 
 .fa-untappd:before {
@@ -6887,6 +6951,10 @@ readers do not read off random characters that represent icons */
   content: "\f509";
 }
 
+.fa-users-slash:before {
+  content: "\e073";
+}
+
 .fa-usps:before {
   content: "\f7e1";
 }
@@ -6921,6 +6989,14 @@ readers do not read off random characters that represent icons */
 
 .fa-venus-mars:before {
   content: "\f228";
+}
+
+.fa-vest:before {
+  content: "\e085";
+}
+
+.fa-vest-patches:before {
+  content: "\e086";
 }
 
 .fa-viacoin:before {
@@ -6976,15 +7052,15 @@ readers do not read off random characters that represent icons */
 }
 
 .fa-virus:before {
-  content: "\f974";
+  content: "\e074";
 }
 
 .fa-virus-slash:before {
-  content: "\f975";
+  content: "\e075";
 }
 
 .fa-viruses:before {
-  content: "\f976";
+  content: "\e076";
 }
 
 .fa-vk:before {
@@ -7041,6 +7117,10 @@ readers do not read off random characters that represent icons */
 
 .fa-warehouse:before {
   content: "\f494";
+}
+
+.fa-watchman-monitoring:before {
+  content: "\e087";
 }
 
 .fa-water:before {
@@ -7141,6 +7221,10 @@ readers do not read off random characters that represent icons */
 
 .fa-wizards-of-the-coast:before {
   content: "\f730";
+}
+
+.fa-wodu:before {
+  content: "\e088";
 }
 
 .fa-wolf-pack-battalion:before {
@@ -7363,10 +7447,10 @@ readers do not read off random characters that represent icons */
  * https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss
  */
 /*!
- * Bootstrap v4.5.0 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap v4.6.0 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
   --blue: #007bff;
@@ -7395,7 +7479,7 @@ readers do not read off random characters that represent icons */
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -7418,7 +7502,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -7527,12 +7611,12 @@ a:hover {
   text-decoration: underline;
 }
 
-a:not([href]) {
+a:not([href]):not([class]) {
   color: inherit;
   text-decoration: none;
 }
 
-a:not([href]):hover {
+a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
 }
@@ -7580,6 +7664,7 @@ caption {
 
 th {
   text-align: inherit;
+  text-align: -webkit-match-parent;
 }
 
 label {
@@ -7591,9 +7676,8 @@ button {
   border-radius: 0;
 }
 
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+button:focus:not(:focus-visible) {
+  outline: 0;
 }
 
 input,
@@ -7903,15 +7987,13 @@ pre code {
   overflow-y: scroll;
 }
 
-.container, .hb-container, .hb-form__container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .hb-container-fluid {
+.container, .hb-container, .hb-form__container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.hb-container-fluid {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -7952,7 +8034,6 @@ pre code {
 .col {
   flex-basis: 0;
   flex-grow: 1;
-  min-width: 0;
   max-width: 100%;
 }
 
@@ -8657,6 +8738,7 @@ textarea.form-control {
 .valid-tooltip {
   position: absolute;
   top: 100%;
+  left: 0;
   z-index: 5;
   display: none;
   max-width: 100%;
@@ -8667,6 +8749,11 @@ textarea.form-control {
   color: #fff;
   background-color: rgba(40, 167, 69, 0.9);
   border-radius: 0.25rem;
+}
+
+.form-row > .col > .valid-tooltip,
+.form-row > [class*="col-"] > .valid-tooltip {
+  left: 5px;
 }
 
 .was-validated :valid ~ .valid-feedback,
@@ -8698,7 +8785,7 @@ textarea.form-control {
 .was-validated .custom-select:valid, .custom-select.is-valid {
   border-color: #28a745;
   padding-right: calc(0.75em + 2.3125rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 
 .was-validated .custom-select:valid:focus, .custom-select.is-valid:focus {
@@ -8757,6 +8844,7 @@ textarea.form-control {
 .invalid-tooltip {
   position: absolute;
   top: 100%;
+  left: 0;
   z-index: 5;
   display: none;
   max-width: 100%;
@@ -8767,6 +8855,11 @@ textarea.form-control {
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
   border-radius: 0.25rem;
+}
+
+.form-row > .col > .invalid-tooltip,
+.form-row > [class*="col-"] > .invalid-tooltip {
+  left: 5px;
 }
 
 .was-validated :invalid ~ .invalid-feedback,
@@ -8798,7 +8891,7 @@ textarea.form-control {
 .was-validated .custom-select:invalid, .custom-select.is-invalid {
   border-color: #dc3545;
   padding-right: calc(0.75em + 2.3125rem);
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 
 .was-validated .custom-select:invalid:focus, .custom-select.is-invalid:focus {
@@ -9688,7 +9781,7 @@ input[type="button"].btn-block {
 .dropdown-item:hover, .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #e9ecef;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -9698,7 +9791,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
-  color: #6c757d;
+  color: #adb5bd;
   pointer-events: none;
   background-color: transparent;
 }
@@ -9885,12 +9978,6 @@ input[type="button"].btn-block {
   z-index: 4;
 }
 
-.input-group > .form-control:not(:last-child),
-.input-group > .custom-select:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .input-group > .form-control:not(:first-child),
 .input-group > .custom-select:not(:first-child) {
   border-top-left-radius: 0;
@@ -9903,14 +9990,23 @@ input[type="button"].btn-block {
 }
 
 .input-group > .custom-file:not(:last-child) .custom-file-label,
-.input-group > .custom-file:not(:last-child) .custom-file-label::after {
+.input-group > .custom-file:not(:first-child) .custom-file-label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group:not(.has-validation) > .form-control:not(:last-child),
+.input-group:not(.has-validation) > .custom-select:not(:last-child),
+.input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group > .custom-file:not(:first-child) .custom-file-label {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.input-group.has-validation > .form-control:nth-last-child(n + 3),
+.input-group.has-validation > .custom-select:nth-last-child(n + 3),
+.input-group.has-validation > .custom-file:nth-last-child(n + 3) .custom-file-label::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .input-group-prepend,
@@ -10010,8 +10106,10 @@ input[type="button"].btn-block {
 
 .input-group > .input-group-prepend > .btn,
 .input-group > .input-group-prepend > .input-group-text,
-.input-group > .input-group-append:not(:last-child) > .btn,
-.input-group > .input-group-append:not(:last-child) > .input-group-text,
+.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn,
+.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .input-group-text,
+.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn,
+.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
@@ -10030,9 +10128,12 @@ input[type="button"].btn-block {
 
 .custom-control {
   position: relative;
+  z-index: 1;
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
+  -webkit-print-color-adjust: exact;
+          color-adjust: exact;
 }
 
 .custom-control-inline {
@@ -10104,7 +10205,7 @@ input[type="button"].btn-block {
   width: 1rem;
   height: 1rem;
   content: "";
-  background: no-repeat 50% / 50% 50%;
+  background: 50% / 50% 50% no-repeat;
 }
 
 .custom-checkbox .custom-control-label::before {
@@ -10184,7 +10285,7 @@ input[type="button"].btn-block {
   line-height: 1.5;
   color: #495057;
   vertical-align: middle;
-  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   -webkit-appearance: none;
@@ -10253,6 +10354,7 @@ input[type="button"].btn-block {
   width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
   margin: 0;
+  overflow: hidden;
   opacity: 0;
 }
 
@@ -10282,6 +10384,7 @@ input[type="button"].btn-block {
   z-index: 1;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
+  overflow: hidden;
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
@@ -10318,7 +10421,7 @@ input[type="button"].btn-block {
 }
 
 .custom-range:focus {
-  outline: none;
+  outline: 0;
 }
 
 .custom-range:focus::-webkit-slider-thumb {
@@ -10482,11 +10585,8 @@ input[type="button"].btn-block {
   border-bottom: 1px solid #dee2e6;
 }
 
-.nav-tabs .nav-item {
-  margin-bottom: -1px;
-}
-
 .nav-tabs .nav-link {
+  margin-bottom: -1px;
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
@@ -10525,11 +10625,13 @@ input[type="button"].btn-block {
   background-color: #007bff;
 }
 
+.nav-fill > .nav-link,
 .nav-fill .nav-item {
   flex: 1 1 auto;
   text-align: center;
 }
 
+.nav-justified > .nav-link,
 .nav-justified .nav-item {
   flex-basis: 0;
   flex-grow: 1;
@@ -10624,8 +10726,12 @@ input[type="button"].btn-block {
   height: 1.5em;
   vertical-align: middle;
   content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
+  background: 50% / 100% 100% no-repeat;
+}
+
+.navbar-nav-scroll {
+  max-height: 75vh;
+  overflow-y: auto;
 }
 
 .navbar-expand {
@@ -10655,6 +10761,10 @@ input[type="button"].btn-block {
 .navbar-expand > .container, .navbar-expand > .hb-container, .navbar-expand > .hb-form__container,
 .navbar-expand > .container-fluid, .navbar-expand > .container-sm, .navbar-expand > .container-md, .navbar-expand > .container-lg, .navbar-expand > .container-xl, .navbar-expand > .hb-container-fluid {
   flex-wrap: nowrap;
+}
+
+.navbar-expand .navbar-nav-scroll {
+  overflow: visible;
 }
 
 .navbar-expand .navbar-collapse {
@@ -10796,6 +10906,11 @@ input[type="button"].btn-block {
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
+.card > .card-header + .list-group,
+.card > .list-group + .card-footer {
+  border-top: 0;
+}
+
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
@@ -10834,10 +10949,6 @@ input[type="button"].btn-block {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
-.card-header + .list-group .list-group-item:first-child {
-  border-top: 0;
-}
-
 .card-footer {
   padding: 0.75rem 1.25rem;
   background-color: rgba(0, 0, 0, 0.03);
@@ -10867,6 +10978,7 @@ input[type="button"].btn-block {
   bottom: 0;
   left: 0;
   padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
 }
 
 .card-img,
@@ -10900,6 +11012,10 @@ input[type="button"].btn-block {
   margin-bottom: 0.75rem;
 }
 
+.accordion {
+  overflow-anchor: none;
+}
+
 .accordion > .card {
   overflow: hidden;
 }
@@ -10930,16 +11046,12 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
-.breadcrumb-item, .hb-breadcumb__item {
-  display: flex;
-}
-
 .breadcrumb-item + .breadcrumb-item, .hb-breadcumb__item + .breadcrumb-item, .breadcrumb-item + .hb-breadcumb__item, .hb-breadcumb__item + .hb-breadcumb__item {
   padding-left: 0.5rem;
 }
 
 .breadcrumb-item + .breadcrumb-item::before, .hb-breadcumb__item + .breadcrumb-item::before, .breadcrumb-item + .hb-breadcumb__item::before, .hb-breadcumb__item + .hb-breadcumb__item::before {
-  display: inline-block;
+  float: left;
   padding-right: 0.5rem;
   color: #6c757d;
   content: "/";
@@ -11236,6 +11348,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 2;
   padding: 0.75rem 1.25rem;
   color: inherit;
 }
@@ -11398,8 +11511,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .progress-bar-animated {
-  -webkit-animation: progress-bar-stripes 1s linear infinite;
-          animation: progress-bar-stripes 1s linear infinite;
+  -webkit-animation: 1s linear infinite progress-bar-stripes;
+          animation: 1s linear infinite progress-bar-stripes;
 }
 
 .media {
@@ -11675,15 +11788,13 @@ a.close.disabled {
 }
 
 .toast {
+  flex-basis: 350px;
   max-width: 350px;
-  overflow: hidden;
   font-size: 0.875rem;
   background-color: rgba(255, 255, 255, 0.85);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
   opacity: 0;
   border-radius: 0.25rem;
 }
@@ -11713,6 +11824,8 @@ a.close.disabled {
   background-color: rgba(255, 255, 255, 0.85);
   background-clip: padding-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
 }
 
 .toast-body {
@@ -11893,7 +12006,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -12006,7 +12119,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -12265,7 +12378,7 @@ a.close.disabled {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: no-repeat 50% / 100% 100%;
+  background: 50% / 100% 100% no-repeat;
 }
 
 .carousel-control-prev-icon {
@@ -12343,8 +12456,8 @@ a.close.disabled {
   border: 0.25em solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  -webkit-animation: spinner-border .75s linear infinite;
-          animation: spinner-border .75s linear infinite;
+  -webkit-animation: .75s linear infinite spinner-border;
+          animation: .75s linear infinite spinner-border;
 }
 
 .spinner-border-sm {
@@ -12381,8 +12494,8 @@ a.close.disabled {
   background-color: currentColor;
   border-radius: 50%;
   opacity: 0;
-  -webkit-animation: spinner-grow .75s linear infinite;
-          animation: spinner-grow .75s linear infinite;
+  -webkit-animation: .75s linear infinite spinner-grow;
+          animation: .75s linear infinite spinner-grow;
 }
 
 .spinner-grow-sm {
@@ -13639,6 +13752,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .text-break {
+  word-break: break-word !important;
   word-wrap: break-word !important;
 }
 
@@ -15955,16 +16069,12 @@ blockquote:after {
 }
 
 @media (min-width: 576px){
-  .container, .hb-container, .hb-form__container {
-    max-width: 540px;
-  }
   .container, .hb-container, .hb-form__container, .container-sm {
     max-width: 540px;
   }
   .col-sm {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
   .row-cols-sm-1 > * {
@@ -16196,6 +16306,9 @@ blockquote:after {
   .navbar-expand-sm > .container, .navbar-expand-sm > .hb-container, .navbar-expand-sm > .hb-form__container,
   .navbar-expand-sm > .container-fluid, .navbar-expand-sm > .container-sm, .navbar-expand-sm > .container-md, .navbar-expand-sm > .container-lg, .navbar-expand-sm > .container-xl, .navbar-expand-sm > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+  .navbar-expand-sm .navbar-nav-scroll {
+    overflow: visible;
   }
   .navbar-expand-sm .navbar-collapse {
     display: flex !important;
@@ -16825,16 +16938,12 @@ blockquote:after {
 }
 
 @media (min-width: 768px){
-  .container, .hb-container, .hb-form__container {
-    max-width: 720px;
-  }
   .container, .hb-container, .hb-form__container, .container-sm, .container-md {
     max-width: 720px;
   }
   .col-md {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
   .row-cols-md-1 > * {
@@ -17020,6 +17129,9 @@ blockquote:after {
   .navbar-expand-md > .container, .navbar-expand-md > .hb-container, .navbar-expand-md > .hb-form__container,
   .navbar-expand-md > .container-fluid, .navbar-expand-md > .container-sm, .navbar-expand-md > .container-md, .navbar-expand-md > .container-lg, .navbar-expand-md > .container-xl, .navbar-expand-md > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+  .navbar-expand-md .navbar-nav-scroll {
+    overflow: visible;
   }
   .navbar-expand-md .navbar-collapse {
     display: flex !important;
@@ -17979,16 +18091,12 @@ blockquote:after {
 }
 
 @media (min-width: 992px){
-  .container, .hb-container, .hb-form__container {
-    max-width: 960px;
-  }
   .container, .hb-container, .hb-form__container, .container-sm, .container-md, .container-lg {
     max-width: 960px;
   }
   .col-lg, .hb-counter__col, .hb-gallery-popup__col-third, .hb-gallery-popup__col-half {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
   .row-cols-lg-1 > * {
@@ -18174,6 +18282,9 @@ blockquote:after {
   .navbar-expand-lg > .container, .navbar-expand-lg > .hb-container, .navbar-expand-lg > .hb-form__container,
   .navbar-expand-lg > .container-fluid, .navbar-expand-lg > .container-sm, .navbar-expand-lg > .container-md, .navbar-expand-lg > .container-lg, .navbar-expand-lg > .container-xl, .navbar-expand-lg > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+  .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible;
   }
   .navbar-expand-lg .navbar-collapse {
     display: flex !important;
@@ -18864,16 +18975,12 @@ blockquote:after {
 }
 
 @media (min-width: 1200px){
-  .container, .hb-container, .hb-form__container {
-    max-width: 1140px;
-  }
   .container, .hb-container, .hb-form__container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px;
   }
   .col-xl {
     flex-basis: 0;
     flex-grow: 1;
-    min-width: 0;
     max-width: 100%;
   }
   .row-cols-xl-1 > * {
@@ -19059,6 +19166,9 @@ blockquote:after {
   .navbar-expand-xl > .container, .navbar-expand-xl > .hb-container, .navbar-expand-xl > .hb-form__container,
   .navbar-expand-xl > .container-fluid, .navbar-expand-xl > .container-sm, .navbar-expand-xl > .container-md, .navbar-expand-xl > .container-lg, .navbar-expand-xl > .container-xl, .navbar-expand-xl > .hb-container-fluid {
     flex-wrap: nowrap;
+  }
+  .navbar-expand-xl .navbar-nav-scroll {
+    overflow: visible;
   }
   .navbar-expand-xl .navbar-collapse {
     display: flex !important;
@@ -19710,6 +19820,11 @@ blockquote:after {
   }
   .carousel-indicators li {
     transition: none;
+  }
+  .spinner-border,
+  .spinner-grow {
+    -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
   }
 }
 
