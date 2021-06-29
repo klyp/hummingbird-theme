@@ -151,12 +151,17 @@ function klyp_page_import_components()
 function klyp_add_page_custom_actions($actions, $post)
 {
     global $wp;
-    $args['exportNonce']    = wp_create_nonce('klyp-hummingbird');
-    $args['exportID']       = $post->ID;
 
-    // add import export
-    $actions['export_components'] = '<a href="'. site_url(add_query_arg($args)) . '">' . __('Export Components', 'hummingbird') . '</a>';
-    $actions['import_components'] = '<a href="#" class="klyp-import-components klyp-modal__open" data-target="' . $post->ID . '">' . __('Import Components', 'hummingbird') . '</a>';
+    // we only want to allow import/export on pages only
+    if ($wp->query_vars['post_type'] == 'page') {
+        $args['exportNonce']    = wp_create_nonce('klyp-hummingbird');
+        $args['exportID']       = $post->ID;
+
+        // add import export
+        $actions['export_components'] = '<a href="'. site_url(add_query_arg($args)) . '">' . __('Export Components', 'hummingbird') . '</a>';
+        $actions['import_components'] = '<a href="#" class="klyp-import-components klyp-modal__open" data-target="' . $post->ID . '">' . __('Import Components', 'hummingbird') . '</a>';
+    }
+
     return $actions;
 }
 // only trigger if admin
