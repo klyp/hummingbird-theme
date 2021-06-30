@@ -441,7 +441,6 @@ if (function_exists('acf_add_local_field_group')) {
                         ),
                     ),
                 ),
-                    
             array(
                 'key' => 'settings_site_wide_scripts_tab',
                 'label' => 'Site Wide Scripts',
@@ -515,7 +514,6 @@ if (function_exists('acf_add_local_field_group')) {
                     'rows' => '',
                     'new_lines' => '',
                 ),
-            
             array(
                 'key' => 'settings_api_tab',
                 'label' => 'APIs',
@@ -560,11 +558,34 @@ if (function_exists('acf_add_local_field_group')) {
                         'id' => '',
                     ),
                 ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'site-settings',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'acf_after_title',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+    ));
 
+    // if user is klyp or is super admin, then allow them to access advance tap
+    if (wp_get_current_user()->user_login == 'klyp' || array_shift(wp_get_current_user()->roles) == 'super-admin') {
+        acf_add_local_field(
             array(
                 'key' => 'settings_advance_tab',
                 'label' => 'Advance',
                 'name' => '',
+                'parent' => 'site_settings_group',
                 'type' => 'tab',
                 'instructions' => '',
                 'required' => 0,
@@ -576,11 +597,15 @@ if (function_exists('acf_add_local_field_group')) {
                 ),
                 'placement' => 'top',
                 'endpoint' => 0,
-            ),
+            )
+        );
+
+        acf_add_local_field(
             array(
                 'key' => 'settings_advance_max_revision',
                 'label' => 'Max Revisions to keep',
                 'name' => 'max_revision',
+                'parent' => 'site_settings_group',
                 'type' => 'number',
                 'instructions' => '',
                 'required' => 1,
@@ -597,12 +622,15 @@ if (function_exists('acf_add_local_field_group')) {
                 'min' => '1',
                 'max' => '99',
                 'step' => '',
-            ),
+            )
+        );
 
+        acf_add_local_field(
             array(
                 'key' => 'settings_advance_super_admins',
                 'label' => 'Super Admins',
                 'name' => 'super_admins',
+                'parent' => 'site_settings_group',
                 'type' => 'repeater',
                 'instructions' => '',
                 'required' => 0,
@@ -637,12 +665,15 @@ if (function_exists('acf_add_local_field_group')) {
                         'return_format' => 'id',
                     ),
                 ),
-            ),
+            )
+        );
 
+        acf_add_local_field(
             array(
                 'key' => 'settings_advance_defer_js',
                 'label' => 'JS Scripts not to defer',
                 'name' => 'js_scripts_to_defer',
+                'parent' => 'site_settings_group',
                 'type' => 'repeater',
                 'instructions' => '',
                 'required' => 0,
@@ -678,24 +709,7 @@ if (function_exists('acf_add_local_field_group')) {
                         'maxlength' => '',
                     ),
                 ),
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'options_page',
-                    'operator' => '==',
-                    'value' => 'site-settings',
-                ),
-            ),
-        ),
-        'menu_order' => 0,
-        'position' => 'acf_after_title',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => true,
-        'description' => '',
-    ));
+            )
+        );
+    }
 }
