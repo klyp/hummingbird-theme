@@ -29,6 +29,8 @@ function klyp_get_super_admins()
     // If user is KLYP or user in the list and it is not super user yet, set it as Super Admin
     if (wp_get_current_user()->user_login == 'klyp' || in_array(wp_get_current_user()->ID, $super_admins)) {
         wp_get_current_user()->set_role('super-admin');
+    } else {
+        wp_get_current_user()->remove_role('super-admin');
     }
 }
 add_action('admin_init', 'klyp_get_super_admins');
