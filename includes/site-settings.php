@@ -558,6 +558,126 @@ if (function_exists('acf_add_local_field_group')) {
                         'id' => '',
                     ),
                 ),
+            array(
+                'key' => 'settings_advance_tab',
+                'label' => 'Advance',
+                'name' => '',
+                'parent' => 'site_settings_group',
+                'type' => 'tab',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'placement' => 'top',
+                'endpoint' => 0,
+            ),
+                array(
+                    'key' => 'settings_advance_max_revision',
+                    'label' => 'Max Revisions to keep',
+                    'name' => 'max_revision',
+                    'parent' => 'site_settings_group',
+                    'type' => 'number',
+                    'instructions' => '',
+                    'required' => 1,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => 3,
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'min' => '1',
+                    'max' => '99',
+                    'step' => '',
+                ),
+                array(
+                    'key' => 'settings_advance_super_admins',
+                    'label' => 'Super Admins',
+                    'name' => 'super_admins',
+                    'parent' => 'site_settings_group',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'collapsed' => '',
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'table',
+                    'button_label' => '',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'settings_advance_super_admins_username',
+                            'label' => 'Username',
+                            'name' => 'username',
+                            'type' => 'user',
+                            'instructions' => '',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'role' => '',
+                            'allow_null' => 0,
+                            'multiple' => 0,
+                            'return_format' => 'id',
+                        ),
+                    ),
+                ),
+                array(
+                    'key' => 'settings_advance_defer_js',
+                    'label' => 'JS Scripts not to defer',
+                    'name' => 'js_scripts_to_defer',
+                    'parent' => 'site_settings_group',
+                    'type' => 'repeater',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'collapsed' => '',
+                    'min' => 0,
+                    'max' => 0,
+                    'layout' => 'table',
+                    'button_label' => '',
+                    'sub_fields' => array(
+                        array(
+                            'key' => 'js_scripts_to_defer_filename',
+                            'label' => 'File Name',
+                            'name' => 'file_name',
+                            'type' => 'text',
+                            'instructions' => 'only .js file can be defered',
+                            'required' => 0,
+                            'conditional_logic' => 0,
+                            'wrapper' => array(
+                                'width' => '',
+                                'class' => '',
+                                'id' => '',
+                            ),
+                            'default_value' => '',
+                            'placeholder' => '',
+                            'prepend' => '',
+                            'append' => '',
+                            'maxlength' => '',
+                        ),
+                    ),
+                )
         ),
         'location' => array(
             array(
@@ -577,139 +697,16 @@ if (function_exists('acf_add_local_field_group')) {
         'active' => true,
         'description' => '',
     ));
+}
 
-    // if user is klyp or is super admin, then allow them to access advance tap
-    if (wp_get_current_user()->user_login == 'klyp' || array_shift(wp_get_current_user()->roles) == 'super-admin') {
-        acf_add_local_field(
-            array(
-                'key' => 'settings_advance_tab',
-                'label' => 'Advance',
-                'name' => '',
-                'parent' => 'site_settings_group',
-                'type' => 'tab',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'placement' => 'top',
-                'endpoint' => 0,
-            )
-        );
-
-        acf_add_local_field(
-            array(
-                'key' => 'settings_advance_max_revision',
-                'label' => 'Max Revisions to keep',
-                'name' => 'max_revision',
-                'parent' => 'site_settings_group',
-                'type' => 'number',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => 3,
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'min' => '1',
-                'max' => '99',
-                'step' => '',
-            )
-        );
-
-        acf_add_local_field(
-            array(
-                'key' => 'settings_advance_super_admins',
-                'label' => 'Super Admins',
-                'name' => 'super_admins',
-                'parent' => 'site_settings_group',
-                'type' => 'repeater',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'collapsed' => '',
-                'min' => 0,
-                'max' => 0,
-                'layout' => 'table',
-                'button_label' => '',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'settings_advance_super_admins_username',
-                        'label' => 'Username',
-                        'name' => 'username',
-                        'type' => 'user',
-                        'instructions' => '',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'role' => '',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'return_format' => 'id',
-                    ),
-                ),
-            )
-        );
-
-        acf_add_local_field(
-            array(
-                'key' => 'settings_advance_defer_js',
-                'label' => 'JS Scripts not to defer',
-                'name' => 'js_scripts_to_defer',
-                'parent' => 'site_settings_group',
-                'type' => 'repeater',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'collapsed' => '',
-                'min' => 0,
-                'max' => 0,
-                'layout' => 'table',
-                'button_label' => '',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'js_scripts_to_defer_filename',
-                        'label' => 'File Name',
-                        'name' => 'file_name',
-                        'type' => 'text',
-                        'instructions' => 'only .js file can be defered',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'default_value' => '',
-                        'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'maxlength' => '',
-                    ),
-                ),
-            )
-        );
-    }
+// if user is not klyp or is not super admin, then don't allow them to access advance tap
+if (wp_get_current_user()->user_login == 'klyp' || in_array('super-admin', wp_get_current_user()->roles)) {
+} else {
+    add_action('admin_footer', function () {
+        echo '
+            <style>
+                [data-key="settings_advance_tab"] { display: none !important; }
+            </style>
+        ';
+    });
 }
