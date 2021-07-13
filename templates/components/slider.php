@@ -50,14 +50,14 @@ switch ($style) {
                 <?php if ($style == 'compact') : ?>
                     <div class="<?php echo $slidexClass; ?> hb-slider__slide-item">
                 <?php else : ?>
-                    <div class="<?php echo $slidexClass; ?> hb-slider__slide-item" style="background-image: url('<?php echo $slider['image']['url']; ?>');">
+                    <div class="<?php echo $slidexClass; ?> hb-slider__slide-item hb-lazy" data-src="<?php echo $slider['image']['url']; ?>">
                 <?php endif; ?>
                         <div class="hb-slider__space">
                             <div class="hb-container">
                                 <div class="hb-row">
                                     <div class="hb-col-full">
                                         <?php if ($style == 'compact') : ?>
-                                            <div class="hb-slider__contianer-img" style="background-image: url('<?php echo $slider['image']['url']; ?>');">
+                                            <div class="hb-slider__contianer-img hb-lazy" data-src="<?php echo $slider['image']['url']; ?>">
                                                 <div class="hb-slider-nav" style="color: <?php echo $slider['arrows_color']; ?>;">
                                                     <div class="hb-slider-nav__pre">
                                                         <?php echo $leftArrow; ?>

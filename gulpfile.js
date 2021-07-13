@@ -113,6 +113,7 @@ function scripts()
     './node_modules/select2/dist/js/select2.full.min.js',
     './node_modules/jquery-inview/jquery.inview.min.js',
     './node_modules/@fortawesome/fontawesome-free/js/all.js',
+    "./node_modules/jquery-lazy/jquery.lazy.min.js",
     './assets/src/js/**/*',
     ])
     .pipe(plumber())

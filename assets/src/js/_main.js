@@ -1,4 +1,20 @@
+//lazyload decoration
+function lazyLoad(name) {
+  $(document).find(name).Lazy({
+    scrollDirection: 'vertical',
+    effect: 'fadeIn',
+    visibleOnly: true,
+    onError: function(element) {
+      console.log('error loading ' + element.data('src'));
+    }
+  });
+}
+
 $(document).ready(function () {
+  //lazyload initialization
+  lazyLoad('.hb-lazy');
+  lazyLoad('img');
+
   //timeline hover on date
   $('.hb-timeline__item-date h4').hover(
     function () {

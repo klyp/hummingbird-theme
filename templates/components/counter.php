@@ -27,7 +27,7 @@ if ($enableIcon) {
                         <div class="hb-counter__content <?php echo $contentClass; ?>">
                             <?php if ($enableIcon) : ?>
                                 <div class="hb-counter__icon">
-                                    <img src="<?php echo $counter['icon']['url'] ?>" alt="<?php echo $counter['icon']['title'] ?>">
+                                    <img data-src="<?php echo $counter['icon']['url'] ?>" alt="<?php echo $counter['icon']['title'] ?>">
                                 </div>
                             <?php endif; ?>
                             <h2 class="hb-counter__count <?php echo $countClass; ?>">

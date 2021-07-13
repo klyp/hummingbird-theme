@@ -16,10 +16,10 @@
                 <?php foreach ($tileData as $data) { ?>
                     <?php $style = ''; ?>
                     <?php if (! empty($data['image'])) { ?>
-                        <?php $style = 'style="background-image: url(' . $data['image'] . ');"' ?>
+                        <?php $style = $data['image']; ?>
                     <?php } ?>
                     <div class="col-md-4 hb-tile__column">
-                        <div class="hb-tile__column-bg" <?php echo $style; ?>>
+                        <div class="hb-tile__column-bg hb-lazy" data-src="<?php echo $style; ?>">
                             <h4>
                                 <a href="<?php echo $data['link']['url']; ?>"
                                     <?php echo ($data['link']['target']) ? 'target="_blank"' : ''; ?>>

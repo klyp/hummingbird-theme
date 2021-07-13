@@ -57,7 +57,7 @@ switch ($style) {
                                             <picture>
                                                 <source srcset="<?php echo get_post_meta($card['icon']['id'], '_webp_generated_url', true);?>" type="image/webp">
                                                 <source srcset="<?php echo $card['icon']['url']; ?>" type="image/jpeg">
-                                                <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
+                                                <img data-src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
                                             </picture>
                                         </div>
                                         <div class="hb-card__content-space">
@@ -104,7 +104,7 @@ switch ($style) {
                                     <picture>
                                         <source srcset="<?php echo get_post_meta($card['icon']['id'], '_webp_generated_url', true);?>" type="image/webp">
                                         <source srcset="<?php echo $card['icon']['url']; ?>" type="image/jpeg">
-                                        <img src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
+                                        <img data-src="<?php echo $card['icon']['url']; ?>" class="img-fluid" alt="">
                                     </picture>
                                 </div>
                                 <h2 class="hb-card__title">

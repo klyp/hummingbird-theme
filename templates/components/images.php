@@ -32,7 +32,7 @@
                         <picture>
                             <source srcset="<?php echo get_post_meta($imageItem['image']['id'], '_webp_generated_url', true);?>" type="image/webp">
                             <source srcset="<?php echo $imageItem['image']['url']; ?>" type="image/jpeg">
-                            <img src="<?php echo $imageItem['image']['url']; ?>" alt="<?php echo $imageItem['image']['title']; ?>" class="img-fluid">
+                            <img data-src="<?php echo $imageItem['image']['url']; ?>" alt="<?php echo $imageItem['image']['title']; ?>" class="img-fluid">
                         </picture>
                     </div>
                 <?php endforeach; ?>

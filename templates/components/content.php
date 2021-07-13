@@ -26,7 +26,7 @@
                             <picture>
                                 <source srcset="<?php echo get_post_meta($image['id'], '_webp_generated_url', true);?>" type="image/webp">
                                 <source srcset="<?php echo $image['url']; ?>" type="image/jpeg">
-                                <img src="<?php echo $image['url']; ?>" class="img-fluid" alt="">
+                                <img data-src="<?php echo $image['url']; ?>" class="img-fluid" alt="">
                             </picture>
                         </div>
                         <div class="hb-general__txt-img-content">
