@@ -746,7 +746,7 @@ if (wp_get_current_user()->user_login == 'klyp' || in_array('super-admin', wp_ge
     add_action('admin_footer', function () {
         echo '
             <style>
-                [data-key="settings_advance_allowed_post_types"] { display: none !important; }
+                [data-key="settings_advance_tab"] { display: none !important; }
             </style>
         ';
     });
