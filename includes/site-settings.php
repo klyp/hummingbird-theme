@@ -733,8 +733,10 @@ function klyp_generate_custom_values_for_nonadmin_post_types($field)
     $postTypes = get_post_types(array('public' => true, '_builtin' => false), 'objects', 'and');
 
     // generate choices
-    foreach ($postTypes as $postType) {
-        $field['choices']['edit.php?post_type=' . $postType->name] = $postType->label;
+    if ($postTypes) {
+        foreach ($postTypes as $postType) {
+            $field['choices']['edit.php?post_type=' . $postType->name] = $postType->label;
+        }
     }
     return $field;
 }
