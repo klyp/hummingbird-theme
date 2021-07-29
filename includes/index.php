@@ -74,3 +74,8 @@ if (is_admin()) {
  * Logging.
  */
 require get_template_directory() . '/includes/log/index.php';
+
+/**
+ * Adds ajax.
+ */
+require get_theme_file_path('includes/ajax.php');

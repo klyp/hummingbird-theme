@@ -1,4 +1,41 @@
 $(document).ready(function () {
+
+  function loadNewContent(attr, i) {       
+    $.ajax({
+        type:'POST',
+        url: klypAjax.ajaxUrl,
+        dataType : 'json',
+        data: {
+          action: 'klyp_get_comp_data',
+          attr: attr,
+          //nonce : nonce,
+        },    
+        success:function(data) {
+          console.log(data);
+        }
+    });
+  
+  }
+
+  $(window).scroll(function() {
+      //check if your div is visible to user
+      // CODE ONLY CHECKS VISIBILITY FROM TOP OF THE PAGE
+      var count = $('#comp-count').val();
+
+      for (var i = 0; i < count; i++) {
+        if ($(window).scrollTop() + $(window).height() >= $('.component-container-' + i).offset().top) {
+          if ($('.component-container-' + i).data('component')) {
+            //not in ajax.success due to multiple sroll events
+            // $('.component-container-' + i).attr('component', true);
+            var attr = $('.component-container-' + i).data('component');
+            //ajax goes here
+            //in theory, this code still may be called several times
+            loadNewContent(attr, i);
+          }
+        }
+      }
+  });
+
   //timeline hover on date
   $('.hb-timeline__item-date h4').hover(
     function () {
@@ -108,10 +145,10 @@ $(document).ready(function () {
   $('.hb-general__txt-img-content table').wrap('<div class="hb-general__table-responsive table-responsive-md"></div>');
 });
 
-Modernizr.on('webp', function (result) {
-  if (result) {
-    $('body').addClass('hb-webp');
-  } else {
-    $('body').addClass('hb-no-webp');
-  }
-});
+// Modernizr.on('webp', function (result) {
+//   if (result) {
+//     $('body').addClass('hb-webp');
+//   } else {
+//     $('body').addClass('hb-no-webp');
+//   }
+// });

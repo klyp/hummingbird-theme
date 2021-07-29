@@ -131,6 +131,7 @@ function klyp_footer_scripts()
         '1.0.0',
         true
     );
+    wp_localize_script('klyp-script', 'klypAjax', array('ajaxUrl' => admin_url('admin-ajax.php')));
     // to localise the script in child theme
     do_action('klyp_localize_script');
 }
