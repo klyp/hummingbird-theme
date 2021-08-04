@@ -677,7 +677,30 @@ if (function_exists('acf_add_local_field_group')) {
                             'maxlength' => '',
                         ),
                     ),
-                )
+                ),
+                array(
+                    'key' => 'settings_advance_allowed_post_types',
+                    'label' => 'Allow non Super Admin access to Post Types',
+                    'name' => 'allowed_post_types',
+                    'type' => 'checkbox',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'choices' => array(
+                    ),
+                    'allow_custom' => 0,
+                    'default_value' => array(
+                    ),
+                    'layout' => 'horizontal',
+                    'toggle' => 0,
+                    'return_format' => 'array',
+                    'save_custom' => 0,
+                ),
         ),
         'location' => array(
             array(
@@ -698,6 +721,26 @@ if (function_exists('acf_add_local_field_group')) {
         'description' => '',
     ));
 }
+
+/**
+ * Generate custom values for non-admin post types
+ * @param array
+ * @return array
+ */
+function klyp_generate_custom_values_for_nonadmin_post_types($field)
+{
+    // get public custom post types
+    $postTypes = get_post_types(array('public' => true, '_builtin' => false), 'objects', 'and');
+
+    // generate choices
+    if ($postTypes) {
+        foreach ($postTypes as $postType) {
+            $field['choices']['edit.php?post_type=' . $postType->name] = $postType->label;
+        }
+    }
+    return $field;
+}
+add_filter('acf/load_field/name=allowed_post_types', 'klyp_generate_custom_values_for_nonadmin_post_types');
 
 // if user is not klyp or is not super admin, then don't allow them to access advance tap
 if (wp_get_current_user()->user_login == 'klyp' || in_array('super-admin', wp_get_current_user()->roles)) {

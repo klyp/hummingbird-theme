@@ -77,6 +77,17 @@ function klyp_remove_menus()
             'wpseo_dashboard',
             'hummingbird_log_page'
         );
+
+        // add custom post types
+        $allowed_post_types = get_field('allowed_post_types', 'option');
+
+        // if we have set allowed post types
+        if ($allowed_menus) {
+            foreach ($allowed_post_types as $key => $value) {
+                array_push($allowed_menus, $value['value']);
+            }
+        }
+
         foreach ($GLOBALS['menu'] as $key => $menu) {
             if (! in_array($menu[2], $allowed_menus)) {
                 remove_menu_page($menu[2]);
