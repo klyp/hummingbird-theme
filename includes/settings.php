@@ -55,6 +55,22 @@ function klyp_remove_super_admin_editable($roles)
 }
 
 /**
+ * Update Super Admin cap on plugin activation.
+ * @return void
+ */
+function klyp_update_super_admin_cap() {
+    $adminCap      = get_role('administrator')->capabilities;
+    $superAdminCap = get_role('super-admin')->capabilities;
+    foreach ($adminCap as $aKey => $aVal) {
+        if ( ! array_key_exists($aKey, $superAdminCap)) {
+            $superAdminObject = get_role('super-admin');
+            $superAdminObject->add_cap($aKey);
+        }
+    }
+}
+add_action('activated_plugin', 'klyp_update_super_admin_cap');
+
+/**
  * Remove menus
  * @return void
  */
@@ -252,6 +268,28 @@ function klyp_max_revision_purge_button($field)
 add_action('acf/render_field/key=settings_advance_max_revision', 'klyp_max_revision_purge_button');
 
 /**
+ * Add button after max days to keep log
+ * @param object
+ * @return void
+ */
+function klyp_max_log_days_button($field)
+{
+    echo '<div class="acf-actions">
+            <p><a
+                id="klyp-purge-logs"
+                class="acf-button button button-primary"
+                href=""
+                data-admin-url="' . admin_url('admin-ajax.php') . '"
+                data-nonce="' . wp_create_nonce('klyp-hummingbird') . '"
+                data-event="purge-logs">
+                    Purge Logs
+                </a>
+            </p>
+          </div>';
+}
+add_action('acf/render_field/key=settings_advance_max_days_log', 'klyp_max_log_days_button');
+
+/**
  * Function to clean up revision post type
  * @return boolean
  */
@@ -260,7 +298,6 @@ function klyp_clean_up_revisions()
     if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
         $return['message'] = esc_html__('Invalid request.');
         wp_send_json_error($return);
-        die();
     }
 
     global $wpdb;
@@ -302,9 +339,39 @@ function klyp_clean_up_revisions()
     }
 
     wp_send_json_success($return);
-    die();
 }
 add_action('wp_ajax_klyp_clean_up_revisions', 'klyp_clean_up_revisions');
+
+/**
+ * Function to clean up logs
+ * @return boolean
+ */
+function klyp_clean_up_logs()
+{
+    if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
+        $return['message'] = esc_html__('Invalid request.');
+        wp_send_json_error($return);
+    }
+
+    global $wpdb;
+    $maxDaysLog = (! empty(get_field('max_days_log', 'option')) ? (int) get_field('max_days_log', 'option') : null);
+
+    if (is_null($maxDaysLog) || $maxDaysLog <= 0) {
+        $return['message'] = esc_html__('Please set the maximum number of days to keep log to at least one day.');
+        wp_send_json_error($return);
+    }
+
+    $logs = $wpdb->get_results(
+        $wpdb->prepare(
+            "DELETE
+            FROM " . $wpdb->prefix . HB_LOG_TABLE . "
+            WHERE DATE(date) < (CURRENT_DATE - INTERVAL %d DAY)", $maxDaysLog
+        )
+    );
+    $return['message'] = esc_html__('Logs have been cleaned up.');
+    wp_send_json_success($return);
+}
+add_action('wp_ajax_klyp_clean_up_logs', 'klyp_clean_up_logs');
 
 /**
  * Encrypt string using base64
