@@ -46,7 +46,6 @@ class HummingbirdLog
 
         // site settings
         add_action('acf/save_post', array(&$this, 'klyp_log_site_settings'), 10);
-
     }
 
     /**
@@ -73,7 +72,7 @@ class HummingbirdLog
                 PRIMARY KEY (id)
             ) CHARSET=utf8;";
 
-        // dbDelta($sql);
+        // maybe create table
         maybe_create_table($wpdb->hummingbird_log, $sql);
     }
 

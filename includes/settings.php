@@ -348,9 +348,11 @@ add_action('wp_ajax_klyp_clean_up_revisions', 'klyp_clean_up_revisions');
  */
 function klyp_clean_up_logs()
 {
-    if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
-        $return['message'] = esc_html__('Invalid request.');
-        wp_send_json_error($return);
+    if (! defined('DOING_CRON')) {
+        if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
+            $return['message'] = esc_html__('Invalid request.');
+            wp_send_json_error($return);
+        }
     }
 
     global $wpdb;
@@ -372,6 +374,7 @@ function klyp_clean_up_logs()
     wp_send_json_success($return);
 }
 add_action('wp_ajax_klyp_clean_up_logs', 'klyp_clean_up_logs');
+add_action('klyp_cc_cron_logs', 'klyp_clean_up_logs');
 
 /**
  * Encrypt string using base64
