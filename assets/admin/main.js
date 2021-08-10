@@ -24,6 +24,29 @@
             }
         });
 
+        $('#klyp-purge-logs').on('click', function(e) {
+            e.preventDefault();
+
+            if (confirm('Are you sure you want to purge logs that are older than specified days?\nWARNING YOU CANNOT UNDO THIS ACTION')) {
+                var nonce = $(this).data('nonce'),
+                    adminUrl = $(this).data('admin-url');
+
+                $.ajax({
+                    type: 'post',
+                    url: adminUrl,
+                    data: {
+                        action: 'klyp_clean_up_logs',
+                        nonce: nonce
+                    },
+                    success: function(response) {
+                        alert(response.data.message);
+                    }
+                });
+            } else {
+                return;
+            }
+        });
+
         $('.klyp-modal__open').on('click', function(e) {
             e.preventDefault();
             $('.klyp-modal').addClass('active');

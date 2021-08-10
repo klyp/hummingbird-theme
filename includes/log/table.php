@@ -289,7 +289,7 @@ class HummingbirdLogTable extends WP_List_Table
         $this->items = $wpdb->get_results(
             $wpdb->prepare(
                 'SELECT hb_log.* FROM `' . $wpdb->hummingbird_log . '` as hb_log
-                    JOIN `' . $wpdb->prefix . 'users' . '` as users ON users.ID = hb_log.user_id ' .
+                    JOIN `' . $wpdb->base_prefix . 'users' . '` as users ON users.ID = hb_log.user_id ' .
                     $where . ' ORDER BY ' . $itemsOrderby . ' ' . $itemsOrder . ' LIMIT %d, %d;',
                 $offset,
                 $itemsPerPage
