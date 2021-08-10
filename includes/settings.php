@@ -98,7 +98,7 @@ function klyp_remove_menus()
         $allowed_post_types = get_field('allowed_post_types', 'option');
 
         // if we have set allowed post types
-        if ($allowed_menus) {
+        if ($allowed_menus && $allowed_post_types && is_array($allowed_post_types)) {
             foreach ($allowed_post_types as $key => $value) {
                 array_push($allowed_menus, $value['value']);
             }
