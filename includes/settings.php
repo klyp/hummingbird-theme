@@ -365,9 +365,9 @@ function klyp_clean_up_logs()
 
     $logs = $wpdb->get_results(
         $wpdb->prepare(
-            "DELETE
-            FROM " . $wpdb->prefix . HB_LOG_TABLE . "
-            WHERE DATE(date) < (CURRENT_DATE - INTERVAL %d DAY)", $maxDaysLog
+            'DELETE
+            FROM `' . $wpdb->hummingbird_log . '`
+            WHERE DATE(date) < (CURRENT_DATE - INTERVAL %d DAY)', $maxDaysLog
         )
     );
     $return['message'] = esc_html__('Logs have been cleaned up.');

@@ -59,8 +59,8 @@ class HummingbirdLog
         $tableName = $wpdb->prefix . HB_LOG_TABLE;
         $wpdb->hummingbird_log = $tableName;
 
-        $sql = "
-            CREATE TABLE {$wpdb->hummingbird_log} (
+        $sql = '
+            CREATE TABLE `' . $wpdb->hummingbird_log . '` (
                 id bigint(20) NOT NULL AUTO_INCREMENT,
                 user_id bigint(20) NOT NULL,
                 url varchar(100) DEFAULT NULL,
@@ -70,7 +70,7 @@ class HummingbirdLog
                 date timestamp NOT NULL DEFAULT current_timestamp(),
                 ip varchar(45) NOT NULL,
                 PRIMARY KEY (id)
-            ) CHARSET=utf8;";
+            ) CHARSET=utf8';
 
         // maybe create table
         maybe_create_table($wpdb->hummingbird_log, $sql);
