@@ -43,6 +43,9 @@ class HummingbirdLog
         add_action('wp_update_nav_menu', array(&$this, 'klyp_log_menu_create_update'), 10, 1);
         add_action('wp_create_nav_menu', array(&$this, 'klyp_log_menu_create_update'), 10, 1);
         add_action('delete_nav_menu', array(&$this, 'klyp_log_menu_delete'), 10, 3);
+
+        // site settings
+        add_action('acf/save_post', array(&$this, 'klyp_log_site_settings'), 10);
     }
 
     /**
@@ -56,8 +59,8 @@ class HummingbirdLog
         $tableName = $wpdb->prefix . HB_LOG_TABLE;
         $wpdb->hummingbird_log = $tableName;
 
-        $sql = "
-            CREATE TABLE IF NOT EXISTS {$tableName} (
+        $sql = '
+            CREATE TABLE `' . $wpdb->hummingbird_log . '` (
                 id bigint(20) NOT NULL AUTO_INCREMENT,
                 user_id bigint(20) NOT NULL,
                 url varchar(100) DEFAULT NULL,
@@ -67,15 +70,16 @@ class HummingbirdLog
                 date timestamp NOT NULL DEFAULT current_timestamp(),
                 ip varchar(45) NOT NULL,
                 PRIMARY KEY (id)
-            ) CHARSET=utf8;";
+            ) CHARSET=utf8';
 
-        dbDelta($sql);
+        // maybe create table
+        maybe_create_table($wpdb->hummingbird_log, $sql);
     }
 
     /**
      * Insert log
-     * @param int
      * @param string $action
+     * @param object
      * @return void
      */
     function klyp_insert_user_log($action = '', $user = null)
@@ -467,5 +471,20 @@ class HummingbirdLog
         $this->postType = 'menu';
         $this->postData = $nav;
         $this->klyp_insert_user_log('deleted');
+    }
+
+    /**
+     * Log site settings
+     * @return void
+     */
+    function klyp_log_site_settings()
+    {
+        $currentScreen = get_current_screen();
+
+        if (strpos($currentScreen->id, 'site-settings') == true) {
+            $this->postType = 'Site-Settings';
+            $this->postData = $_POST;
+            $this->klyp_insert_user_log('updated');
+        }
     }
 }

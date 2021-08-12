@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Add cron.
+ */
+require get_template_directory() . '/includes/cron.php';
+
+/**
  * Add global component functions.
  */
 require get_template_directory() . '/includes/global-components.php';
