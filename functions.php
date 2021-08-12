@@ -208,18 +208,3 @@ add_filter('excerpt_length', 'klyp_excerpt_length', 999);
  * Custom Functions
  */
 require get_template_directory() . '/includes/index.php';
-
-/**
- * Update Super Admin cap on plugin activation.
- */
-function klyp_update_super_admin_cap() {
-    $adminCap      = get_role('administrator')->capabilities;
-    $superAdminCap = get_role('super-admin')->capabilities;
-    foreach ($adminCap as $aKey => $aVal) {
-        if ( ! array_key_exists($aKey, $superAdminCap)) {
-            $superAdminObject = get_role('super-admin');
-            $superAdminObject->add_cap($aKey);
-        }
-    }
-}
-add_action('activated_plugin', 'klyp_update_super_admin_cap');
