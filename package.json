@@ -16,7 +16,7 @@
     "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
     "minimatch": "^3.0.2",
-    "object-path": ">=0.11.5",
+    "object-path": ">=0.11.6",
     "postcss": "^8.3.6",
     "postcss-combine-media-query": "^1.0.1",
     "socket.io": "^4.1.3",
