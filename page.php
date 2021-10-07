@@ -42,16 +42,14 @@ if (post_password_required()) {
                 if ($components) {
                     foreach ($components as $key => $component) {
                         $componentAttribute['layout']       = $component['acf_fc_layout'];
-                        $componentAttribute['component_id'] = $component['id'];
                         $componentAttribute['page_id']      = get_the_ID();
                         $componentAttribute['order']        = $componentCount;
-                        echo '<div data-component=' . json_encode($componentAttribute) . '></div>';
+                        echo '<div class="klypComponents" data-ajax="' . admin_url('admin-ajax.php') . '" data-nonce="' . wp_create_nonce('klyp-hummingbird') . '" data-component=' . json_encode($componentAttribute) . '></div>';
                         $componentCount++;
                     }
                 }
             endif;
             ?>
-
         </main><!-- #main -->
     </div><!-- #primary -->
     <?php
