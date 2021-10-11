@@ -1,4 +1,12 @@
 $(document).ready(function () {
+  Modernizr.on('webp', function (result) {
+    if (result) {
+      $('body').addClass('hb-webp');
+    } else {
+      $('body').addClass('hb-no-webp');
+    }
+  });
+
   //timeline hover on date
   $('.hb-timeline__item-date h4').hover(
     function () {
@@ -106,12 +114,4 @@ $(document).ready(function () {
   //js to wrap blockquote and table
   $('.hb-general__txt-img-content blockquote').wrap('<div class="hb-general__blockquote-container position-relative"></div>');
   $('.hb-general__txt-img-content table').wrap('<div class="hb-general__table-responsive table-responsive-md"></div>');
-});
-
-Modernizr.on('webp', function (result) {
-  if (result) {
-    $('body').addClass('hb-webp');
-  } else {
-    $('body').addClass('hb-no-webp');
-  }
 });

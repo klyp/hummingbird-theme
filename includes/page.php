@@ -194,3 +194,35 @@ function klyp_minimize_css($css)
     $css = str_replace(site_url(), '', $css);
     return '<style>' . $css . '</style>';
 }
+
+/**
+ * Function to load components
+ * @return void
+ */
+function klyp_load_component()
+{
+    if (! wp_verify_nonce($_REQUEST['nonce'], 'klyp-hummingbird')) {
+        return;
+    }
+
+    if (isset($_POST['data'])) {
+        $data   = $_POST['data'];
+        $layout = $data['layout'];
+        $pageId = $data['page_id'];
+        $order  = $data['order'];
+
+        if (have_rows('components', $pageId)) {
+            $theOrder = 0;
+            while (have_rows('components', $pageId)) : the_row();
+                if ($theOrder == $order) {
+                    get_template_part('/templates/components/' . $layout);
+                    break;
+                }
+                $theOrder++;
+            endwhile;
+        }
+    }
+    die;
+}
+add_action('wp_ajax_klyp_load_component', 'klyp_load_component');
+add_action('wp_ajax_nopriv_klyp_load_component', 'klyp_load_component');

@@ -36,19 +36,20 @@ if (post_password_required()) {
         <main id="main" class="site-main">
             <?php
             if (have_posts()) :
-                while (have_posts()) :
-                    the_post();
-                    if (have_rows('components')) {
-                        while (have_rows('components')) {
-                            the_row();
-                            $layoutName = get_row_layout();
-                            get_template_part('/templates/components/' . $layoutName);
-                        }
+                $componentCount = 0;
+                $theComponents = get_field_objects();
+                $components = $theComponents['components']['value'];
+                if ($components) {
+                    foreach ($components as $key => $component) {
+                        $componentAttribute['layout']       = $component['acf_fc_layout'];
+                        $componentAttribute['page_id']      = get_the_ID();
+                        $componentAttribute['order']        = $componentCount;
+                        echo '<div class="klypComponents" data-ajax="' . admin_url('admin-ajax.php') . '" data-nonce="' . wp_create_nonce('klyp-hummingbird') . '" data-component=' . json_encode($componentAttribute) . '></div>';
+                        $componentCount++;
                     }
-                endwhile;
+                }
             endif;
             ?>
-
         </main><!-- #main -->
     </div><!-- #primary -->
     <?php
