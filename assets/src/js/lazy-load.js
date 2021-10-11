@@ -17,10 +17,11 @@ $(document).ready(function () {
         return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
     };
 
-    $(window).scroll(function() {
+    $(window).bind('load scroll', function() {
         if ($('.klypComponents').length) {
             $('.klypComponents').each(function() {
                 let theComponent = $(this);
+                
                 if ($(this).isOnScreen() == true && ! $(this).hasClass('loaded')) {
                     $.ajax({
                         type: 'post',
@@ -43,6 +44,5 @@ $(document).ready(function () {
                 }
             })
         }
-        
     });
 });
