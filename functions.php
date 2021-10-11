@@ -131,6 +131,13 @@ function klyp_footer_scripts()
         '1.0.0',
         true
     );
+    wp_enqueue_script(
+        'klyp-lazy-load',
+        get_stylesheet_directory_uri() . '/assets/dist/js/lazy-load.min.js',
+        array('jquery'),
+        '1.0.0',
+        true
+    );
     // to localise the script in child theme
     do_action('klyp_localize_script');
 }

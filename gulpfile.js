@@ -104,25 +104,39 @@ function css()
 function scripts()
 {
   return (
-  gulp
-    .src([
-    './node_modules/jquery/dist/jquery.js',
-    './node_modules/bootstrap/dist/js/bootstrap.min.js',
-    './node_modules/owl.carousel/dist/owl.carousel.js',
-    './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-    './node_modules/select2/dist/js/select2.full.min.js',
-    './node_modules/jquery-inview/jquery.inview.min.js',
-    './node_modules/@fortawesome/fontawesome-free/js/all.js',
-    './assets/src/js/**/*',
-    ])
-    .pipe(plumber())
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('./assets/dist/js/'))
-    .pipe(terser())
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(gulp.dest('./assets/dist/js/'))
-    .pipe(browsersync.stream())
-  );
+    gulp
+      .src([
+      './node_modules/jquery/dist/jquery.js',
+      './node_modules/bootstrap/dist/js/bootstrap.min.js',
+      './node_modules/owl.carousel/dist/owl.carousel.js',
+      './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
+      './node_modules/select2/dist/js/select2.full.min.js',
+      './node_modules/jquery-inview/jquery.inview.min.js',
+      './node_modules/@fortawesome/fontawesome-free/js/all.js',
+      './assets/src/js/**/*',
+      '!./assets/src/js/lazy-load.js',
+      ])
+      .pipe(plumber())
+      .pipe(concat('main.js'))
+      .pipe(gulp.dest('./assets/dist/js/'))
+      .pipe(terser())
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(gulp.dest('./assets/dist/js/'))
+      .pipe(browsersync.stream()
+    )
+  )
+}
+
+function lazyload()
+{
+  return (
+    gulp
+      .src(['./assets/src/js/lazy-load.js',])
+      .pipe(terser())
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(gulp.dest('./assets/dist/js')
+    )
+  )
 }
 
 // fonts
@@ -142,12 +156,13 @@ function watchFiles()
 {
   gulp.watch('./assets/src/scss/**/*', css);
   gulp.watch('./assets/src/js/**/*', scripts);
+  gulp.watch('./assets/src/js/**/*', lazyload);
   gulp.watch('./assets/src/image/**/*', images);
   gulp.watch('./assets/src/fonts/**/*', fonts);
   gulp.watch('./*.html', html);
 }
 
-const start = gulp.series(clean, images, fonts, css, scripts, html);
+const start = gulp.series(clean, images, fonts, css, scripts, lazyload, html);
 const watch = gulp.parallel(watchFiles, browserSync);
 
 // export tasks
