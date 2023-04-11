@@ -11,7 +11,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_site_icon_url(32); ?>">
 <link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_site_icon_url(96); ?>">
 <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_site_icon_url(16); ?>">
-<link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/webfonts/fa-brands-400.woff2') ?>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/fonts/Modulus-Bold.otf') ?>" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/fonts/CIRCULARSTD-BOLD.otf') ?>" as="font" type="font/otf" crossorigin>
 <link rel="preload" href="<?php echo (get_stylesheet_directory_uri().'/assets/dist/fonts/CIRCULARSTD-BOOK.OTF') ?>" as="font" type="font/otf" crossorigin>

@@ -32,11 +32,11 @@
     @extend .col-12;
 
     @include media-breakpoint-up(md) {
-        @extend .col-md-6;
+        @include make-col(6);
     }
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg-4;
+        @include make-col(4);
     }
 }
 
@@ -193,11 +193,11 @@
     @extend .col-12;
 
     @include media-breakpoint-up(md) {
-        @extend .col-md-4;
+        @include make-col(4);
     }
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg-3;
+        @include make-col(3);
     }
 }
 
@@ -205,11 +205,11 @@
     @extend .col-12;
 
     @include media-breakpoint-up(md) {
-        @extend .col-md-8;
+        @include make-col(8);
     }
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg-9;
+        @include make-col(9);
     }
 }
 

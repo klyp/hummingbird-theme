@@ -6,11 +6,11 @@
     margin-bottom: 25px;
 
     @include media-breakpoint-up(md) {
-        @extend .col-md-4;
+        @include make-col(4);
     }
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg;
+        @include make-col(12);
     }
 }
 
