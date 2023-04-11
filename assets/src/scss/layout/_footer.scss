@@ -19,7 +19,7 @@
     @extend .col-12;
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg-4;
+        @include make-col(4);
     }
 }
 

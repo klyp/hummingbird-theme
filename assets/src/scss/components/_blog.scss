@@ -231,7 +231,7 @@
     @extend .col-12;
 
     @include media-breakpoint-up(md) {
-        @extend .col-md-4;
+        @include make-col(4);
     }
 }
 
@@ -239,7 +239,7 @@
     @extend .col-12;
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg-6;
+        @include make-col(6);
     }
 }
 
@@ -247,7 +247,7 @@
     @extend .col-12;
 
     @include media-breakpoint-up(lg) {
-        @extend .col-lg-4;
+        @include make-col(4);
     }
 }
 /*=====  End of Blog Component CSS  ======*/
