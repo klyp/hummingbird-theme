@@ -7,7 +7,7 @@
     "gulp"
   ],
   "devDependencies": {
-    "axios": "^1.3.4",
+    "axios": "^1.3.5",
     "css-what": "^6.1.0",
     "gulp-media-queries-splitter": "^1.0.3",
     "gulp-terser": "^1.4.1",
@@ -54,6 +54,7 @@
     "modernizr": "^3.12.0",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.15.0",
+    "sass": "^1.61.0",
     "select2": "^4.0.13"
   }
 }
