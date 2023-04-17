@@ -136,7 +136,7 @@ function klyp_footer_scripts()
         get_template_directory_uri() . '/assets/dist/js/lazy-load.min.js',
         array('jquery'),
         '1.0.0',
-        true
+        false
     );
     // to localise the script in child theme
     do_action('klyp_localize_script');

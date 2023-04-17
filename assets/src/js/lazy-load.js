@@ -44,5 +44,17 @@ $(document).ready(function () {
                 }
             })
         }
+
+        // contact form 7 fixes
+        if ($('form.wpcf7-form:not(.initialized)').length) {
+            $('form.wpcf7-form:not(.initialized)').each(function() {
+                var action = $(this).attr('action');
+                action = action.substring(action.indexOf('#'));
+                $(this).attr('action', action);
+                $(this).addClass('initialized');
+                
+                wpcf7.init($(this)[0]);
+            });
+        }
     });
 });
