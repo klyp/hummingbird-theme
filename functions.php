@@ -131,13 +131,16 @@ function klyp_footer_scripts()
         '1.0.0',
         true
     );
-    wp_enqueue_script(
-        'klyp-lazy-load',
-        get_template_directory_uri() . '/assets/dist/js/lazy-load.min.js',
-        array('jquery'),
-        '1.0.0',
-        false
-    );
+
+    if (get_field('settings_advance','options')['lazy_load_enabled'] === true) {
+        wp_enqueue_script(
+            'klyp-lazy-load',
+            get_template_directory_uri() . '/assets/dist/js/lazy-load.min.js',
+            array('jquery'),
+            '1.0.0',
+            false
+        );
+    }
     // to localise the script in child theme
     do_action('klyp_localize_script');
 }
