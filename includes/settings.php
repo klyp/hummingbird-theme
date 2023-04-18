@@ -17,7 +17,7 @@ function klyp_get_super_admins()
     }
 
     // get super admins from settings
-    $super_admins = get_field('super_admins', 'option');
+    $super_admins = get_field('settings_advance', 'option')['super_admins'];
 
     // if we have a list
     if ($super_admins) {
@@ -95,7 +95,7 @@ function klyp_remove_menus()
         );
 
         // add custom post types
-        $allowed_post_types = get_field('allowed_post_types', 'option');
+        $allowed_post_types = get_field('advance_settings', 'option')['allowed_post_types'];
 
         // if we have set allowed post types
         if ($allowed_menus && $allowed_post_types && is_array($allowed_post_types)) {
@@ -240,7 +240,7 @@ add_filter('admin_footer_text', 'klyp_remove_footer_admin');
 function klyp_set_max_revisions()
 {
     // get max post revisions
-    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : -1);
+    $maxRevision = (! empty(get_field('settings_advance', 'option')) ? get_field('settings_advance', 'option')['max_revision'] : -1);
 
     return (int) $maxRevision;
 }
@@ -302,7 +302,7 @@ function klyp_clean_up_revisions()
 
     global $wpdb;
     $postType = 'revision';
-    $maxRevision = (! empty(get_field('max_revision', 'option')) ? get_field('max_revision', 'option') : -1);
+    $maxRevision = (! empty(get_field('settings_advance', 'option')['max_revision']) ? get_field('settings_advance', 'option')['max_revision'] : -1);
     $totalRevisions = 0;
 
     $allRevisions = $wpdb->get_results(
@@ -356,7 +356,7 @@ function klyp_clean_up_logs()
     }
 
     global $wpdb;
-    $maxDaysLog = (! empty(get_field('max_days_log', 'option')) ? (int) get_field('max_days_log', 'option') : null);
+    $maxDaysLog = (! empty(get_field('settings_advance', 'option')['max_days_log']) ? (int) get_field('settings_advance', 'option')['max_days_log'] : null);
 
     if (is_null($maxDaysLog) || $maxDaysLog <= 0) {
         $return['message'] = esc_html__('Please set the maximum number of days to keep log to at least one day.');

@@ -34,6 +34,7 @@ if (post_password_required()) {
     ?>
     <div id="primary" class="content-area">
         <main id="main" class="site-main">
+        <?php if (get_field('settings_advance','options')['lazy_load_enabled'] === true) : ?>
             <div class="site-preloader">
                 <svg class="pl" viewBox="0 0 128 128" width="128px" height="128px" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -62,6 +63,22 @@ if (post_password_required()) {
                 }
             endif;
             ?>
+        <?php else: ?>
+            <?php
+            if (have_posts()) :
+                while (have_posts()) :
+                    the_post();
+                    if (have_rows('components')) {
+                        while (have_rows('components')) {
+                            the_row();
+                            $layoutName = get_row_layout();
+                            get_template_part('/templates/components/' . $layoutName);
+                        }
+                    }
+                endwhile;
+            endif;
+            ?>
+        <?php endif; ?>
         </main><!-- #main -->
     </div><!-- #primary -->
     <?php

@@ -6,7 +6,7 @@
 function js_async_attr($tag)
 {
     // get the list from settings
-    $scripts_to_exclude = get_field('js_scripts_to_defer', 'option');
+    $scripts_to_exclude = get_field('settings_advance', 'option')['js_scripts_to_defer'];
 
     if (! $scripts_to_exclude) {
         # Do not add defer or async attribute to these scripts
