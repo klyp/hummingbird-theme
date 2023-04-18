@@ -41,6 +41,11 @@ $(document).ready(function () {
                             theComponent.removeClass('loaded');
                         }
                     });
+
+                    // remove preloader
+                    if ($('.site-preloader').length) {
+                        $('.site-preloader').remove();
+                    }
                 }
             })
         }
