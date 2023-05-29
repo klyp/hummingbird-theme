@@ -9,8 +9,8 @@
  * @package Hummingbird
  */
 
-    $socialMedia    = get_field('settings_social_media', 'options');
-    $footerLogoUrl  = get_field('settings_logo', 'options')['settings_logo_footer'] ?:get_stylesheet_directory_uri() . '/assets/src/image/logo/footer-logo.svg';
+    $socialMedia    = get_field('settings_social_media', 'option');
+    $footerLogoUrl  = get_field('settings_logo', 'option')['settings_logo_footer'] ?:get_stylesheet_directory_uri() . '/assets/src/image/logo/footer-logo.svg';
     $footerMenu     = klyp_generate_nav_menu('menu-footer');
 ?>
 

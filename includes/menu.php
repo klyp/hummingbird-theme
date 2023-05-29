@@ -1,9 +1,9 @@
 <?php
 
-    $mainLogoUrl        = get_field('settings_logo', 'options')['settings_logo_primary'] ?: get_stylesheet_directory_uri() . '/assets/src/image/logo/logo.png';
+    $mainLogoUrl        = get_field('settings_logo', 'option')['settings_logo_primary'] ?: get_stylesheet_directory_uri() . '/assets/src/image/logo/logo.png';
     $mobileLogoUrl      = get_stylesheet_directory_uri() . '/assets/src/image/icon/call-gray.svg';
     $menuCloseIconUrl   = get_stylesheet_directory_uri() . '/assets/dist/img/nav-close-icon.svg';
-    $contactNumber      = ! empty(get_field('settings_contact', 'options')['settings_contact_number']) ? get_field('settings_contact', 'options')['settings_contact_number'] : '';
+    $contactNumber      = ! empty(get_field('settings_contact', 'option')['settings_contact_number']) ? get_field('settings_contact', 'option')['settings_contact_number'] : '';
     $primaryMenu        = klyp_generate_nav_menu('menu-primary');
 
 ?>
