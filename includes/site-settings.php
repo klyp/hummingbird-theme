@@ -622,6 +622,9 @@ if (function_exists('acf_add_local_field_group')) {
  */
 function klyp_generate_custom_values_for_nonadmin_post_types($field)
 {
+    // add global components
+    $field['choices']['edit.php?post_type=global-component'] = 'Global Components';
+
     // get public custom post types
     $postTypes = get_post_types(array('public' => true, '_builtin' => false), 'objects', 'and');
 

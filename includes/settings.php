@@ -95,7 +95,7 @@ function klyp_remove_menus()
         );
 
         // add custom post types
-        $allowed_post_types = get_field('advance_settings', 'option')['allowed_post_types'];
+        $allowed_post_types = get_field('settings_advance', 'options')['allowed_post_types'];
 
         // if we have set allowed post types
         if ($allowed_menus && $allowed_post_types && is_array($allowed_post_types)) {
