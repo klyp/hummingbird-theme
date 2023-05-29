@@ -61,7 +61,7 @@ if (is_admin()) {
  */
 function klyp_hook_head()
 {
-    echo get_field('settings_script_header', 'options');
+    echo get_field('settings_script_header', 'option');
 }
 add_action('wp_head', 'klyp_hook_head');
 
@@ -72,7 +72,7 @@ add_action('wp_head', 'klyp_hook_head');
  */
 function klyp_hook_body($classes)
 {
-    $classes[] = '">' . get_field('settings_script_body', 'options') . '<noscript></noscript novar="';
+    $classes[] = '">' . get_field('settings_script_body', 'option') . '<noscript></noscript novar="';
     return $classes;
 }
 
@@ -81,7 +81,7 @@ function klyp_hook_body($classes)
  * @return string
  */
 function klyp_hook_body_v5() {
-    echo get_field('settings_script_body', 'options');
+    echo get_field('settings_script_body', 'option');
 }
 
 // making sure backward compatible
@@ -97,7 +97,7 @@ if (version_compare(get_bloginfo('version'), '5.2', '>=')) {
  */
 function klyp_hook_footer()
 {
-    echo get_field('settings_script_footer', 'options');
+    echo get_field('settings_script_footer', 'option');
 }
 add_action('wp_footer', 'klyp_hook_footer');
 
