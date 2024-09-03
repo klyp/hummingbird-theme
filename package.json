@@ -18,7 +18,7 @@
     "minimatch": "^3.1.2",
     "nth-check": "^2.1.1",
     "object-path": ">=0.11.8",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "postcss-combine-media-query": "^1.0.1",
     "semver-regex": "^4.0.5",
     "set-value": "^4.1.0",
