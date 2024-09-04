@@ -7,7 +7,6 @@ const cp = require('child_process');
 const cssnano = require('cssnano');
 const del = require('del');
 const gulp = require('gulp');
-const imagemin = require('gulp-imagemin');
 const newer = require('gulp-newer');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
@@ -16,8 +15,6 @@ const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
-const combineMediaQuery = require('postcss-combine-media-query');
-const mediaQueriesSplitter = require('gulp-media-queries-splitter');
 
 // BrowserSync
 function browserSync(done)
@@ -53,21 +50,6 @@ function images()
   return gulp
   .src('./assets/src/image/**/*')
   .pipe(newer('./assets/dist/image'))
-  .pipe(
-    imagemin([
-    imagemin.gifsicle({ interlaced: true }),
-    imagemin.mozjpeg({ progressive: true }),
-    imagemin.optipng({ optimizationLevel: 5 }),
-    imagemin.svgo({
-      plugins: [
-      {
-        removeViewBox: false,
-        collapseGroups: true
-      }
-      ]
-    })
-    ])
-  )
   .pipe(gulp.dest('./assets/dist/image'));
 }
 
@@ -87,12 +69,8 @@ function css()
   .pipe(concat('main.css'))
   .pipe(sass({ outputStyle: "expanded" }))
   .pipe(gulp.dest("./assets/dist/css/"))
-  .pipe(postcss([autoprefixer(), combineMediaQuery()]))
+  .pipe(postcss([autoprefixer()]))
   .pipe(gulp.dest("./assets/dist/css/"))
-  .pipe(mediaQueriesSplitter([
-    {media: 'none', filename: 'base.css'},
-    {media: {min: '576px'}, filename: 'desktop.css'},
-  ]))
   .pipe(gulp.dest("./assets/dist/css/"))
   .pipe(rename({ suffix: ".min" }))
   .pipe(postcss([cssnano()]))
