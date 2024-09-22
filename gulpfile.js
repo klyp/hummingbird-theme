@@ -2,7 +2,6 @@
 
 // Load plugins
 const autoprefixer = require('autoprefixer');
-const browsersync = require('browser-sync').create();
 const cp = require('child_process');
 const cssnano = require('cssnano');
 const del = require('del');
@@ -16,28 +15,6 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 
-// BrowserSync
-function browserSync(done)
-{
-  browsersync.init({
-    open: false,
-    //proxy: 'http://hummingbird.chandresh.php/', // replace it with yours
-    port: 3000,
-    server: {
-      baseDir: './'
-    }
-  });
-  done();
-}
-// html
-function html()
-{
-  return gulp
-  .src([
-    './*.html',
-  ])
-  .pipe(browsersync.stream());
-}
 // clean
 function clean()
 {
@@ -137,10 +114,9 @@ function watchFiles()
   gulp.watch('./assets/src/js/**/*', lazyload);
   gulp.watch('./assets/src/image/**/*', images);
   gulp.watch('./assets/src/fonts/**/*', fonts);
-  gulp.watch('./*.html', html);
 }
 
-const start = gulp.series(clean, images, fonts, css, scripts, lazyload, html);
+const start = gulp.series(clean, images, fonts, css, scripts, lazyload);
 const watch = gulp.parallel(watchFiles, browserSync);
 
 // export tasks
