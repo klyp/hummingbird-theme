@@ -7,7 +7,7 @@
  */
 function klyp_acf_google_map_api($api)
 {
-    if ($api_google_map = get_field('settings_api_google_map', 'option')) {
+    if ($api_google_map = get_field('settings_api', 'options')['settings_api_google_map']) {
         $api['key'] = $api_google_map;
     }
     return $api;
@@ -20,7 +20,7 @@ add_filter('acf/fields/google_map/api', 'klyp_acf_google_map_api');
  */
 function klyp_acf_init()
 {
-    if ($api_google_map = get_field('settings_api_google_map', 'option')) {
+    if ($api_google_map = get_field('settings_api', 'options')['settings_api_google_map']) {
         acf_update_setting('google_api_key', $api_google_map);
     }
 }

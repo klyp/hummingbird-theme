@@ -113,7 +113,7 @@ add_action('wp_enqueue_scripts', 'klyp_scripts');
 function klyp_footer_scripts()
 {
     // enqueue googlemaps script
-    if ($api_google_map = get_field('settings_api_google_map', 'option')) {
+    if ($api_google_map = get_field('settings_api', 'options')['settings_api_google_map']) {
         wp_register_script(
             'googlemaps',
             '//maps.googleapis.com/maps/api/js?key=' . $api_google_map . '&libraries=places',
