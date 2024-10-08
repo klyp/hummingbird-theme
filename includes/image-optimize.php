@@ -7,6 +7,16 @@
 function klyp_configure_tinypng_api()
 {
     $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
+    
+    // If new value doesn't exist but new one does, migrate the value
+    if (empty($api_tiny_png)) {
+        $api_tiny_png = get_field('settings_tiny_png', 'option');
+        if ($api_tiny_png) {
+            $settings_api = get_field('settings_api', 'options');
+            $settings_api['settings_tiny_png'] = $api_tiny_png;
+            update_field('settings_api', $settings_api, 'options');
+        }
+    }
 
     if (! empty( $api_tiny_png)) {
         \Tinify\setKey($api_tiny_png);
@@ -249,6 +259,13 @@ function klyp_include_tinypng_lib()
         include_once(ABSPATH . 'wp-content/plugins/advanced-custom-fields-pro/acf.php');
     }
     $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
+
+    if (empty($api_tiny_png)) {
+        $api_tiny_png = get_field('settings_tiny_png', 'option');
+        if ($api_tiny_png) {
+            
+        }
+    }
 
     if (! empty($api_tiny_png)) {
         \Tinify\setKey($api_tiny_png);
