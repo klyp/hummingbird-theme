@@ -649,3 +649,57 @@ if (wp_get_current_user()->user_login == 'klyp' || in_array('super-admin', wp_ge
         ';
     });
 }
+
+/**
+ * For backwards compatability
+ * 
+ * Save the new API settings values against the old one so old code doesn't break
+ * 
+ * @param string $post_id The post id to save to
+ * @param string $menu_slug the menu slug the save action is coming from
+ */
+function threeequals_acf_save_options_page( $post_id, $menu_slug )
+{
+    if ($menu_slug !== 'site-settings') {
+        return;     
+    }
+ 
+    // Check google maps is fully updated
+    $api_google_map = get_field('settings_api', 'options')['settings_api_google_map'];
+    
+    // If new value doesn't exist but new one does, migrate the value
+    if (empty($api_google_map)) {
+        $api_google_map = get_field('settings_api_google_map', 'option');
+
+        if ($api_google_map) {
+            $settings_api = get_field('settings_api', 'options');
+            $settings_api['settings_api_google_map'] = $api_google_map;
+            update_field('settings_api', $settings_api, 'options');
+        }
+    } else {
+        // if new field exists, check if old field needs to be changed
+        $base_api_google_map = get_field('settings_api_google_map', 'option');
+        if (empty($base_api_google_map) || $base_api_google_map !== $api_google_map) {
+            update_field('settings_api_google_map', $api_google_map, 'options');
+        }
+    }
+
+    // Check if Tinypng API is fully loaded
+    $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
+
+    // If new value doesn't exist but new one does, migrate the value
+    if (empty($api_tiny_png)) {
+        $api_tiny_png = get_field('settings_tiny_png', 'option');
+        if ($api_tiny_png) {
+            $settings_api = get_field('settings_api', 'options');
+            $settings_api['settings_tiny_png'] = $api_tiny_png;
+            update_field('settings_api', $settings_api, 'options');
+        }
+    } else {
+        $base_api_tiny_png = get_field('settings_tiny_png', 'option');
+        if (empty($base_api_tiny_png) || $base_api_tiny_png !== $api_tiny_png) {
+            update_field('settings_tiny_png', $api_tiny_png, 'options');
+        }
+    }
+}
+add_action('acf/options_page/save', 'threeequals_acf_save_options_page', 10, 2);
