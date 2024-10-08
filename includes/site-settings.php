@@ -672,33 +672,33 @@ function threeequals_acf_save_options_page( $post_id, $menu_slug )
         $api_google_map = get_field('settings_api_google_map', 'option');
 
         if ($api_google_map) {
-            $settings_api = get_field('settings_api', 'options');
+            $settings_api = get_field('settings_api', 'option');
             $settings_api['settings_api_google_map'] = $api_google_map;
-            update_field('settings_api', $settings_api, 'options');
+            update_field('settings_api', $settings_api, 'option');
         }
     } else {
         // if new field exists, check if old field needs to be changed
         $base_api_google_map = get_field('settings_api_google_map', 'option');
         if (empty($base_api_google_map) || $base_api_google_map !== $api_google_map) {
-            update_field('settings_api_google_map', $api_google_map, 'options');
+            update_field('settings_api_google_map', $api_google_map, 'option');
         }
     }
 
     // Check if Tinypng API is fully loaded
-    $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
+    $api_tiny_png = get_field('settings_api', 'option')['settings_tiny_png'];
 
     // If new value doesn't exist but new one does, migrate the value
     if (empty($api_tiny_png)) {
         $api_tiny_png = get_field('settings_tiny_png', 'option');
         if ($api_tiny_png) {
-            $settings_api = get_field('settings_api', 'options');
+            $settings_api = get_field('settings_api', 'option');
             $settings_api['settings_tiny_png'] = $api_tiny_png;
-            update_field('settings_api', $settings_api, 'options');
+            update_field('settings_api', $settings_api, 'option');
         }
     } else {
         $base_api_tiny_png = get_field('settings_tiny_png', 'option');
         if (empty($base_api_tiny_png) || $base_api_tiny_png !== $api_tiny_png) {
-            update_field('settings_tiny_png', $api_tiny_png, 'options');
+            update_field('settings_tiny_png', $api_tiny_png, 'option');
         }
     }
 }
