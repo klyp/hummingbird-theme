@@ -18,7 +18,7 @@ function klyp_configure_tinypng_api()
         }
     }
 
-    if (! empty( $api_tiny_png)) {
+    if (! empty($api_tiny_png)) {
         \Tinify\setKey($api_tiny_png);
     }
 }
