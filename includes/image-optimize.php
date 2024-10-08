@@ -260,13 +260,6 @@ function klyp_include_tinypng_lib()
     }
     $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
 
-    if (empty($api_tiny_png)) {
-        $api_tiny_png = get_field('settings_tiny_png', 'option');
-        if ($api_tiny_png) {
-            
-        }
-    }
-
     if (! empty($api_tiny_png)) {
         \Tinify\setKey($api_tiny_png);
     }
