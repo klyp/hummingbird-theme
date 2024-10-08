@@ -8,6 +8,16 @@ function klyp_configure_tinypng_api()
 {
     $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
 
+    // Check if the API needs to be updated from the old value
+    if (empty($api_tiny_png)) {
+        $api_tiny_png = get_field('settings_tiny_png', 'options');
+        if ($api_tiny_png) {
+            $settings_api = get_field('settings_api', 'options');
+            $settings_api['settings_tiny_png'] = $api_tiny_png;
+            update_field('settings_api', $settings_api, 'options');
+        }
+    }
+
     if (! empty($api_tiny_png)) {
         \Tinify\setKey($api_tiny_png);
     }

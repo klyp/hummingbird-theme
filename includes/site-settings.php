@@ -658,7 +658,7 @@ if (wp_get_current_user()->user_login == 'klyp' || in_array('super-admin', wp_ge
  * @param string $post_id The post id to save to
  * @param string $menu_slug the menu slug the save action is coming from
  */
-function threeequals_acf_save_options_page( $post_id, $menu_slug )
+function threeequals_acf_save_options_page($post_id, $menu_slug)
 {
     if ($menu_slug !== 'site-settings') {
         return;     
@@ -690,12 +690,14 @@ function threeequals_acf_save_options_page( $post_id, $menu_slug )
     // If new value doesn't exist but new one does, migrate the value
     if (empty($api_tiny_png)) {
         $api_tiny_png = get_field('settings_tiny_png', 'options');
+
         if ($api_tiny_png) {
             $settings_api = get_field('settings_api', 'options');
             $settings_api['settings_tiny_png'] = $api_tiny_png;
             update_field('settings_api', $settings_api, 'options');
         }
     } else {
+        // if new field exists, check if old field needs to be changed
         $base_api_tiny_png = get_field('settings_tiny_png', 'options');
         if (empty($base_api_tiny_png) || $base_api_tiny_png !== $api_tiny_png) {
             update_field('settings_tiny_png', $api_tiny_png, 'options');

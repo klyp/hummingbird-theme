@@ -114,6 +114,17 @@ function klyp_footer_scripts()
 {
     $api_google_map = get_field('settings_api', 'options')['settings_api_google_map'];
 
+    // Check if the API needs to be updated from the old value
+    if (empty($api_google_map)) {
+        $api_google_map = get_field('settings_api_google_map', 'options');
+
+        if ($api_google_map) {
+            $settings_api = get_field('settings_api', 'options');
+            $settings_api['settings_api_google_map'] = $api_google_map;
+            update_field('settings_api', $settings_api, 'options');
+        }
+    }
+
     // enqueue googlemaps script
     if ($api_google_map) {
         wp_register_script(
