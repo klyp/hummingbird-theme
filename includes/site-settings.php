@@ -664,20 +664,12 @@ function threeequals_acf_save_options_page($post_id, $menu_slug)
         return;     
     }
  
-    // Compare both API settings values
-    $api_google_map = get_field('settings_api', 'options')['settings_api_google_map'];
-    $base_api_google_map = get_field('settings_api_google_map', 'options');
-    // if new field exists, check if old field needs to be changed
-    if (empty($base_api_google_map) || $base_api_google_map !== $api_google_map) {
-        update_field('settings_api_google_map', $api_google_map, 'options');
+    if (! empty(get_field('settings_api_google_map', 'options'))) {
+        update_field('settings_api_google_map', get_field('settings_api', 'options')['settings_api_google_map'], 'options');
     }
 
-    // Compare both API settings values
-    $api_tiny_png = get_field('settings_api', 'options')['settings_tiny_png'];
-    $base_api_tiny_png = get_field('settings_tiny_png', 'options');
-    // if new field exists, check if old field needs to be changed
-    if (empty($base_api_tiny_png) || $base_api_tiny_png !== $api_tiny_png) {
-        update_field('settings_tiny_png', $api_tiny_png, 'options');
+    if (! empty(get_field('settings_tiny_png', 'options'))) {
+        update_field('settings_tiny_png', get_field('settings_api', 'options')['settings_tiny_png'], 'options');
     }
 }
 add_action('acf/options_page/save', 'threeequals_acf_save_options_page', 10, 2);
