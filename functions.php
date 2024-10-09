@@ -112,8 +112,21 @@ add_action('wp_enqueue_scripts', 'klyp_scripts');
  */
 function klyp_footer_scripts()
 {
+    $api_google_map = get_field('settings_api', 'options')['settings_api_google_map'];
+
+    // Check if the API needs to be updated from the old value
+    if (empty($api_google_map)) {
+        $api_google_map = get_field('settings_api_google_map', 'options');
+
+        if ($api_google_map) {
+            $settings_api = get_field('settings_api', 'options');
+            $settings_api['settings_api_google_map'] = $api_google_map;
+            update_field('settings_api', $settings_api, 'options');
+        }
+    }
+
     // enqueue googlemaps script
-    if ($api_google_map = get_field('settings_api_google_map', 'option')) {
+    if ($api_google_map) {
         wp_register_script(
             'googlemaps',
             '//maps.googleapis.com/maps/api/js?key=' . $api_google_map . '&libraries=places',

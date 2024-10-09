@@ -649,3 +649,27 @@ if (wp_get_current_user()->user_login == 'klyp' || in_array('super-admin', wp_ge
         ';
     });
 }
+
+/**
+ * For backwards compatability
+ * 
+ * Save the new API settings values against the old one so old code doesn't break
+ * 
+ * @param string $post_id The post id to save to
+ * @param string $menu_slug the menu slug the save action is coming from
+ */
+function threeequals_acf_save_options_page($post_id, $menu_slug)
+{
+    if ($menu_slug !== 'site-settings') {
+        return;     
+    }
+ 
+    if (! empty(get_field('settings_api_google_map', 'options'))) {
+        update_field('settings_api_google_map', get_field('settings_api', 'options')['settings_api_google_map'], 'options');
+    }
+
+    if (! empty(get_field('settings_tiny_png', 'options'))) {
+        update_field('settings_tiny_png', get_field('settings_api', 'options')['settings_tiny_png'], 'options');
+    }
+}
+add_action('acf/options_page/save', 'threeequals_acf_save_options_page', 10, 2);
