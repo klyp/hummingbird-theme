@@ -19,7 +19,7 @@
     "postcss": "^8.4.31",
     "semver-regex": "^4.0.5",
     "set-value": "^4.1.0",
-    "socket.io": "^4.7.5",
+    "socket.io": "^4.8.0",
     "tar": "^6.1.13",
     "trim-newlines": "^4.1.1",
     "ws": "^8.13.0",
