@@ -52,7 +52,6 @@ function css()
   .pipe(rename({ suffix: ".min" }))
   .pipe(postcss([cssnano()]))
   .pipe(gulp.dest("./assets/dist/css/"))
-  .pipe(browsersync.stream());
 }
 
 // scripts
@@ -77,8 +76,6 @@ function scripts()
       .pipe(terser())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./assets/dist/js/'))
-      .pipe(browsersync.stream()
-    )
   )
 }
 
@@ -102,7 +99,6 @@ function fonts()
     .src('./assets/src/fonts/**/*')
     .pipe(plumber())
     .pipe(gulp.dest('./assets/dist/fonts'))
-    .pipe(browsersync.stream())
   );
 }
 
@@ -117,7 +113,7 @@ function watchFiles()
 }
 
 const start = gulp.series(clean, images, fonts, css, scripts, lazyload);
-const watch = gulp.parallel(watchFiles, browserSync);
+const watch = gulp.parallel(watchFiles);
 
 // export tasks
 exports.images = images;

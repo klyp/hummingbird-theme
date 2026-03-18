@@ -38,7 +38,7 @@
 
 .hb-cta-section__col-right {
     @extend .col-md-6;
-    @extend .text-right;
+    @extend .text-right !optional;
 }
 
 .hb-cta-section__col-left {
