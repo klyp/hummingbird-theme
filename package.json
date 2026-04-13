@@ -7,7 +7,7 @@
     "gulp"
   ],
   "devDependencies": {
-    "axios": "^1.8.2",
+    "axios": "^1.15.0",
     "css-what": "^6.1.0",
     "gulp-terser": "^1.4.1",
     "hosted-git-info": "^6.1.1",
