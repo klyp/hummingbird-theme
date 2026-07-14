@@ -22,7 +22,7 @@
     "socket.io": "^4.8.0",
     "tar": "^7.5.11",
     "trim-newlines": "^4.1.1",
-    "ws": "^8.13.0",
+    "ws": "^8.21.1",
     "xmlhttprequest-ssl": "^2.1.0"
   },
   "dependencies": {
